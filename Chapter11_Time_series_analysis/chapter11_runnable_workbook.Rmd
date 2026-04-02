@@ -1,0 +1,189 @@
+---
+title: "Chapter 11: Time series analysis"
+subtitle: "Runnable workbook for Regression with R and Python"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+---
+
+This runnable workbook supplements the reference workbook. It adds setup code and lightweight fixes so the chapter can usually be rendered and run end-to-end.
+
+- Runnable companion script: [R/chapter11.R](R/chapter11.R)
+- Reference workbook: [chapter11_workbook.Rmd](chapter11_workbook.Rmd)
+- Textbook chapter: `Time series analysis`
+- Package installation lines are shown as comments and are not run automatically during rendering.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>", message = FALSE, warning = FALSE)
+chapter_dir <- dirname(normalizePath(knitr::current_input()))
+knitr::opts_knit$set(root.dir = chapter_dir)
+```
+
+## Time series analysis with R
+
+### Box 01
+
+Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend.
+
+```{r runnable-time-series-analysis-with-r-01}
+    df <- read.csv(file.path("data", "time_series_sweden.csv"))
+```
+
+### Box 02
+
+Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend.
+
+```{r runnable-time-series-analysis-with-r-02}
+    gdp_ts <- ts(df$gdp, frequency = 4, start = c(1981, 1))
+```
+
+### Box 03
+
+Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend.
+
+```{r runnable-time-series-analysis-with-r-03}
+    plot(gdp_ts)
+```
+
+### Box 04
+
+Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend.
+
+```{r runnable-time-series-analysis-with-r-04}
+    gdpL1 <- lag(gdp_ts, k=-1)
+    gdpL2 <- lag(gdp_ts, k=-2)
+    gdpF1 <- lag(gdp_ts, k=1)
+    gdpF2 <- lag(gdp_ts, k=2)
+```
+
+### Box 05
+
+Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend.
+
+```{r runnable-time-series-analysis-with-r-05}
+    ma <- (gdpL2/2 + gdpL1 + gdp_ts +  gdpF1 + gdpF2/2)/4
+```
+
+### Box 06
+
+Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend.
+
+```{r runnable-time-series-analysis-with-r-06}
+    plot(ma)
+```
+
+### Box 07
+
+Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend.
+
+```{r runnable-time-series-analysis-with-r-07}
+    mean_gdp <- mean(gdp_ts)
+    r_1 <- (sum((gdp_ts - mean_gdp) * (gdpL1 - mean_gdp))) / 
+           sum((gdp_ts - mean_gdp)^2)
+```
+
+### Box 08
+
+Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend.
+
+```{r runnable-time-series-analysis-with-r-08}
+ autocorrelation_function <- acf(gdp_ts)
+```
+
+### Box 09
+
+Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend.
+
+```{r runnable-time-series-analysis-with-r-09}
+    plot(autocorrelation_function)
+```
+
+### Box 10
+
+Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend.
+
+```{r runnable-time-series-analysis-with-r-10}
+    dloggdp <- (log(gdp_ts) - log(gdpL1)) * 100
+    maL1 <- lag(ma, k=-1)
+    dlogma <- (log(ma) - log(maL1)) * 100
+```
+
+### Box 11
+
+Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend.
+
+```{r runnable-time-series-analysis-with-r-11}
+plot(dloggdp)
+plot(dlogma)
+```
+
+### Box 12
+
+Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend.
+
+```{r runnable-time-series-analysis-with-r-12}
+ dloggdpL1 <- lag(dloggdp, k=-1)
+ dlogmaL1 <- lag(dlogma, k=-1)
+```
+
+### Box 13
+
+Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend.
+
+```{r runnable-time-series-analysis-with-r-13}
+    mv_ts <- ts.union(gdp_ts, gdpL1, gdpL2, gdpF1, gdpF2, 
+                      ma, dloggdp, dlogma, dloggdpL1,
+                      dlogmaL1)
+    dft <- data.frame(mv_ts)
+```
+
+### Box 14
+
+Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend.
+
+```{r runnable-time-series-analysis-with-r-14}
+ ar1_model <- lm(dloggdp ~ dloggdpL1, data=dft)
+ summary(ar1_model)
+```
+
+### Box 15
+
+Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend.
+
+```{r runnable-time-series-analysis-with-r-15}
+ library (sandwich)
+ cov_matrix <- NeweyWest(ar1_model, lag=5, prewhite=FALSE)
+```
+
+### Box 16
+
+Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend.
+
+```{r runnable-time-series-analysis-with-r-16}
+    std_errors <- sqrt(diag(cov_matrix))
+```
+
+### Box 17
+
+Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend.
+
+```{r runnable-time-series-analysis-with-r-17}
+ ar1_model_alt <- ar.ols(dloggdp,
+ order.max = 1,
+ aic=FALSE,
+ demean = FALSE,
+ intercept = TRUE)
+```
+
+### Box 18
+
+Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend.
+
+```{r runnable-time-series-analysis-with-r-18}
+    ar5_model <- ar.ols(dloggdp, 
+      order.max = 5,
+      aic=TRUE,
+      demean = FALSE, 
+      intercept = TRUE)
+```

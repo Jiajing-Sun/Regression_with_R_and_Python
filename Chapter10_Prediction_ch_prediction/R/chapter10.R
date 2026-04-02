@@ -5,7 +5,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 01: Example with training and test data
-# Source lines: CH10 Prediction.tex:154-163
+# Textbook context: Section: Training data, test data and cross-validation
 # ------------------------------------------------------------------------------
 
  df <- read.csv("apartment_price_data.csv")
@@ -21,7 +21,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 02: Example with training and test data
-# Source lines: CH10 Prediction.tex:166-168
+# Textbook context: Section: Training data, test data and cross-validation
 # ------------------------------------------------------------------------------
 
     for (i in 2:10) {
@@ -30,7 +30,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 03: Example with training and test data
-# Source lines: CH10 Prediction.tex:174-180
+# Textbook context: Section: Training data, test data and cross-validation
 # ------------------------------------------------------------------------------
 
     set.seed(12)
@@ -43,7 +43,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 04: Example with training and test data
-# Source lines: CH10 Prediction.tex:186-190
+# Textbook context: Section: Training data, test data and cross-validation
 # ------------------------------------------------------------------------------
 
     ols_model <- lm(price ~ living_area, data=df_train)
@@ -54,7 +54,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 05: Example with training and test data
-# Source lines: CH10 Prediction.tex:194-206
+# Textbook context: Section: Training data, test data and cross-validation
 # ------------------------------------------------------------------------------
 
     f <- "price ~ living_area"
@@ -73,7 +73,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 06: Cross-validation in R
-# Source lines: CH10 Prediction.tex:337-352
+# Textbook context: Section: Training data, test data and cross-validation | Subsection: Cross-validation
 # ------------------------------------------------------------------------------
 
     df <- read.csv("apartment_price_data.csv")
@@ -95,7 +95,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 07: Ridge and lasso in R
-# Source lines: CH10 Prediction.tex:454-455
+# Textbook context: Section: Predictions with many independent variables | Subsection: Scale dependence with ridge and lasso regression
 # ------------------------------------------------------------------------------
 
  install.packages("glmnet")
@@ -103,7 +103,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 08: Ridge and lasso in R
-# Source lines: CH10 Prediction.tex:459-460
+# Textbook context: Section: Predictions with many independent variables | Subsection: Scale dependence with ridge and lasso regression
 # ------------------------------------------------------------------------------
 
   df <- read.csv("apartment_price_data.csv")
@@ -111,14 +111,14 @@
 
 # ------------------------------------------------------------------------------
 # Box 09: Ridge and lasso in R
-# Source lines: CH10 Prediction.tex:464-464
+# Textbook context: Section: Predictions with many independent variables | Subsection: Scale dependence with ridge and lasso regression
 # ------------------------------------------------------------------------------
 
  dfX <- df[, names(df) != "price"]
 
 # ------------------------------------------------------------------------------
 # Box 10: Ridge and lasso in R
-# Source lines: CH10 Prediction.tex:468-469
+# Textbook context: Section: Predictions with many independent variables | Subsection: Scale dependence with ridge and lasso regression
 # ------------------------------------------------------------------------------
 
  dfX$build_year <- as.factor(dfX$build_year)
@@ -126,56 +126,56 @@
 
 # ------------------------------------------------------------------------------
 # Box 11: Ridge and lasso in R
-# Source lines: CH10 Prediction.tex:473-473
+# Textbook context: Section: Predictions with many independent variables | Subsection: Scale dependence with ridge and lasso regression
 # ------------------------------------------------------------------------------
 
  X <- makeX(dfX)
 
 # ------------------------------------------------------------------------------
 # Box 12: Ridge and lasso in R
-# Source lines: CH10 Prediction.tex:479-479
+# Textbook context: Section: Predictions with many independent variables | Subsection: Scale dependence with ridge and lasso regression
 # ------------------------------------------------------------------------------
 
   ridge_model <- glmnet(X, df$price, alpha=0)
 
 # ------------------------------------------------------------------------------
 # Box 13: Ridge and lasso in R
-# Source lines: CH10 Prediction.tex:483-483
+# Textbook context: Section: Predictions with many independent variables | Subsection: Scale dependence with ridge and lasso regression
 # ------------------------------------------------------------------------------
 
  ridge_model <- glmnet(X, df$price, alpha=0, lambda=.1)
 
 # ------------------------------------------------------------------------------
 # Box 14: Ridge and lasso in R
-# Source lines: CH10 Prediction.tex:487-487
+# Textbook context: Section: Predictions with many independent variables | Subsection: Scale dependence with ridge and lasso regression
 # ------------------------------------------------------------------------------
 
  yhat <- predict(ridge_model, newx = X)
 
 # ------------------------------------------------------------------------------
 # Box 15: Ridge and lasso in R
-# Source lines: CH10 Prediction.tex:491-491
+# Textbook context: Section: Predictions with many independent variables | Subsection: Scale dependence with ridge and lasso regression
 # ------------------------------------------------------------------------------
 
   ridge_model_cv <- cv.glmnet(X, df$price, alpha=0)
 
 # ------------------------------------------------------------------------------
 # Box 16: Ridge and lasso in R
-# Source lines: CH10 Prediction.tex:495-495
+# Textbook context: Section: Predictions with many independent variables | Subsection: Scale dependence with ridge and lasso regression
 # ------------------------------------------------------------------------------
 
  plot(ridge_model_cv)
 
 # ------------------------------------------------------------------------------
 # Box 17: Ridge and lasso in R
-# Source lines: CH10 Prediction.tex:499-499
+# Textbook context: Section: Predictions with many independent variables | Subsection: Scale dependence with ridge and lasso regression
 # ------------------------------------------------------------------------------
 
  lasso_model_cv <- cv.glmnet(X, df$price, alpha=1)
 
 # ------------------------------------------------------------------------------
 # Box 18: Regression tree in R
-# Source lines: CH10 Prediction.tex:704-707
+# Textbook context: Section: Tree-based regression models
 # ------------------------------------------------------------------------------
 
   install.packages("rpart")
@@ -185,14 +185,14 @@
 
 # ------------------------------------------------------------------------------
 # Box 19: Regression tree in R
-# Source lines: CH10 Prediction.tex:711-711
+# Textbook context: Section: Tree-based regression models
 # ------------------------------------------------------------------------------
 
  df <- read.csv("apartment_price_data.csv")
 
 # ------------------------------------------------------------------------------
 # Box 20: Regression tree in R
-# Source lines: CH10 Prediction.tex:715-717
+# Textbook context: Section: Tree-based regression models
 # ------------------------------------------------------------------------------
 
  tree_model <- rpart(price ~ living_area + monthly_fee,
@@ -201,28 +201,28 @@
 
 # ------------------------------------------------------------------------------
 # Box 21: Regression tree in R
-# Source lines: CH10 Prediction.tex:721-721
+# Textbook context: Section: Tree-based regression models
 # ------------------------------------------------------------------------------
 
   rpart.plot(tree_model)
 
 # ------------------------------------------------------------------------------
 # Box 22: Regression tree in R
-# Source lines: CH10 Prediction.tex:725-725
+# Textbook context: Section: Tree-based regression models
 # ------------------------------------------------------------------------------
 
  pruned_tree <- prune(tree_model, cp=.03)
 
 # ------------------------------------------------------------------------------
 # Box 23: Regression tree in R
-# Source lines: CH10 Prediction.tex:729-729
+# Textbook context: Section: Tree-based regression models
 # ------------------------------------------------------------------------------
 
  printcp(tree_model)
 
 # ------------------------------------------------------------------------------
 # Box 24: Comparison of the different prediction models
-# Source lines: CH10 Prediction.tex:897-904
+# Textbook context: Section: Example: housing prices
 # ------------------------------------------------------------------------------
 
  library(glmnet)
@@ -236,7 +236,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 25: Comparison of the different prediction models
-# Source lines: CH10 Prediction.tex:908-914
+# Textbook context: Section: Example: housing prices
 # ------------------------------------------------------------------------------
 
   for (room_size in 2:6){
@@ -249,14 +249,14 @@
 
 # ------------------------------------------------------------------------------
 # Box 26: Comparison of the different prediction models
-# Source lines: CH10 Prediction.tex:918-918
+# Textbook context: Section: Example: housing prices
 # ------------------------------------------------------------------------------
 
  year_list10 <- seq(from=1900, to=2010, by=10)
 
 # ------------------------------------------------------------------------------
 # Box 27: Comparison of the different prediction models
-# Source lines: CH10 Prediction.tex:926-932
+# Textbook context: Section: Example: housing prices
 # ------------------------------------------------------------------------------
 
   for (year in year_list10){
@@ -269,7 +269,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 28: Comparison of the different prediction models
-# Source lines: CH10 Prediction.tex:936-943
+# Textbook context: Section: Example: housing prices
 # ------------------------------------------------------------------------------
 
  year_list1 <- unique(df$build_year)
@@ -283,14 +283,14 @@
 
 # ------------------------------------------------------------------------------
 # Box 29: Comparison of the different prediction models
-# Source lines: CH10 Prediction.tex:950-950
+# Textbook context: Section: Example: housing prices
 # ------------------------------------------------------------------------------
 
   room_vars <- grep("^room_size_|^city_area_room_size_", names(df), value=TRUE)
 
 # ------------------------------------------------------------------------------
 # Box 30: Comparison of the different prediction models
-# Source lines: CH10 Prediction.tex:961-962
+# Textbook context: Section: Example: housing prices
 # ------------------------------------------------------------------------------
 
 build_decade_vars <- grep("^build_decade_|^city_area_build_decade_", names(df), value=TRUE)
@@ -298,7 +298,7 @@ build_year_vars <- grep("^build_year_|^city_area_build_year_", names(df), value=
 
 # ------------------------------------------------------------------------------
 # Box 31: Comparison of the different prediction models
-# Source lines: CH10 Prediction.tex:966-972
+# Textbook context: Section: Example: housing prices
 # ------------------------------------------------------------------------------
 
   rest_vars <- c("living_area", "new_production",
@@ -311,7 +311,7 @@ build_year_vars <- grep("^build_year_|^city_area_build_year_", names(df), value=
 
 # ------------------------------------------------------------------------------
 # Box 32: Comparison of the different prediction models
-# Source lines: CH10 Prediction.tex:976-977
+# Textbook context: Section: Example: housing prices
 # ------------------------------------------------------------------------------
 
  varlist_model1 <- c(room_vars, build_year_vars, rest_vars)
@@ -319,7 +319,7 @@ build_year_vars <- grep("^build_year_|^city_area_build_year_", names(df), value=
 
 # ------------------------------------------------------------------------------
 # Box 33: Comparison of the different prediction models
-# Source lines: CH10 Prediction.tex:981-983
+# Textbook context: Section: Example: housing prices
 # ------------------------------------------------------------------------------
 
  X1 <- as.matrix(df[, varlist_model1])
@@ -328,7 +328,7 @@ build_year_vars <- grep("^build_year_|^city_area_build_year_", names(df), value=
 
 # ------------------------------------------------------------------------------
 # Box 34: Comparison of the different prediction models
-# Source lines: CH10 Prediction.tex:987-988
+# Textbook context: Section: Example: housing prices
 # ------------------------------------------------------------------------------
 
  formOLS1 <- paste(varlist_model1, collapse="+")
@@ -336,7 +336,7 @@ build_year_vars <- grep("^build_year_|^city_area_build_year_", names(df), value=
 
 # ------------------------------------------------------------------------------
 # Box 35: Comparison of the different prediction models
-# Source lines: CH10 Prediction.tex:992-995
+# Textbook context: Section: Example: housing prices
 # ------------------------------------------------------------------------------
 
   formOLS10 <- paste("price ~ ",
@@ -346,7 +346,7 @@ build_year_vars <- grep("^build_year_|^city_area_build_year_", names(df), value=
 
 # ------------------------------------------------------------------------------
 # Box 36: Comparison of the different prediction models
-# Source lines: CH10 Prediction.tex:999-1002
+# Textbook context: Section: Example: housing prices
 # ------------------------------------------------------------------------------
 
  set.seed(12)
@@ -356,7 +356,7 @@ build_year_vars <- grep("^build_year_|^city_area_build_year_", names(df), value=
 
 # ------------------------------------------------------------------------------
 # Box 37: Comparison of the different prediction models
-# Source lines: CH10 Prediction.tex:1006-1024
+# Textbook context: Section: Example: housing prices
 # ------------------------------------------------------------------------------
 
   ols_model1 <- lm(as.formula(formOLS1), data=df[ind_train, ])
@@ -381,7 +381,7 @@ build_year_vars <- grep("^build_year_|^city_area_build_year_", names(df), value=
 
 # ------------------------------------------------------------------------------
 # Box 38: Comparison of the different prediction models
-# Source lines: CH10 Prediction.tex:1028-1038
+# Textbook context: Section: Example: housing prices
 # ------------------------------------------------------------------------------
 
   yhat_ols1 <- predict(ols_model1, newdata=df)
@@ -398,7 +398,7 @@ build_year_vars <- grep("^build_year_|^city_area_build_year_", names(df), value=
 
 # ------------------------------------------------------------------------------
 # Box 39: Comparison of the different prediction models
-# Source lines: CH10 Prediction.tex:1042-1052
+# Textbook context: Section: Example: housing prices
 # ------------------------------------------------------------------------------
 
  YHAT_models <- list(yhat_ols1, yhat_ridge1, yhat_lasso1,

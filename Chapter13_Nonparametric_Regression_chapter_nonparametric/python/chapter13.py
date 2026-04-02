@@ -5,7 +5,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 01: Nonparametric RD in Python (local linear + triangular kernel)
-# Source lines: nonparametric-chapter.tex:779-792
+# Textbook context: Section: Regression discontinuity | Subsection: Manipulation check: density around the cutoff
 # ------------------------------------------------------------------------------
 
 import numpy as np
@@ -25,7 +25,7 @@ df["Zrv"] = df["Z"] * df["rv"]          # slope interaction
 
 # ------------------------------------------------------------------------------
 # Box 02: Nonparametric RD in Python (local linear + triangular kernel)
-# Source lines: nonparametric-chapter.tex:797-803
+# Textbook context: Section: Regression discontinuity | Subsection: Manipulation check: density around the cutoff
 # ------------------------------------------------------------------------------
 
 def tri(u):
@@ -38,7 +38,7 @@ df_h["w"] = tri(df_h["rv"] / h)
 
 # ------------------------------------------------------------------------------
 # Box 03: Nonparametric RD in Python (local linear + triangular kernel)
-# Source lines: nonparametric-chapter.tex:808-826
+# Textbook context: Section: Regression discontinuity | Subsection: Manipulation check: density around the cutoff
 # ------------------------------------------------------------------------------
 
 # First stage (FS)
@@ -63,7 +63,7 @@ print(rd_rf_np_hc0.summary())
 
 # ------------------------------------------------------------------------------
 # Box 04: Nonparametric RD in Python (local linear + triangular kernel)
-# Source lines: nonparametric-chapter.tex:835-839
+# Textbook context: Section: Regression discontinuity | Subsection: Manipulation check: density around the cutoff
 # ------------------------------------------------------------------------------
 
 delta_hat = float(rd_fs_np.params["Z"])
@@ -74,7 +74,7 @@ wald_hat
 
 # ------------------------------------------------------------------------------
 # Box 05: Nonparametric RD in Python (local linear + triangular kernel)
-# Source lines: nonparametric-chapter.tex:844-857
+# Textbook context: Section: Regression discontinuity | Subsection: Manipulation check: density around the cutoff
 # ------------------------------------------------------------------------------
 
 # pip install linearmodels
@@ -94,7 +94,7 @@ iv_hat = float(rd_fuzzy_np.params["left_coalition_last_term"])
 
 # ------------------------------------------------------------------------------
 # Box 06: Nonparametric RD in Python (local linear + triangular kernel)
-# Source lines: nonparametric-chapter.tex:862-873
+# Textbook context: Section: Regression discontinuity | Subsection: Manipulation check: density around the cutoff
 # ------------------------------------------------------------------------------
 
 df_h2 = df_h.copy()
@@ -112,7 +112,7 @@ print(rd_fuzzy_np2.summary)
 
 # ------------------------------------------------------------------------------
 # Box 07: Nonparametric RD in Python (local linear + triangular kernel)
-# Source lines: nonparametric-chapter.tex:878-943
+# Textbook context: Section: Regression discontinuity | Subsection: Manipulation check: density around the cutoff
 # ------------------------------------------------------------------------------
 
 import os
@@ -184,7 +184,7 @@ plt.close()
 
 # ------------------------------------------------------------------------------
 # Box 08: Nonparametric RD in Python (local linear + triangular kernel)
-# Source lines: nonparametric-chapter.tex:948-959
+# Textbook context: Section: Regression discontinuity | Subsection: Manipulation check: density around the cutoff
 # ------------------------------------------------------------------------------
 
 # pip install rdrobust

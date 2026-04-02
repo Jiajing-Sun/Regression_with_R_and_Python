@@ -5,14 +5,14 @@
 
 # ------------------------------------------------------------------------------
 # Box 01: RD approach in R
-# Source lines: CH12 Causal analyses.tex:908-908
+# Textbook context: Section: The regression discontinuity approach | Subsection: Example in R with municipal data
 # ------------------------------------------------------------------------------
 
 install.packages(c("sandwich", "lmtest", "ivreg", "rdrobust"))
 
 # ------------------------------------------------------------------------------
 # Box 02: RD approach in R
-# Source lines: CH12 Causal analyses.tex:913-919
+# Textbook context: Section: The regression discontinuity approach | Subsection: Example in R with municipal data
 # ------------------------------------------------------------------------------
 
  df <- read.csv("municip_data.csv")
@@ -25,7 +25,7 @@ install.packages(c("sandwich", "lmtest", "ivreg", "rdrobust"))
 
 # ------------------------------------------------------------------------------
 # Box 03: RD approach in R
-# Source lines: CH12 Causal analyses.tex:923-935
+# Textbook context: Section: The regression discontinuity approach | Subsection: Example in R with municipal data
 # ------------------------------------------------------------------------------
 
   h <- .05
@@ -44,7 +44,7 @@ install.packages(c("sandwich", "lmtest", "ivreg", "rdrobust"))
 
 # ------------------------------------------------------------------------------
 # Box 04: RD approach in R
-# Source lines: CH12 Causal analyses.tex:939-944
+# Textbook context: Section: The regression discontinuity approach | Subsection: Example in R with municipal data
 # ------------------------------------------------------------------------------
 
   library(ivreg)
@@ -56,7 +56,7 @@ install.packages(c("sandwich", "lmtest", "ivreg", "rdrobust"))
 
 # ------------------------------------------------------------------------------
 # Box 05: RD approach in R
-# Source lines: CH12 Causal analyses.tex:948-952
+# Textbook context: Section: The regression discontinuity approach | Subsection: Example in R with municipal data
 # ------------------------------------------------------------------------------
 
  install.packages("rdrobust")
@@ -67,7 +67,7 @@ install.packages(c("sandwich", "lmtest", "ivreg", "rdrobust"))
 
 # ------------------------------------------------------------------------------
 # Box 06: RD approach in R
-# Source lines: CH12 Causal analyses.tex:960-963
+# Textbook context: Section: The regression discontinuity approach | Subsection: Example in R with municipal data
 # ------------------------------------------------------------------------------
 
   rd_2sls_alt <- rdrobust(df$change_tax_rate,

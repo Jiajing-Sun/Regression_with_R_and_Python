@@ -5,7 +5,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 01: Logistic regression in Python
-# Source lines: CH9 Binary dependent variable.tex:373-377
+# Textbook context: Section: Estimation and inference under logistic regression model | Subsection: Assumptions about the error term
 # ------------------------------------------------------------------------------
 
 import numpy as np
@@ -16,21 +16,21 @@ df = df[df["year"] == 2022].copy()
 
 # ------------------------------------------------------------------------------
 # Box 02: Logistic regression in Python
-# Source lines: CH9 Binary dependent variable.tex:381-381
+# Textbook context: Section: Estimation and inference under logistic regression model | Subsection: Assumptions about the error term
 # ------------------------------------------------------------------------------
 
 highest_quartile_limit = df["tax_base"].quantile(0.75)
 
 # ------------------------------------------------------------------------------
 # Box 03: Logistic regression in Python
-# Source lines: CH9 Binary dependent variable.tex:385-385
+# Textbook context: Section: Estimation and inference under logistic regression model | Subsection: Assumptions about the error term
 # ------------------------------------------------------------------------------
 
 df["high_income"] = (df["tax_base"] > highest_quartile_limit).astype(int)
 
 # ------------------------------------------------------------------------------
 # Box 04: Logistic regression in Python
-# Source lines: CH9 Binary dependent variable.tex:389-396
+# Textbook context: Section: Estimation and inference under logistic regression model | Subsection: Assumptions about the error term
 # ------------------------------------------------------------------------------
 
 import statsmodels.api as sm
@@ -44,14 +44,14 @@ logit_model = smf.glm(
 
 # ------------------------------------------------------------------------------
 # Box 05: Logistic regression in Python
-# Source lines: CH9 Binary dependent variable.tex:400-400
+# Textbook context: Section: Estimation and inference under logistic regression model | Subsection: Assumptions about the error term
 # ------------------------------------------------------------------------------
 
 print(logit_model.summary())
 
 # ------------------------------------------------------------------------------
 # Box 06: Logistic regression in Python
-# Source lines: CH9 Binary dependent variable.tex:404-412
+# Textbook context: Section: Estimation and inference under logistic regression model | Subsection: Assumptions about the error term
 # ------------------------------------------------------------------------------
 
 df["lnpop"] = np.log(df["pop"])
@@ -66,7 +66,7 @@ print(logit_model2.summary())
 
 # ------------------------------------------------------------------------------
 # Box 07: Logistic regression in Python
-# Source lines: CH9 Binary dependent variable.tex:416-417
+# Textbook context: Section: Estimation and inference under logistic regression model | Subsection: Assumptions about the error term
 # ------------------------------------------------------------------------------
 
 beta1hat = float(logit_model2.params["share_tertiary_school"])
@@ -74,7 +74,7 @@ beta2hat = float(logit_model2.params["lnpop"])
 
 # ------------------------------------------------------------------------------
 # Box 08: Logistic regression in Python
-# Source lines: CH9 Binary dependent variable.tex:421-422
+# Textbook context: Section: Estimation and inference under logistic regression model | Subsection: Assumptions about the error term
 # ------------------------------------------------------------------------------
 
 odds_ratio_x1 = np.exp(beta1hat * 0.01)
@@ -82,7 +82,7 @@ odds_ratio_x1
 
 # ------------------------------------------------------------------------------
 # Box 09: Example in Python with the probability of heart disease
-# Source lines: CH9 Binary dependent variable.tex:612-625
+# Textbook context: Section: Example: the risk of having a heart disease
 # ------------------------------------------------------------------------------
 
 import numpy as np
@@ -102,7 +102,7 @@ print(logit_model.summary())
 
 # ------------------------------------------------------------------------------
 # Box 10: Example in Python with the probability of heart disease
-# Source lines: CH9 Binary dependent variable.tex:630-646
+# Textbook context: Section: Example: the risk of having a heart disease
 # ------------------------------------------------------------------------------
 
 from scipy import stats
@@ -125,7 +125,7 @@ print([lb_odds_ratio, ub_odds_ratio])
 
 # ------------------------------------------------------------------------------
 # Box 11: Example in Python with the probability of heart disease
-# Source lines: CH9 Binary dependent variable.tex:651-657
+# Textbook context: Section: Example: the risk of having a heart disease
 # ------------------------------------------------------------------------------
 
 logit_model2 = smf.glm(
@@ -138,7 +138,7 @@ print(logit_model2.summary())
 
 # ------------------------------------------------------------------------------
 # Box 12: Example in Python with the probability of heart disease
-# Source lines: CH9 Binary dependent variable.tex:662-672
+# Textbook context: Section: Example: the risk of having a heart disease
 # ------------------------------------------------------------------------------
 
 beta_1_hat_b = float(logit_model2.params["blood_pressure"])
@@ -155,7 +155,7 @@ odds_ratio_blood_pressure, odds_ratio_male, odds_ratio_age
 
 # ------------------------------------------------------------------------------
 # Box 13: Example in Python with the probability of heart disease
-# Source lines: CH9 Binary dependent variable.tex:677-681
+# Textbook context: Section: Example: the risk of having a heart disease
 # ------------------------------------------------------------------------------
 
 beta_hat_b = logit_model2.params[["blood_pressure", "male", "age"]]
@@ -166,7 +166,7 @@ odds_ratios
 
 # ------------------------------------------------------------------------------
 # Box 14: Example in Python with the probability of heart disease
-# Source lines: CH9 Binary dependent variable.tex:686-690
+# Textbook context: Section: Example: the risk of having a heart disease
 # ------------------------------------------------------------------------------
 
 pred_heart_disease = logit_model2.predict(
@@ -177,7 +177,7 @@ pred_heart_disease
 
 # ------------------------------------------------------------------------------
 # Box 15: Example in Python with the probability of heart disease
-# Source lines: CH9 Binary dependent variable.tex:695-696
+# Textbook context: Section: Example: the risk of having a heart disease
 # ------------------------------------------------------------------------------
 
 df = df.copy()
@@ -185,7 +185,7 @@ df["pred"] = logit_model2.predict(df)
 
 # ------------------------------------------------------------------------------
 # Box 16: Example in Python with the probability of heart disease
-# Source lines: CH9 Binary dependent variable.tex:700-710
+# Textbook context: Section: Example: the risk of having a heart disease
 # ------------------------------------------------------------------------------
 
 df_incr_blood_pressure = df.copy()
@@ -202,7 +202,7 @@ GRD_blood_pressure = float(df["risk_diff_blood_pressure"].mean())
 
 # ------------------------------------------------------------------------------
 # Box 17: Example in Python with the probability of heart disease
-# Source lines: CH9 Binary dependent variable.tex:714-722
+# Textbook context: Section: Example: the risk of having a heart disease
 # ------------------------------------------------------------------------------
 
 df_incr_age = df.copy()
@@ -217,7 +217,7 @@ GRD_age = float(df["risk_diff_age"].mean())
 
 # ------------------------------------------------------------------------------
 # Box 18: Example in Python with the probability of heart disease
-# Source lines: CH9 Binary dependent variable.tex:726-738
+# Textbook context: Section: Example: the risk of having a heart disease
 # ------------------------------------------------------------------------------
 
 df_female = df.copy()

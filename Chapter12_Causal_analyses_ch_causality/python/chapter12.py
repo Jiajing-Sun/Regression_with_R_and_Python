@@ -5,7 +5,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 01: RD approach in Python
-# Source lines: CH12 Causal analyses.tex:977-990
+# Textbook context: Section: The regression discontinuity approach | Subsection: Example in R with municipal data
 # ------------------------------------------------------------------------------
 
 import numpy as np
@@ -25,7 +25,7 @@ df["Zrv"] = df["Z"] * df["rv"]
 
 # ------------------------------------------------------------------------------
 # Box 02: RD approach in Python
-# Source lines: CH12 Causal analyses.tex:995-1008
+# Textbook context: Section: The regression discontinuity approach | Subsection: Example in R with municipal data
 # ------------------------------------------------------------------------------
 
 import statsmodels.formula.api as smf
@@ -45,7 +45,7 @@ print(rd_rf_hc0.summary())
 
 # ------------------------------------------------------------------------------
 # Box 03: RD approach in Python
-# Source lines: CH12 Causal analyses.tex:1013-1016
+# Textbook context: Section: The regression discontinuity approach | Subsection: Example in R with municipal data
 # ------------------------------------------------------------------------------
 
 df_h["Dhat"] = rd_fs.predict(df_h)
@@ -55,7 +55,7 @@ print(rd_2sls_naive.summary())
 
 # ------------------------------------------------------------------------------
 # Box 04: RD approach in Python
-# Source lines: CH12 Causal analyses.tex:1021-1029
+# Textbook context: Section: The regression discontinuity approach | Subsection: Example in R with municipal data
 # ------------------------------------------------------------------------------
 
 # pip install linearmodels
@@ -70,7 +70,7 @@ print(rd_2sls.summary)
 
 # ------------------------------------------------------------------------------
 # Box 05: RD approach in Python
-# Source lines: CH12 Causal analyses.tex:1034-1042
+# Textbook context: Section: The regression discontinuity approach | Subsection: Example in R with municipal data
 # ------------------------------------------------------------------------------
 
 # pip install rdrobust
@@ -85,7 +85,7 @@ print(rd_fs_alt)
 
 # ------------------------------------------------------------------------------
 # Box 06: RD approach in Python
-# Source lines: CH12 Causal analyses.tex:1049-1055
+# Textbook context: Section: The regression discontinuity approach | Subsection: Example in R with municipal data
 # ------------------------------------------------------------------------------
 
 rd_2sls_alt = rdrobust(

@@ -5,7 +5,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 01: Example with training and test data in Python
-# Source lines: CH10 Prediction.tex:238-242
+# Textbook context: Section: Training data, test data and cross-validation
 # ------------------------------------------------------------------------------
 
 import numpy as np
@@ -16,7 +16,7 @@ df = df[["price", "living_area"]].dropna().copy()
 
 # ------------------------------------------------------------------------------
 # Box 02: Example with training and test data in Python
-# Source lines: CH10 Prediction.tex:247-248
+# Textbook context: Section: Training data, test data and cross-validation
 # ------------------------------------------------------------------------------
 
 for i in range(2, 11):
@@ -24,7 +24,7 @@ for i in range(2, 11):
 
 # ------------------------------------------------------------------------------
 # Box 03: Example with training and test data in Python
-# Source lines: CH10 Prediction.tex:253-262
+# Textbook context: Section: Training data, test data and cross-validation
 # ------------------------------------------------------------------------------
 
 rng = np.random.default_rng(12)
@@ -40,7 +40,7 @@ df_test = df.iloc[test_ind].copy()
 
 # ------------------------------------------------------------------------------
 # Box 04: Example with training and test data in Python
-# Source lines: CH10 Prediction.tex:267-284
+# Textbook context: Section: Training data, test data and cross-validation
 # ------------------------------------------------------------------------------
 
 from sklearn.linear_model import LinearRegression
@@ -64,7 +64,7 @@ mse_test_list = [mse_test]
 
 # ------------------------------------------------------------------------------
 # Box 05: Example with training and test data in Python
-# Source lines: CH10 Prediction.tex:289-307
+# Textbook context: Section: Training data, test data and cross-validation
 # ------------------------------------------------------------------------------
 
 for i in range(2, 11):
@@ -89,7 +89,7 @@ results
 
 # ------------------------------------------------------------------------------
 # Box 06: Cross-validation in Python
-# Source lines: CH10 Prediction.tex:368-378
+# Textbook context: Section: Training data, test data and cross-validation | Subsection: Cross-validation
 # ------------------------------------------------------------------------------
 
 import numpy as np
@@ -106,7 +106,7 @@ y = df["price"].to_numpy()
 
 # ------------------------------------------------------------------------------
 # Box 07: Cross-validation in Python
-# Source lines: CH10 Prediction.tex:383-393
+# Textbook context: Section: Training data, test data and cross-validation | Subsection: Cross-validation
 # ------------------------------------------------------------------------------
 
 m = 5
@@ -123,7 +123,7 @@ MSE_hat, MSE_hat.mean()
 
 # ------------------------------------------------------------------------------
 # Box 08: Ridge and lasso in Python
-# Source lines: CH10 Prediction.tex:516-524
+# Textbook context: Section: Predictions with many independent variables | Subsection: Scale dependence with ridge and lasso regression
 # ------------------------------------------------------------------------------
 
 import numpy as np
@@ -138,7 +138,7 @@ dfX = df.drop(columns=["price"])
 
 # ------------------------------------------------------------------------------
 # Box 09: Ridge and lasso in Python
-# Source lines: CH10 Prediction.tex:529-535
+# Textbook context: Section: Predictions with many independent variables | Subsection: Scale dependence with ridge and lasso regression
 # ------------------------------------------------------------------------------
 
 X_df = pd.get_dummies(
@@ -151,7 +151,7 @@ X = X_df.to_numpy()
 
 # ------------------------------------------------------------------------------
 # Box 10: Ridge and lasso in Python
-# Source lines: CH10 Prediction.tex:542-551
+# Textbook context: Section: Predictions with many independent variables | Subsection: Scale dependence with ridge and lasso regression
 # ------------------------------------------------------------------------------
 
 from sklearn.pipeline import make_pipeline
@@ -167,7 +167,7 @@ yhat = ridge_model.predict(X)
 
 # ------------------------------------------------------------------------------
 # Box 11: Ridge and lasso in Python
-# Source lines: CH10 Prediction.tex:556-566
+# Textbook context: Section: Predictions with many independent variables | Subsection: Scale dependence with ridge and lasso regression
 # ------------------------------------------------------------------------------
 
 from sklearn.linear_model import RidgeCV
@@ -184,7 +184,7 @@ best_alpha_ridge
 
 # ------------------------------------------------------------------------------
 # Box 12: Ridge and lasso in Python
-# Source lines: CH10 Prediction.tex:571-579
+# Textbook context: Section: Predictions with many independent variables | Subsection: Scale dependence with ridge and lasso regression
 # ------------------------------------------------------------------------------
 
 from sklearn.linear_model import LassoCV
@@ -199,7 +199,7 @@ best_alpha_lasso
 
 # ------------------------------------------------------------------------------
 # Box 13: Ridge and lasso in Python
-# Source lines: CH10 Prediction.tex:584-592
+# Textbook context: Section: Predictions with many independent variables | Subsection: Scale dependence with ridge and lasso regression
 # ------------------------------------------------------------------------------
 
 ridge_coefs = ridge_model_cv.named_steps["ridgecv"].coef_
@@ -214,7 +214,7 @@ coef_table.head()
 
 # ------------------------------------------------------------------------------
 # Box 14: Regression tree in Python
-# Source lines: CH10 Prediction.tex:765-783
+# Textbook context: Section: Tree-based regression models
 # ------------------------------------------------------------------------------
 
 import numpy as np
@@ -239,7 +239,7 @@ tree_model.get_n_leaves()
 
 # ------------------------------------------------------------------------------
 # Box 15: Regression tree in Python
-# Source lines: CH10 Prediction.tex:788-793
+# Textbook context: Section: Tree-based regression models
 # ------------------------------------------------------------------------------
 
 import matplotlib.pyplot as plt
@@ -251,7 +251,7 @@ plt.show()
 
 # ------------------------------------------------------------------------------
 # Box 16: Regression tree in Python
-# Source lines: CH10 Prediction.tex:798-819
+# Textbook context: Section: Tree-based regression models
 # ------------------------------------------------------------------------------
 
 from sklearn.model_selection import KFold, cross_val_score
@@ -279,7 +279,7 @@ best_alpha
 
 # ------------------------------------------------------------------------------
 # Box 17: Regression tree in Python
-# Source lines: CH10 Prediction.tex:824-831
+# Textbook context: Section: Tree-based regression models
 # ------------------------------------------------------------------------------
 
 pruned_tree = DecisionTreeRegressor(
@@ -293,7 +293,7 @@ pruned_tree.get_n_leaves()
 
 # ------------------------------------------------------------------------------
 # Box 18: Comparison of the different prediction models in Python
-# Source lines: CH10 Prediction.tex:1068-1080
+# Textbook context: Section: Example: housing prices
 # ------------------------------------------------------------------------------
 
 import numpy as np
@@ -312,7 +312,7 @@ df = df.dropna().copy()
 
 # ------------------------------------------------------------------------------
 # Box 19: Comparison of the different prediction models in Python
-# Source lines: CH10 Prediction.tex:1085-1087
+# Textbook context: Section: Example: housing prices
 # ------------------------------------------------------------------------------
 
 for room_size in range(2, 7):
@@ -321,7 +321,7 @@ for room_size in range(2, 7):
 
 # ------------------------------------------------------------------------------
 # Box 20: Comparison of the different prediction models in Python
-# Source lines: CH10 Prediction.tex:1092-1108
+# Textbook context: Section: Example: housing prices
 # ------------------------------------------------------------------------------
 
 # --- decade dummies (reference: < 1900) ---
@@ -344,7 +344,7 @@ for year in year_list1:
 
 # ------------------------------------------------------------------------------
 # Box 21: Comparison of the different prediction models in Python
-# Source lines: CH10 Prediction.tex:1113-1135
+# Textbook context: Section: Example: housing prices
 # ------------------------------------------------------------------------------
 
 room_vars = [c for c in df.columns if c.startswith("room_size_") or c.startswith("city_area_room_size_")]
@@ -373,7 +373,7 @@ Y = df["price"].to_numpy()
 
 # ------------------------------------------------------------------------------
 # Box 22: Comparison of the different prediction models in Python
-# Source lines: CH10 Prediction.tex:1140-1144
+# Textbook context: Section: Example: housing prices
 # ------------------------------------------------------------------------------
 
 rng = np.random.default_rng(12)
@@ -384,7 +384,7 @@ ind_test = np.setdiff1d(np.arange(n), ind_train)
 
 # ------------------------------------------------------------------------------
 # Box 23: Comparison of the different prediction models in Python
-# Source lines: CH10 Prediction.tex:1149-1179
+# Textbook context: Section: Example: housing prices
 # ------------------------------------------------------------------------------
 
 from sklearn.linear_model import LinearRegression, RidgeCV, LassoCV
@@ -421,7 +421,7 @@ lasso_model10 = make_pipeline(
 
 # ------------------------------------------------------------------------------
 # Box 24: Comparison of the different prediction models in Python
-# Source lines: CH10 Prediction.tex:1184-1220
+# Textbook context: Section: Example: housing prices
 # ------------------------------------------------------------------------------
 
 from sklearn.tree import DecisionTreeRegressor
@@ -464,7 +464,7 @@ pruned_tree = DecisionTreeRegressor(
 
 # ------------------------------------------------------------------------------
 # Box 25: Comparison of the different prediction models in Python
-# Source lines: CH10 Prediction.tex:1225-1257
+# Textbook context: Section: Example: housing prices
 # ------------------------------------------------------------------------------
 
 def mse(y_true, y_pred):

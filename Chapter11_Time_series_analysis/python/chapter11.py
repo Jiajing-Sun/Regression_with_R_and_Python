@@ -5,7 +5,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 01: Time series analysis with Python
-# Source lines: CH11 Time series analysis.tex:450-453
+# Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend
 # ------------------------------------------------------------------------------
 
 import numpy as np
@@ -15,7 +15,7 @@ df = pd.read_csv("data/time_series_sweden.csv")
 
 # ------------------------------------------------------------------------------
 # Box 02: Time series analysis with Python
-# Source lines: CH11 Time series analysis.tex:458-459
+# Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend
 # ------------------------------------------------------------------------------
 
 idx = pd.period_range(start="1981Q1", periods=len(df), freq="Q")
@@ -23,7 +23,7 @@ gdp = pd.Series(df["gdp"].to_numpy(), index=idx, name="gdp")
 
 # ------------------------------------------------------------------------------
 # Box 03: Time series analysis with Python
-# Source lines: CH11 Time series analysis.tex:464-467
+# Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend
 # ------------------------------------------------------------------------------
 
 import matplotlib.pyplot as plt
@@ -33,7 +33,7 @@ plt.show()
 
 # ------------------------------------------------------------------------------
 # Box 04: Time series analysis with Python
-# Source lines: CH11 Time series analysis.tex:472-475
+# Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend
 # ------------------------------------------------------------------------------
 
 gdpL1 = gdp.shift(1)
@@ -43,14 +43,14 @@ gdpF2 = gdp.shift(-2)
 
 # ------------------------------------------------------------------------------
 # Box 05: Time series analysis with Python
-# Source lines: CH11 Time series analysis.tex:480-480
+# Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend
 # ------------------------------------------------------------------------------
 
 ma = (gdpL2/2 + gdpL1 + gdp + gdpF1 + gdpF2/2) / 4
 
 # ------------------------------------------------------------------------------
 # Box 06: Time series analysis with Python
-# Source lines: CH11 Time series analysis.tex:485-486
+# Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend
 # ------------------------------------------------------------------------------
 
 ma.plot()
@@ -58,7 +58,7 @@ plt.show()
 
 # ------------------------------------------------------------------------------
 # Box 07: Time series analysis with Python
-# Source lines: CH11 Time series analysis.tex:491-494
+# Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend
 # ------------------------------------------------------------------------------
 
 mean_gdp = gdp.mean()
@@ -68,7 +68,7 @@ r_1
 
 # ------------------------------------------------------------------------------
 # Box 08: Time series analysis with Python
-# Source lines: CH11 Time series analysis.tex:499-505
+# Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend
 # ------------------------------------------------------------------------------
 
 from statsmodels.tsa.stattools import acf
@@ -81,7 +81,7 @@ plt.show()
 
 # ------------------------------------------------------------------------------
 # Box 09: Time series analysis with Python
-# Source lines: CH11 Time series analysis.tex:510-513
+# Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend
 # ------------------------------------------------------------------------------
 
 dloggdp = (np.log(gdp) - np.log(gdpL1)) * 100
@@ -91,7 +91,7 @@ dlogma = (np.log(ma) - np.log(maL1)) * 100
 
 # ------------------------------------------------------------------------------
 # Box 10: Time series analysis with Python
-# Source lines: CH11 Time series analysis.tex:518-522
+# Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend
 # ------------------------------------------------------------------------------
 
 dloggdp.plot()
@@ -102,7 +102,7 @@ plt.show()
 
 # ------------------------------------------------------------------------------
 # Box 11: Time series analysis with Python
-# Source lines: CH11 Time series analysis.tex:527-538
+# Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend
 # ------------------------------------------------------------------------------
 
 dloggdpL1 = dloggdp.shift(1)
@@ -120,7 +120,7 @@ dft_reg = dft[["dloggdp", "dloggdpL1"]].dropna()
 
 # ------------------------------------------------------------------------------
 # Box 12: Time series analysis with Python
-# Source lines: CH11 Time series analysis.tex:543-546
+# Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend
 # ------------------------------------------------------------------------------
 
 import statsmodels.formula.api as smf
@@ -130,7 +130,7 @@ print(ar1_model.summary())
 
 # ------------------------------------------------------------------------------
 # Box 13: Time series analysis with Python
-# Source lines: CH11 Time series analysis.tex:551-556
+# Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend
 # ------------------------------------------------------------------------------
 
 ar1_model_hac = ar1_model.get_robustcov_results(cov_type="HAC", maxlags=5)
@@ -142,7 +142,7 @@ std_errors
 
 # ------------------------------------------------------------------------------
 # Box 14: Time series analysis with Python
-# Source lines: CH11 Time series analysis.tex:561-565
+# Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend
 # ------------------------------------------------------------------------------
 
 from statsmodels.tsa.ar_model import AutoReg
@@ -153,7 +153,7 @@ print(ar1_model_alt.summary())
 
 # ------------------------------------------------------------------------------
 # Box 15: Time series analysis with Python
-# Source lines: CH11 Time series analysis.tex:570-586
+# Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend
 # ------------------------------------------------------------------------------
 
 max_p = 5

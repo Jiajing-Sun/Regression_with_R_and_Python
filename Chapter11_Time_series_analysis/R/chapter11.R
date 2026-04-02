@@ -5,28 +5,28 @@
 
 # ------------------------------------------------------------------------------
 # Box 01: Time series analysis with R
-# Source lines: CH11 Time series analysis.tex:328-328
+# Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend
 # ------------------------------------------------------------------------------
 
     df <- read.csv("time_series_sweden.csv")
 
 # ------------------------------------------------------------------------------
 # Box 02: Time series analysis with R
-# Source lines: CH11 Time series analysis.tex:332-332
+# Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend
 # ------------------------------------------------------------------------------
 
     gdp_ts <- ts(df$gdp, frequency = 4, start = c(1981, 1))
 
 # ------------------------------------------------------------------------------
 # Box 03: Time series analysis with R
-# Source lines: CH11 Time series analysis.tex:336-336
+# Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend
 # ------------------------------------------------------------------------------
 
     plot(gdp_ts)
 
 # ------------------------------------------------------------------------------
 # Box 04: Time series analysis with R
-# Source lines: CH11 Time series analysis.tex:340-343
+# Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend
 # ------------------------------------------------------------------------------
 
     gdpL1 <- lag(gdp_ts, k=-1)
@@ -36,21 +36,21 @@
 
 # ------------------------------------------------------------------------------
 # Box 05: Time series analysis with R
-# Source lines: CH11 Time series analysis.tex:347-347
+# Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend
 # ------------------------------------------------------------------------------
 
     ma <- (gdpL2/2 + gdpL1 + gdp_ts +  gdpF1 + gdpF2/2)/4
 
 # ------------------------------------------------------------------------------
 # Box 06: Time series analysis with R
-# Source lines: CH11 Time series analysis.tex:351-351
+# Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend
 # ------------------------------------------------------------------------------
 
     plot(ma)
 
 # ------------------------------------------------------------------------------
 # Box 07: Time series analysis with R
-# Source lines: CH11 Time series analysis.tex:355-357
+# Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend
 # ------------------------------------------------------------------------------
 
     mean_gdp <- mean(gdp_ts)
@@ -59,21 +59,21 @@
 
 # ------------------------------------------------------------------------------
 # Box 08: Time series analysis with R
-# Source lines: CH11 Time series analysis.tex:361-361
+# Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend
 # ------------------------------------------------------------------------------
 
  autocorrelation_function <- acf(gdp_ts)
 
 # ------------------------------------------------------------------------------
 # Box 09: Time series analysis with R
-# Source lines: CH11 Time series analysis.tex:365-365
+# Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend
 # ------------------------------------------------------------------------------
 
     plot(autocorrelation_function)
 
 # ------------------------------------------------------------------------------
 # Box 10: Time series analysis with R
-# Source lines: CH11 Time series analysis.tex:371-373
+# Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend
 # ------------------------------------------------------------------------------
 
     dloggdp <- (log(gdp_ts) - log(gdpL1)) * 100
@@ -82,7 +82,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 11: Time series analysis with R
-# Source lines: CH11 Time series analysis.tex:377-378
+# Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend
 # ------------------------------------------------------------------------------
 
 plot(dloggdp)
@@ -90,7 +90,7 @@ plot(dlogma)
 
 # ------------------------------------------------------------------------------
 # Box 12: Time series analysis with R
-# Source lines: CH11 Time series analysis.tex:382-383
+# Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend
 # ------------------------------------------------------------------------------
 
  dloggdpL1 <- lag(dloggdp, k=-1)
@@ -98,7 +98,7 @@ plot(dlogma)
 
 # ------------------------------------------------------------------------------
 # Box 13: Time series analysis with R
-# Source lines: CH11 Time series analysis.tex:387-390
+# Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend
 # ------------------------------------------------------------------------------
 
     mv_ts <- ts.union(gdp_ts, gdpL1, gdpL2, gdpF1, gdpF2, 
@@ -108,7 +108,7 @@ plot(dlogma)
 
 # ------------------------------------------------------------------------------
 # Box 14: Time series analysis with R
-# Source lines: CH11 Time series analysis.tex:394-395
+# Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend
 # ------------------------------------------------------------------------------
 
  ar1_model <- lm(dloggdp ~ dloggdpL1, data=dft)
@@ -116,7 +116,7 @@ plot(dlogma)
 
 # ------------------------------------------------------------------------------
 # Box 15: Time series analysis with R
-# Source lines: CH11 Time series analysis.tex:399-400
+# Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend
 # ------------------------------------------------------------------------------
 
  library (sandwich)
@@ -124,14 +124,14 @@ plot(dlogma)
 
 # ------------------------------------------------------------------------------
 # Box 16: Time series analysis with R
-# Source lines: CH11 Time series analysis.tex:404-404
+# Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend
 # ------------------------------------------------------------------------------
 
     std_errors <- sqrt(diag(cov_matrix))
 
 # ------------------------------------------------------------------------------
 # Box 17: Time series analysis with R
-# Source lines: CH11 Time series analysis.tex:408-412
+# Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend
 # ------------------------------------------------------------------------------
 
  ar1_model_alt <- ar.ols(dloggdp,
@@ -142,7 +142,7 @@ plot(dlogma)
 
 # ------------------------------------------------------------------------------
 # Box 18: Time series analysis with R
-# Source lines: CH11 Time series analysis.tex:416-420
+# Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend
 # ------------------------------------------------------------------------------
 
     ar5_model <- ar.ols(dloggdp, 

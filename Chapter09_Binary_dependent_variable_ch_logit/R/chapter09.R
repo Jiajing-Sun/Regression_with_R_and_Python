@@ -5,7 +5,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 01: Logistic regression in R
-# Source lines: CH9 Binary dependent variable.tex:316-317
+# Textbook context: Section: Estimation and inference under logistic regression model | Subsection: Assumptions about the error term
 # ------------------------------------------------------------------------------
 
  df <- read.csv("municip_data.csv")
@@ -13,14 +13,14 @@
 
 # ------------------------------------------------------------------------------
 # Box 02: Logistic regression in R
-# Source lines: CH9 Binary dependent variable.tex:321-321
+# Textbook context: Section: Estimation and inference under logistic regression model | Subsection: Assumptions about the error term
 # ------------------------------------------------------------------------------
 
     highest_quartile_limit <- quantile(df$tax_base, .75)
 
 # ------------------------------------------------------------------------------
 # Box 03: Logistic regression in R
-# Source lines: CH9 Binary dependent variable.tex:325-326
+# Textbook context: Section: Estimation and inference under logistic regression model | Subsection: Assumptions about the error term
 # ------------------------------------------------------------------------------
 
  df$high_income <- ifelse(
@@ -28,7 +28,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 04: Logistic regression in R
-# Source lines: CH9 Binary dependent variable.tex:330-332
+# Textbook context: Section: Estimation and inference under logistic regression model | Subsection: Assumptions about the error term
 # ------------------------------------------------------------------------------
 
     logit_model <- glm(df$high_income ~ share_tertiary_school,
@@ -37,14 +37,14 @@
 
 # ------------------------------------------------------------------------------
 # Box 05: Logistic regression in R
-# Source lines: CH9 Binary dependent variable.tex:336-336
+# Textbook context: Section: Estimation and inference under logistic regression model | Subsection: Assumptions about the error term
 # ------------------------------------------------------------------------------
 
  summary(logit_model)
 
 # ------------------------------------------------------------------------------
 # Box 06: Logistic regression in R
-# Source lines: CH9 Binary dependent variable.tex:340-343
+# Textbook context: Section: Estimation and inference under logistic regression model | Subsection: Assumptions about the error term
 # ------------------------------------------------------------------------------
 
     df$lnpop <- log(df$pop)
@@ -54,7 +54,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 07: Logistic regression in R
-# Source lines: CH9 Binary dependent variable.tex:349-350
+# Textbook context: Section: Estimation and inference under logistic regression model | Subsection: Assumptions about the error term
 # ------------------------------------------------------------------------------
 
     beta1hat <- logit_model2$coefficients[2]
@@ -62,14 +62,14 @@
 
 # ------------------------------------------------------------------------------
 # Box 08: Logistic regression in R
-# Source lines: CH9 Binary dependent variable.tex:358-358
+# Textbook context: Section: Estimation and inference under logistic regression model | Subsection: Assumptions about the error term
 # ------------------------------------------------------------------------------
 
  exp(beta1hat * .01)
 
 # ------------------------------------------------------------------------------
 # Box 09: Example in R with the probability of heart disease
-# Source lines: CH9 Binary dependent variable.tex:488-492
+# Textbook context: Section: Example: the risk of having a heart disease
 # ------------------------------------------------------------------------------
 
     df <- read.csv("heart_disease.csv")
@@ -80,7 +80,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 10: Example in R with the probability of heart disease
-# Source lines: CH9 Binary dependent variable.tex:496-507
+# Textbook context: Section: Example: the risk of having a heart disease
 # ------------------------------------------------------------------------------
 
     sum_logit_model <- summary(logit_model)$coefficients
@@ -98,7 +98,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 11: Example in R with the probability of heart disease
-# Source lines: CH9 Binary dependent variable.tex:521-523
+# Textbook context: Section: Example: the risk of having a heart disease
 # ------------------------------------------------------------------------------
 
     logit_model2 <- glm(df$heart_disease ~ blood_pressure +
@@ -107,7 +107,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 12: Example in R with the probability of heart disease
-# Source lines: CH9 Binary dependent variable.tex:526-535
+# Textbook context: Section: Example: the risk of having a heart disease
 # ------------------------------------------------------------------------------
 
     sum_logit_model2 <- summary(logit_model2)$coefficients
@@ -123,7 +123,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 13: Example in R with the probability of heart disease
-# Source lines: CH9 Binary dependent variable.tex:539-541
+# Textbook context: Section: Example: the risk of having a heart disease
 # ------------------------------------------------------------------------------
 
     beta_hat_b <- sum_logit_model2[, "Estimate"][2:4]
@@ -132,7 +132,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 14: Example in R with the probability of heart disease
-# Source lines: CH9 Binary dependent variable.tex:546-549
+# Textbook context: Section: Example: the risk of having a heart disease
 # ------------------------------------------------------------------------------
 
     beta_0_hat_b <- sum_logit_model2["(Intercept)", "Estimate"]
@@ -142,7 +142,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 15: Example in R with the probability of heart disease
-# Source lines: CH9 Binary dependent variable.tex:553-555
+# Textbook context: Section: Example: the risk of having a heart disease
 # ------------------------------------------------------------------------------
 
  pred_heart_disease_alt <- predict(logit_model2,
@@ -151,14 +151,14 @@
 
 # ------------------------------------------------------------------------------
 # Box 16: Example in R with the probability of heart disease
-# Source lines: CH9 Binary dependent variable.tex:561-561
+# Textbook context: Section: Example: the risk of having a heart disease
 # ------------------------------------------------------------------------------
 
     df$pred <- predict(logit_model2, type="response")
 
 # ------------------------------------------------------------------------------
 # Box 17: Example in R with the probability of heart disease
-# Source lines: CH9 Binary dependent variable.tex:565-570
+# Textbook context: Section: Example: the risk of having a heart disease
 # ------------------------------------------------------------------------------
 
     df_incr_blood_pressure <- df
@@ -170,7 +170,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 18: Example in R with the probability of heart disease
-# Source lines: CH9 Binary dependent variable.tex:574-577
+# Textbook context: Section: Example: the risk of having a heart disease
 # ------------------------------------------------------------------------------
 
  df$risk_ratio_blood_pressure <-
@@ -180,7 +180,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 19: Example in R with the probability of heart disease
-# Source lines: CH9 Binary dependent variable.tex:581-582
+# Textbook context: Section: Example: the risk of having a heart disease
 # ------------------------------------------------------------------------------
 
  GRR_blood_pressure <- mean(df$risk_ratio_blood_pressure)
@@ -188,7 +188,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 20: Example in R with the probability of heart disease
-# Source lines: CH9 Binary dependent variable.tex:586-597
+# Textbook context: Section: Example: the risk of having a heart disease
 # ------------------------------------------------------------------------------
 
     df_female <- df

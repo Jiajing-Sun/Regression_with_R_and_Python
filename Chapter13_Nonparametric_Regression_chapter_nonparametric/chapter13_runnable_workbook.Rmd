@@ -1,21 +1,41 @@
-# Extracted R code for Chapter 13: Nonparametric Regression
-# Source: nonparametric-chapter.tex
-# Generated from the current textbook LaTeX source.
-# Code blocks are kept in textbook order; relative paths follow the book examples.
+---
+title: "Chapter 13: Nonparametric Regression"
+subtitle: "Runnable workbook for Regression with R and Python"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+---
 
-# ------------------------------------------------------------------------------
-# Box 01: Nonparametric RD in R (local linear + triangular kernel)
-# Textbook context: Section: Regression discontinuity | Subsection: Manipulation check: density around the cutoff
-# ------------------------------------------------------------------------------
+This runnable workbook supplements the reference workbook. It adds setup code and lightweight fixes so the chapter can usually be rendered and run end-to-end.
 
-install.packages(c("sandwich", "lmtest", "ivreg", "rdrobust"))
+- Runnable companion script: [R/chapter13.R](R/chapter13.R)
+- Reference workbook: [chapter13_workbook.Rmd](chapter13_workbook.Rmd)
+- Textbook chapter: `Nonparametric Regression`
+- Package installation lines are shown as comments and are not run automatically during rendering.
 
-# ------------------------------------------------------------------------------
-# Box 02: Nonparametric RD in R (local linear + triangular kernel)
-# Textbook context: Section: Regression discontinuity | Subsection: Manipulation check: density around the cutoff
-# ------------------------------------------------------------------------------
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>", message = FALSE, warning = FALSE)
+chapter_dir <- dirname(normalizePath(knitr::current_input()))
+knitr::opts_knit$set(root.dir = chapter_dir)
+```
 
-df <- read.csv("municip_data.csv")
+## Nonparametric RD in R (local linear + triangular kernel)
+
+### Box 01
+
+Textbook context: Section: Regression discontinuity | Subsection: Manipulation check: density around the cutoff.
+
+```{r runnable-nonparametric-rd-in-r-local-linear-triangular-kernel-01}
+# install.packages(c("sandwich", "lmtest", "ivreg", "rdrobust"))  # install manually if needed
+```
+
+### Box 02
+
+Textbook context: Section: Regression discontinuity | Subsection: Manipulation check: density around the cutoff.
+
+```{r runnable-nonparametric-rd-in-r-local-linear-triangular-kernel-02}
+df <- read.csv(file.path("data", "municip_data.csv"))
 df <- df[df$municip_name != "Gotland", ]
 
 c0 <- .5
@@ -25,23 +45,25 @@ df <- df[!is.na(df$change_tax_rate), ]
 
 df$Z   <- ifelse(df$rv >= 0, 1, 0)   # cutoff indicator
 df$Zrv <- df$Z * df$rv              # slope interaction
+```
 
-# ------------------------------------------------------------------------------
-# Box 03: Nonparametric RD in R (local linear + triangular kernel)
-# Textbook context: Section: Regression discontinuity | Subsection: Manipulation check: density around the cutoff
-# ------------------------------------------------------------------------------
+### Box 03
 
+Textbook context: Section: Regression discontinuity | Subsection: Manipulation check: density around the cutoff.
+
+```{r runnable-nonparametric-rd-in-r-local-linear-triangular-kernel-03}
 tri <- function(u) pmax(0, 1 - abs(u))
 
 h <- .10
 df_h <- df[abs(df$rv) <= h, ]
 df_h$w <- tri(df_h$rv / h)
+```
 
-# ------------------------------------------------------------------------------
-# Box 04: Nonparametric RD in R (local linear + triangular kernel)
-# Textbook context: Section: Regression discontinuity | Subsection: Manipulation check: density around the cutoff
-# ------------------------------------------------------------------------------
+### Box 04
 
+Textbook context: Section: Regression discontinuity | Subsection: Manipulation check: density around the cutoff.
+
+```{r runnable-nonparametric-rd-in-r-local-linear-triangular-kernel-04}
 rd_fs_np <- lm(left_coalition_last_term ~ Z + rv + Zrv,
                data = df_h, weights = w)
 
@@ -53,12 +75,13 @@ library(lmtest)
 
 coeftest(rd_fs_np, vcov = vcovHC(rd_fs_np, type = "HC0"))
 coeftest(rd_rf_np, vcov = vcovHC(rd_rf_np, type = "HC0"))
+```
 
-# ------------------------------------------------------------------------------
-# Box 05: Nonparametric RD in R (local linear + triangular kernel)
-# Textbook context: Section: Regression discontinuity | Subsection: Manipulation check: density around the cutoff
-# ------------------------------------------------------------------------------
+### Box 05
 
+Textbook context: Section: Regression discontinuity | Subsection: Manipulation check: density around the cutoff.
+
+```{r runnable-nonparametric-rd-in-r-local-linear-triangular-kernel-05}
 delta_hat <- coef(rd_fs_np)["Z"]
 alpha_hat <- coef(rd_rf_np)["Z"]
 wald_hat  <- alpha_hat / delta_hat
@@ -73,12 +96,13 @@ coeftest(rd_fuzzy_np, vcov = vcovHC(rd_fuzzy_np, type = "HC0"))
 
 c(wald_hat = wald_hat,
   iv_hat   = coef(rd_fuzzy_np)["left_coalition_last_term"])
+```
 
-# ------------------------------------------------------------------------------
-# Box 06: Nonparametric RD in R (local linear + triangular kernel)
-# Textbook context: Section: Regression discontinuity | Subsection: Manipulation check: density around the cutoff
-# ------------------------------------------------------------------------------
+### Box 06
 
+Textbook context: Section: Regression discontinuity | Subsection: Manipulation check: density around the cutoff.
+
+```{r runnable-nonparametric-rd-in-r-local-linear-triangular-kernel-06}
 fig_dir <- "pdf"
 dir.create(fig_dir, showWarnings = FALSE, recursive = TRUE)
 
@@ -137,12 +161,13 @@ abline(v = c0, lty = 2, lwd = 1.2)
 lines(xL, fitted_side(b_rf, xL, "left"),  lwd = 2.2)
 lines(xR, fitted_side(b_rf, xR, "right"), lwd = 2.2)
 dev.off()
+```
 
-# ------------------------------------------------------------------------------
-# Box 07: Nonparametric RD in R (local linear + triangular kernel)
-# Textbook context: Section: Regression discontinuity | Subsection: Manipulation check: density around the cutoff
-# ------------------------------------------------------------------------------
+### Box 07
 
+Textbook context: Section: Regression discontinuity | Subsection: Manipulation check: density around the cutoff.
+
+```{r runnable-nonparametric-rd-in-r-local-linear-triangular-kernel-07}
 library(rdrobust)
 
 out_np <- rdrobust(y = df$change_tax_rate,
@@ -150,3 +175,4 @@ out_np <- rdrobust(y = df$change_tax_rate,
                    c = .5, kernel = "triangular",
                    fuzzy = df$left_coalition_last_term)
 summary(out_np)
+```

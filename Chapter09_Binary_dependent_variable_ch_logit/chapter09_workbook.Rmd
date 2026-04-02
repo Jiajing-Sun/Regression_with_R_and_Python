@@ -1,0 +1,254 @@
+---
+title: "Chapter 09: Binary dependent variable"
+subtitle: "Regression with R and Python: Description, Prediction, and Causal Analysis for Applied Social Science and Econometrics"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+---
+
+This R Markdown workbook follows the chapter's code examples in textbook order. It is intended as a practical companion for advanced undergraduate and beginning master's students in applied social sciences and econometrics.
+
+> This workbook is a reference companion: code chunks are shown in textbook order but are not executed during rendering.
+
+- Companion R script: [R/chapter09.R](R/chapter09.R)
+- Chapter overview: [README.md](README.md)
+- Textbook chapter: `Binary dependent variable`
+
+> Some textbook chunks install packages. If those packages are already installed on your machine, you can skip the installation lines when working through the notebook.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>", eval = FALSE)
+chapter_dir <- dirname(normalizePath(knitr::current_input()))
+data_dir <- file.path(chapter_dir, "data")
+if (dir.exists(data_dir)) {
+  knitr::opts_knit$set(root.dir = data_dir)
+} else {
+  knitr::opts_knit$set(root.dir = chapter_dir)
+}
+```
+
+## Logistic regression in R
+
+### Box 01
+
+Textbook context: Section: Estimation and inference under logistic regression model | Subsection: Assumptions about the error term.
+
+```{r logistic-regression-in-r-01}
+ df <- read.csv("municip_data.csv")
+ df <- df[df$year == 2022, ]
+```
+
+### Box 02
+
+Textbook context: Section: Estimation and inference under logistic regression model | Subsection: Assumptions about the error term.
+
+```{r logistic-regression-in-r-02}
+    highest_quartile_limit <- quantile(df$tax_base, .75)
+```
+
+### Box 03
+
+Textbook context: Section: Estimation and inference under logistic regression model | Subsection: Assumptions about the error term.
+
+```{r logistic-regression-in-r-03}
+ df$high_income <- ifelse(
+ df$tax_base > highest_quartile_limit, 1, 0)
+```
+
+### Box 04
+
+Textbook context: Section: Estimation and inference under logistic regression model | Subsection: Assumptions about the error term.
+
+```{r logistic-regression-in-r-04}
+    logit_model <- glm(df$high_income ~ share_tertiary_school,
+                       family = binomial(link = "logit"),
+                       data=df)
+```
+
+### Box 05
+
+Textbook context: Section: Estimation and inference under logistic regression model | Subsection: Assumptions about the error term.
+
+```{r logistic-regression-in-r-05}
+ summary(logit_model)
+```
+
+### Box 06
+
+Textbook context: Section: Estimation and inference under logistic regression model | Subsection: Assumptions about the error term.
+
+```{r logistic-regression-in-r-06}
+    df$lnpop <- log(df$pop)
+    logit_model2 <- glm(df$high_income ~ 
+      share_tertiary_school + lnpop,
+      family = binomial(link = "logit"), data=df)
+```
+
+### Box 07
+
+Textbook context: Section: Estimation and inference under logistic regression model | Subsection: Assumptions about the error term.
+
+```{r logistic-regression-in-r-07}
+    beta1hat <- logit_model2$coefficients[2]
+    beta2hat <- logit_model2$coefficients[3]
+```
+
+### Box 08
+
+Textbook context: Section: Estimation and inference under logistic regression model | Subsection: Assumptions about the error term.
+
+```{r logistic-regression-in-r-08}
+ exp(beta1hat * .01)
+```
+
+## Example in R with the probability of heart disease
+
+### Box 09
+
+Textbook context: Section: Example: the risk of having a heart disease.
+
+```{r example-in-r-with-the-probability-of-heart-disease-09}
+    df <- read.csv("heart_disease.csv")
+    logit_model <- glm(df$heart_disease ~ blood_pressure,
+                       family = binomial(link = "logit"),
+                       data=df)
+    summary(logit_model)
+```
+
+### Box 10
+
+Textbook context: Section: Example: the risk of having a heart disease.
+
+```{r example-in-r-with-the-probability-of-heart-disease-10}
+    sum_logit_model <- summary(logit_model)$coefficients
+    beta_1_hat <- sum_logit_model["blood_pressure", "Estimate"]
+    se_beta_1_hat <- sum_logit_model[
+      "blood_pressure", "Std. Error"]
+    std_dev_blood_pressure <- sd(df$blood_pressure)
+    alpha <- .05
+    zstat <- qnorm(1-alpha/2)
+    lb_beta_1_hat <- beta_1_hat - zstat * se_beta_1_hat
+    ub_beta_1_hat <- beta_1_hat + zstat * se_beta_1_hat
+    lb_odds_ratio <- exp(lb_beta_1_hat * std_dev_blood_pressure)
+    ub_odds_ratio <- exp(ub_beta_1_hat * std_dev_blood_pressure)
+    print(c(lb_odds_ratio, ub_odds_ratio))
+```
+
+### Box 11
+
+Textbook context: Section: Example: the risk of having a heart disease.
+
+```{r example-in-r-with-the-probability-of-heart-disease-11}
+    logit_model2 <- glm(df$heart_disease ~ blood_pressure +
+      male + age, family = binomial(link = "logit"), data=df)
+    summary(logit_model2)
+```
+
+### Box 12
+
+Textbook context: Section: Example: the risk of having a heart disease.
+
+```{r example-in-r-with-the-probability-of-heart-disease-12}
+    sum_logit_model2 <- summary(logit_model2)$coefficients
+    beta_1_hat_b <- sum_logit_model2[
+      "blood_pressure", "Estimate"]
+    beta_2_hat_b <- sum_logit_model2["male", "Estimate"]
+    beta_3_hat_b <- sum_logit_model2["age", "Estimate"]
+    std_dev_age <- sd(df$age)
+    odds_ratio_blood_pressure <- exp(beta_1_hat_b *
+                                     std_dev_blood_pressure)
+    odds_ratio_male <- exp(beta_2_hat_b * 1)
+    odds_ratio_age <- exp(beta_3_hat_b * std_dev_age)
+```
+
+### Box 13
+
+Textbook context: Section: Example: the risk of having a heart disease.
+
+```{r example-in-r-with-the-probability-of-heart-disease-13}
+    beta_hat_b <- sum_logit_model2[, "Estimate"][2:4]
+    increases <- c(std_dev_blood_pressure, 1, std_dev_age)
+    odds_ratios <- exp(beta_hat_b * increases)
+```
+
+### Box 14
+
+Textbook context: Section: Example: the risk of having a heart disease.
+
+```{r example-in-r-with-the-probability-of-heart-disease-14}
+    beta_0_hat_b <- sum_logit_model2["(Intercept)", "Estimate"]
+    pred_heart_disease <- 1 / (1 + exp(-(
+      beta_0_hat_b + beta_1_hat_b * 140 + beta_2_hat_b * 1 +
+      beta_3_hat_b * 50)))
+```
+
+### Box 15
+
+Textbook context: Section: Example: the risk of having a heart disease.
+
+```{r example-in-r-with-the-probability-of-heart-disease-15}
+ pred_heart_disease_alt <- predict(logit_model2,
+ data.frame(blood_pressure=140, male=1, age=50),
+ type="response")
+```
+
+### Box 16
+
+Textbook context: Section: Example: the risk of having a heart disease.
+
+```{r example-in-r-with-the-probability-of-heart-disease-16}
+    df$pred <- predict(logit_model2, type="response")
+```
+
+### Box 17
+
+Textbook context: Section: Example: the risk of having a heart disease.
+
+```{r example-in-r-with-the-probability-of-heart-disease-17}
+    df_incr_blood_pressure <- df
+    df_incr_blood_pressure$blood_pressure <- 
+      df_incr_blood_pressure$blood_pressure + 
+      std_dev_blood_pressure
+    df_incr_blood_pressure$pred <- predict(logit_model2,
+      newdata=df_incr_blood_pressure, type="response")
+```
+
+### Box 18
+
+Textbook context: Section: Example: the risk of having a heart disease.
+
+```{r example-in-r-with-the-probability-of-heart-disease-18}
+ df$risk_ratio_blood_pressure <-
+ df_incr_blood_pressure$pred / df$pred
+ df$risk_diff_blood_pressure <-
+ df_incr_blood_pressure$pred - df$pred
+```
+
+### Box 19
+
+Textbook context: Section: Example: the risk of having a heart disease.
+
+```{r example-in-r-with-the-probability-of-heart-disease-19}
+ GRR_blood_pressure <- mean(df$risk_ratio_blood_pressure)
+ GRD_blood_pressure <- mean(df$risk_diff_blood_pressure)
+```
+
+### Box 20
+
+Textbook context: Section: Example: the risk of having a heart disease.
+
+```{r example-in-r-with-the-probability-of-heart-disease-20}
+    df_female <- df
+    df_female$male <- 0
+    df_male <- df
+    df_male$male <- 1
+    df_female$pred <- predict(logit_model2, newdata=df_female,
+                              type="response")
+    df_male$pred <- predict(logit_model2, newdata=df_male,
+                            type="response")
+    df$risk_ratio_male <- df_male$pred / df_female$pred
+    df$risk_diff_male <- df_male$pred - df_female$pred
+    GRR_male <- mean(df$risk_ratio_male)
+    GRD_male <- mean(df$risk_diff_male)
+```
