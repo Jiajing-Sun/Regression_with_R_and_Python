@@ -1,0 +1,114 @@
+---
+title: "Chapter 03: Basic probability theory and statistical inference"
+subtitle: "Runnable workbook for Regression with R and Python"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+---
+
+This runnable workbook supplements the reference workbook. It adds setup code and lightweight fixes so the chapter can usually be rendered and run end-to-end.
+
+- Runnable companion script: [R/chapter03.R](R/chapter03.R)
+- Reference workbook: [chapter03_workbook.Rmd](chapter03_workbook.Rmd)
+- Textbook chapter: `Basic probability theory and statistical inference`
+- Package installation lines are shown as comments and are not run automatically during rendering.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>", message = FALSE, warning = FALSE)
+chapter_dir <- dirname(normalizePath(knitr::current_input()))
+knitr::opts_knit$set(root.dir = chapter_dir)
+```
+
+## Monte Carlo simulation in R
+
+### Box 01
+
+Textbook context: Section: Estimators.
+
+```{r runnable-monte-carlo-simulation-in-r-01}
+    n <- 50
+    dice_throws <- sample(1:6, n, replace=TRUE)
+    ybar <- mean(dice_throws)
+```
+
+### Box 02
+
+Textbook context: Section: Estimators.
+
+```{r runnable-monte-carlo-simulation-in-r-02}
+    nr_samples <- 10000
+    n <- 50
+    ybar_dist <- rep(NA, nr_samples)
+    for (i in 1:nr_samples){
+      dice_throws <- sample(1:6, n, replace=TRUE)
+      ybar_dist[i] <- mean(dice_throws)
+      print(i)
+    }
+```
+
+### Box 03
+
+Textbook context: Section: Estimators.
+
+```{r runnable-monte-carlo-simulation-in-r-03}
+ hist(ybar_dist, breaks=50)
+```
+
+## Hypothesis tests and confidence intervals with R
+
+### Box 04
+
+Textbook context: Section: Hypothesis testing and confidence intervals | Subsection: Confidence interval.
+
+```{r runnable-hypothesis-tests-and-confidence-intervals-with-r-04}
+    dice_throws <- c(rep(1, 13), rep(2, 7), rep(3, 8),
+                     rep(4, 9), rep(5, 9), rep(6, 4))
+```
+
+### Box 05
+
+Textbook context: Section: Hypothesis testing and confidence intervals | Subsection: Confidence interval.
+
+```{r runnable-hypothesis-tests-and-confidence-intervals-with-r-05}
+    n <- length(dice_throws)
+    mean_dice_throws <- mean(dice_throws)
+    var_dice_throws <- 
+      sum((dice_throws - mean_dice_throws)^2) / (n - 1)
+```
+
+### Box 06
+
+Textbook context: Section: Hypothesis testing and confidence intervals | Subsection: Confidence interval.
+
+```{r runnable-hypothesis-tests-and-confidence-intervals-with-r-06}
+    se_dice_throws <- sqrt(var_dice_throws / n)
+    t_stat <- (mean_dice_throws - 3.5) / se_dice_throws
+```
+
+### Box 07
+
+Textbook context: Section: Hypothesis testing and confidence intervals | Subsection: Confidence interval.
+
+```{r runnable-hypothesis-tests-and-confidence-intervals-with-r-07}
+    p_value <- 2 * (1 - pt(abs(t_stat), df=n-1))
+```
+
+### Box 08
+
+Textbook context: Section: Hypothesis testing and confidence intervals | Subsection: Confidence interval.
+
+```{r runnable-hypothesis-tests-and-confidence-intervals-with-r-08}
+    alpha <- 0.05
+    t_crit <- qt(1-alpha/2, n-1)
+    ci_lower <- mean_dice_throws - t_crit * se_dice_throws
+    ci_upper <- mean_dice_throws + t_crit * se_dice_throws
+```
+
+### Box 09
+
+Textbook context: Section: Hypothesis testing and confidence intervals | Subsection: Confidence interval.
+
+```{r runnable-hypothesis-tests-and-confidence-intervals-with-r-09}
+ t.test(dice_throws, mu=3.5)
+```

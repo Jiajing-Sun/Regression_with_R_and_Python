@@ -5,7 +5,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 01: Calculating confidence intervals for correlation in R
-# Source lines: CH4 Correlation and inference.tex:82-90
+# Textbook context: Chapter context unavailable
 # ------------------------------------------------------------------------------
 
   df <- read.csv("apartment_price_data.csv")
@@ -20,7 +20,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 02: Calculating confidence intervals for correlation in R
-# Source lines: CH4 Correlation and inference.tex:98-98
+# Textbook context: Chapter context unavailable
 # ------------------------------------------------------------------------------
 
   cor.test(df$living_area, df$price, conf.level=0.95)

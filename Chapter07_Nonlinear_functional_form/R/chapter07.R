@@ -5,14 +5,14 @@
 
 # ------------------------------------------------------------------------------
 # Box 01: Air pollution and weather in R
-# Source lines: CH7 Nonlinear functional form.tex:419-419
+# Textbook context: Section: Example: Relationship between weather and air pollution
 # ------------------------------------------------------------------------------
 
     df <- read.csv("pollution_sf.csv")
 
 # ------------------------------------------------------------------------------
 # Box 02: Air pollution and weather in R
-# Source lines: CH7 Nonlinear functional form.tex:423-425
+# Textbook context: Section: Example: Relationship between weather and air pollution
 # ------------------------------------------------------------------------------
 
  df$wind_cat <- cut(df$wind_direction,
@@ -21,7 +21,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 03: Air pollution and weather in R
-# Source lines: CH7 Nonlinear functional form.tex:431-434
+# Textbook context: Section: Example: Relationship between weather and air pollution
 # ------------------------------------------------------------------------------
 
     df_agg <- aggregate(df$pm25,
@@ -31,21 +31,21 @@
 
 # ------------------------------------------------------------------------------
 # Box 04: Air pollution and weather in R
-# Source lines: CH7 Nonlinear functional form.tex:438-438
+# Textbook context: Section: Example: Relationship between weather and air pollution
 # ------------------------------------------------------------------------------
 
     names(df_agg)[names(df_agg) == "x"] <- "pm25_mean"
 
 # ------------------------------------------------------------------------------
 # Box 05: Air pollution and weather in R
-# Source lines: CH7 Nonlinear functional form.tex:442-442
+# Textbook context: Section: Example: Relationship between weather and air pollution
 # ------------------------------------------------------------------------------
 
     plot(df_agg$wind_direction, df_agg$pm25_mean)
 
 # ------------------------------------------------------------------------------
 # Box 06: Air pollution and weather in R
-# Source lines: CH7 Nonlinear functional form.tex:446-456
+# Textbook context: Section: Example: Relationship between weather and air pollution
 # ------------------------------------------------------------------------------
 
     df$north_wind <- ifelse(df$wind_direction > 315 |
@@ -62,7 +62,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 07: Air pollution and weather in R
-# Source lines: CH7 Nonlinear functional form.tex:462-464
+# Textbook context: Section: Example: Relationship between weather and air pollution
 # ------------------------------------------------------------------------------
 
     df$wind_direction2 <- df$wind_direction^2
@@ -71,7 +71,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 08: Air pollution and weather in R
-# Source lines: CH7 Nonlinear functional form.tex:468-470
+# Textbook context: Section: Example: Relationship between weather and air pollution
 # ------------------------------------------------------------------------------
 
     ols_model_poly <- lm(pm25 ~ wind_direction +
@@ -80,7 +80,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 09: Air pollution and weather in R
-# Source lines: CH7 Nonlinear functional form.tex:474-475
+# Textbook context: Section: Example: Relationship between weather and air pollution
 # ------------------------------------------------------------------------------
 
     ols_model_poly_alt <- lm(pm25 ~ 
@@ -88,21 +88,21 @@
 
 # ------------------------------------------------------------------------------
 # Box 10: Air pollution and weather in R
-# Source lines: CH7 Nonlinear functional form.tex:479-479
+# Textbook context: Section: Example: Relationship between weather and air pollution
 # ------------------------------------------------------------------------------
 
     newdata <- data.frame(wind_direction=seq(0, 360, 1))
 
 # ------------------------------------------------------------------------------
 # Box 11: Air pollution and weather in R
-# Source lines: CH7 Nonlinear functional form.tex:484-484
+# Textbook context: Section: Example: Relationship between weather and air pollution
 # ------------------------------------------------------------------------------
 
  newdata$pred <- predict(ols_model_poly_alt, newdata)
 
 # ------------------------------------------------------------------------------
 # Box 12: Air pollution and weather in R
-# Source lines: CH7 Nonlinear functional form.tex:488-492
+# Textbook context: Section: Example: Relationship between weather and air pollution
 # ------------------------------------------------------------------------------
 
     newdata$pred_alt <- coef(ols_model_poly)[1] +
@@ -113,7 +113,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 13: Air pollution and weather in R
-# Source lines: CH7 Nonlinear functional form.tex:496-497
+# Textbook context: Section: Example: Relationship between weather and air pollution
 # ------------------------------------------------------------------------------
 
  plot(df_agg$wind_direction, df_agg$pm25_mean)
@@ -121,7 +121,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 14: Air pollution and weather in R
-# Source lines: CH7 Nonlinear functional form.tex:501-502
+# Textbook context: Section: Example: Relationship between weather and air pollution
 # ------------------------------------------------------------------------------
 
  df$land_wind_strong_wind <- df$land_wind * df$strong_wind
@@ -129,7 +129,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 15: Air pollution and weather in R
-# Source lines: CH7 Nonlinear functional form.tex:506-515
+# Textbook context: Section: Example: Relationship between weather and air pollution
 # ------------------------------------------------------------------------------
 
     library("lmtest")

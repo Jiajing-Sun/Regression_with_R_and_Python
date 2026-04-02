@@ -1,0 +1,224 @@
+---
+title: "Chapter 02: Covariation in data"
+subtitle: "Regression with R and Python: Description, Prediction, and Causal Analysis for Applied Social Science and Econometrics"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+---
+
+This R Markdown workbook follows the chapter's code examples in textbook order. It is intended as a practical companion for advanced undergraduate and beginning master's students in applied social sciences and econometrics.
+
+> This workbook is a reference companion: code chunks are shown in textbook order but are not executed during rendering.
+
+- Companion R script: [R/chapter02.R](R/chapter02.R)
+- Chapter overview: [README.md](README.md)
+- Textbook chapter: `Covariation in data`
+
+> Some textbook chunks install packages. If those packages are already installed on your machine, you can skip the installation lines when working through the notebook.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>", eval = FALSE)
+chapter_dir <- dirname(normalizePath(knitr::current_input()))
+data_dir <- file.path(chapter_dir, "data")
+if (dir.exists(data_dir)) {
+  knitr::opts_knit$set(root.dir = data_dir)
+} else {
+  knitr::opts_knit$set(root.dir = chapter_dir)
+}
+```
+
+## Calculation of correlation in R
+
+### Box 01
+
+Textbook context: Section: Pearson's correlation.
+
+```{r calculation-of-correlation-in-r-01}
+    df <- read.csv("apartment_price_data.csv")
+```
+
+### Box 02
+
+Textbook context: Section: Pearson's correlation.
+
+```{r calculation-of-correlation-in-r-02}
+    xbar <- mean(df$living_area)
+    ybar <- mean(df$price)
+```
+
+### Box 03
+
+Textbook context: Section: Pearson's correlation.
+
+```{r calculation-of-correlation-in-r-03}
+    is.na(df$price)
+```
+
+### Box 04
+
+Textbook context: Section: Pearson's correlation.
+
+```{r calculation-of-correlation-in-r-04}
+    !is.na(df$price) & !is.na(df$living_area)
+```
+
+### Box 05
+
+Textbook context: Section: Pearson's correlation.
+
+```{r calculation-of-correlation-in-r-05}
+    df <- df[!is.na(df$price) & !is.na(df$living_area), ]
+```
+
+### Box 06
+
+Textbook context: Section: Pearson's correlation.
+
+```{r calculation-of-correlation-in-r-06}
+    xbar <- mean(df$living_area)
+    ybar <- mean(df$price)
+    n <- nrow(df)
+```
+
+### Box 07
+
+Textbook context: Section: Pearson's correlation.
+
+```{r calculation-of-correlation-in-r-07}
+      s_xy <- 1 / (n - 1) * sum((df$living_area - xbar) *
+                                (df$price - ybar))
+```
+
+### Box 08
+
+Textbook context: Section: Pearson's correlation.
+
+```{r calculation-of-correlation-in-r-08}
+      s_x2 <- 1 / (n - 1) * sum((df$living_area - xbar)^2)
+      s_y2 <- 1 / (n - 1) * sum((df$price - ybar)^2)
+```
+
+### Box 09
+
+Textbook context: Section: Pearson's correlation.
+
+```{r calculation-of-correlation-in-r-09}
+      corr_xy <- s_xy / (sqrt(s_x2) * sqrt(s_y2))
+```
+
+### Box 10
+
+Textbook context: Section: Pearson's correlation.
+
+```{r calculation-of-correlation-in-r-10}
+      corr_xy <- cov(df$living_area, df$price) / 
+                 (sd(df$living_area) * sd(df$price))
+```
+
+### Box 11
+
+Textbook context: Section: Pearson's correlation.
+
+```{r calculation-of-correlation-in-r-11}
+      corr_xy <- cor(df$living_area, df$price)
+```
+
+## Calculation of Spearman's correlation in R
+
+### Box 12
+
+Textbook context: Section: Spearman's rank correlation coefficient.
+
+```{r calculation-of-spearman-s-correlation-in-r-12}
+    df$Rx <- rank(df$living_area)
+    df$Ry <- rank(df$price)
+```
+
+### Box 13
+
+Textbook context: Section: Spearman's rank correlation coefficient.
+
+```{r calculation-of-spearman-s-correlation-in-r-13}
+    mean_Rx <- (n + 1) / 2
+    mean_Ry <- (n + 1) / 2
+```
+
+### Box 14
+
+Textbook context: Section: Spearman's rank correlation coefficient.
+
+```{r calculation-of-spearman-s-correlation-in-r-14}
+    covRxRy <- sum((df$Rx - mean_Rx)*(df$Ry-mean_Ry)) / (n - 1)
+   sRx <- sqrt(sum((df$Rx - mean_Rx)^2) / (n - 1))
+sRy <- sqrt(sum((df$Ry - mean_Ry)^2) / (n - 1))
+```
+
+### Box 15
+
+Textbook context: Section: Spearman's rank correlation coefficient.
+
+```{r calculation-of-spearman-s-correlation-in-r-15}
+    rS <- covRxRy / (sRx * sRy)
+```
+
+### Box 16
+
+Textbook context: Section: Spearman's rank correlation coefficient.
+
+```{r calculation-of-spearman-s-correlation-in-r-16}
+    rS_alt <- cor(df$Rx, df$Ry, method = "spearman")
+```
+
+## Regression in R
+
+### Box 17
+
+Textbook context: Section: Simple linear regression | Subsection: Coefficient of determination.
+
+```{r regression-in-r-17}
+  beta_1_hat <- s_xy / s_x2
+  beta_0_hat <- ybar - xbar * beta_1_hat
+```
+
+### Box 18
+
+Textbook context: Section: Simple linear regression | Subsection: Coefficient of determination.
+
+```{r regression-in-r-18}
+  y_hat <- beta_0_hat + beta_1_hat * df$living_area
+```
+
+### Box 19
+
+Textbook context: Section: Simple linear regression | Subsection: Coefficient of determination.
+
+```{r regression-in-r-19}
+ u_hat <- df$price - y_hat
+```
+
+### Box 20
+
+Textbook context: Section: Simple linear regression | Subsection: Coefficient of determination.
+
+```{r regression-in-r-20}
+  RSS <- sum(u_hat^2)
+  TSS <- sum((df$price - ybar)^2)
+  R2 <- 1 - RSS / TSS
+```
+
+### Box 21
+
+Textbook context: Section: Simple linear regression | Subsection: Coefficient of determination.
+
+```{r regression-in-r-21}
+ ols_model <- lm(price ~ living_area, data=df)
+```
+
+### Box 22
+
+Textbook context: Section: Simple linear regression | Subsection: Coefficient of determination.
+
+```{r regression-in-r-22}
+ summary(ols_model)
+```

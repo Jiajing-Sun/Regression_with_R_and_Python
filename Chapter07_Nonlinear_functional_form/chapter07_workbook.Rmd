@@ -1,0 +1,186 @@
+---
+title: "Chapter 07: Nonlinear functional form"
+subtitle: "Regression with R and Python: Description, Prediction, and Causal Analysis for Applied Social Science and Econometrics"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+---
+
+This R Markdown workbook follows the chapter's code examples in textbook order. It is intended as a practical companion for advanced undergraduate and beginning master's students in applied social sciences and econometrics.
+
+> This workbook is a reference companion: code chunks are shown in textbook order but are not executed during rendering.
+
+- Companion R script: [R/chapter07.R](R/chapter07.R)
+- Chapter overview: [README.md](README.md)
+- Textbook chapter: `Nonlinear functional form`
+
+> Some textbook chunks install packages. If those packages are already installed on your machine, you can skip the installation lines when working through the notebook.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>", eval = FALSE)
+chapter_dir <- dirname(normalizePath(knitr::current_input()))
+data_dir <- file.path(chapter_dir, "data")
+if (dir.exists(data_dir)) {
+  knitr::opts_knit$set(root.dir = data_dir)
+} else {
+  knitr::opts_knit$set(root.dir = chapter_dir)
+}
+```
+
+## Air pollution and weather in R
+
+### Box 01
+
+Textbook context: Section: Example: Relationship between weather and air pollution.
+
+```{r air-pollution-and-weather-in-r-01}
+    df <- read.csv("pollution_sf.csv")
+```
+
+### Box 02
+
+Textbook context: Section: Example: Relationship between weather and air pollution.
+
+```{r air-pollution-and-weather-in-r-02}
+ df$wind_cat <- cut(df$wind_direction,
+ breaks=seq(0, 360, by=10),
+ include.lowest=TRUE)
+```
+
+### Box 03
+
+Textbook context: Section: Example: Relationship between weather and air pollution.
+
+```{r air-pollution-and-weather-in-r-03}
+    df_agg <- aggregate(df$pm25,
+                        by=list(wind_dir_interval=df$wind_cat),
+                        FUN=mean)
+    df_agg$wind_direction <- seq(5, 355, 10)
+```
+
+### Box 04
+
+Textbook context: Section: Example: Relationship between weather and air pollution.
+
+```{r air-pollution-and-weather-in-r-04}
+    names(df_agg)[names(df_agg) == "x"] <- "pm25_mean"
+```
+
+### Box 05
+
+Textbook context: Section: Example: Relationship between weather and air pollution.
+
+```{r air-pollution-and-weather-in-r-05}
+    plot(df_agg$wind_direction, df_agg$pm25_mean)
+```
+
+### Box 06
+
+Textbook context: Section: Example: Relationship between weather and air pollution.
+
+```{r air-pollution-and-weather-in-r-06}
+    df$north_wind <- ifelse(df$wind_direction > 315 |
+                            df$wind_direction <= 45, 1, 0)
+    df$east_wind <- ifelse(df$wind_direction > 45 &
+                            df$wind_direction <= 135, 1, 0)
+    df$south_wind <- ifelse(df$wind_direction > 135 &
+                            df$wind_direction <= 225, 1, 0)
+    df$west_wind <- ifelse(df$wind_direction > 225 &
+                            df$wind_direction <= 315, 1, 0)
+    df$land_wind <- ifelse(df$wind_direction > 330 |
+                           df$wind_direction <= 150, 1, 0)
+    df$strong_wind <- ifelse(df$wind_speed >= 3, 1, 0)
+```
+
+### Box 07
+
+Textbook context: Section: Example: Relationship between weather and air pollution.
+
+```{r air-pollution-and-weather-in-r-07}
+    df$wind_direction2 <- df$wind_direction^2
+    df$wind_direction3 <- df$wind_direction^3
+    df$wind_direction4 <- df$wind_direction^4
+```
+
+### Box 08
+
+Textbook context: Section: Example: Relationship between weather and air pollution.
+
+```{r air-pollution-and-weather-in-r-08}
+    ols_model_poly <- lm(pm25 ~ wind_direction +
+      wind_direction2 + wind_direction3 +
+      wind_direction4, data=df)
+```
+
+### Box 09
+
+Textbook context: Section: Example: Relationship between weather and air pollution.
+
+```{r air-pollution-and-weather-in-r-09}
+    ols_model_poly_alt <- lm(pm25 ~ 
+      poly(wind_direction, 4), data=df)
+```
+
+### Box 10
+
+Textbook context: Section: Example: Relationship between weather and air pollution.
+
+```{r air-pollution-and-weather-in-r-10}
+    newdata <- data.frame(wind_direction=seq(0, 360, 1))
+```
+
+### Box 11
+
+Textbook context: Section: Example: Relationship between weather and air pollution.
+
+```{r air-pollution-and-weather-in-r-11}
+ newdata$pred <- predict(ols_model_poly_alt, newdata)
+```
+
+### Box 12
+
+Textbook context: Section: Example: Relationship between weather and air pollution.
+
+```{r air-pollution-and-weather-in-r-12}
+    newdata$pred_alt <- coef(ols_model_poly)[1] +
+      coef(ols_model_poly)[2] * newdata$wind_direction +
+      coef(ols_model_poly)[3] * newdata$wind_direction^2 +
+      coef(ols_model_poly)[4] * newdata$wind_direction^3 +
+      coef(ols_model_poly)[5] * newdata$wind_direction^4
+```
+
+### Box 13
+
+Textbook context: Section: Example: Relationship between weather and air pollution.
+
+```{r air-pollution-and-weather-in-r-13}
+ plot(df_agg$wind_direction, df_agg$pm25_mean)
+ lines(newdata$wind_direction, newdata$pred)
+```
+
+### Box 14
+
+Textbook context: Section: Example: Relationship between weather and air pollution.
+
+```{r air-pollution-and-weather-in-r-14}
+ df$land_wind_strong_wind <- df$land_wind * df$strong_wind
+ df$land_wind_wind_speed <- df$land_wind * df$wind_speed
+```
+
+### Box 15
+
+Textbook context: Section: Example: Relationship between weather and air pollution.
+
+```{r air-pollution-and-weather-in-r-15}
+    library("lmtest")
+    library("sandwich")
+    ols_model1 <- lm(pm25 ~ land_wind, data=df)
+    ols_model2 <- lm(pm25 ~ land_wind + strong_wind +
+                     land_wind_strong_wind, data=df)
+    ols_model3 <- lm(pm25 ~ land_wind + wind_speed +
+                     land_wind_wind_speed, data=df)
+    coeftest(ols_model1, vcov=vcovHC(ols_model1, type="HC0"))
+    coeftest(ols_model2, vcov=vcovHC(ols_model2, type="HC0"))
+    coeftest(ols_model3, vcov=vcovHC(ols_model3, type="HC0"))
+```

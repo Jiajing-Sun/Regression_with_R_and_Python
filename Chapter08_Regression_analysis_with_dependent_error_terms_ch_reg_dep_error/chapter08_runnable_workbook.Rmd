@@ -1,13 +1,32 @@
-# Extracted R code for Chapter 08: Regression analysis with dependent error terms
-# Source: CH8 Regression with dependent errors.tex
-# Generated from the current textbook LaTeX source.
-# Code blocks are kept in textbook order; relative paths follow the book examples.
+---
+title: "Chapter 08: Regression analysis with dependent error terms"
+subtitle: "Runnable workbook for Regression with R and Python"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+---
 
-# ------------------------------------------------------------------------------
-# Box 01: Project Star and clustering in R
-# Textbook context: Section: Clustered data | Subsection: OLS with clustered data
-# ------------------------------------------------------------------------------
+This runnable workbook supplements the reference workbook. It adds setup code and lightweight fixes so the chapter can usually be rendered and run end-to-end.
 
+- Runnable companion script: [R/chapter08.R](R/chapter08.R)
+- Reference workbook: [chapter08_workbook.Rmd](chapter08_workbook.Rmd)
+- Textbook chapter: `Regression analysis with dependent error terms`
+- Package installation lines are shown as comments and are not run automatically during rendering.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>", message = FALSE, warning = FALSE)
+chapter_dir <- dirname(normalizePath(knitr::current_input()))
+knitr::opts_knit$set(root.dir = chapter_dir)
+```
+
+## Project Star and clustering in R
+
+### Box 01
+
+Textbook context: Section: Clustered data | Subsection: OLS with clustered data.
+
+```{r runnable-project-star-and-clustering-in-r-01}
 # Load data
 df <- read.csv(file.path("data", "star.csv"))
 
@@ -53,19 +72,23 @@ coeftest(ols_model2, vcov = V_cl2)
 ols_model3 <- lm(read_score ~ small_class + birth_month, data=df)
 V_cl3 <- vcovCL(ols_model3, cluster = df$class_id, type="HC0")
 coeftest(ols_model3, vcov = V_cl3)
+```
 
-# ------------------------------------------------------------------------------
-# Box 02: Project Star and multilevel models in R
-# Textbook context: Section: Clustered data | Subsection: Multilevel-models
-# ------------------------------------------------------------------------------
+## Project Star and multilevel models in R
 
-    install.packages(c("lme4"))
+### Box 02
 
-# ------------------------------------------------------------------------------
-# Box 03: Project Star and multilevel models in R
-# Textbook context: Section: Clustered data | Subsection: Multilevel-models
-# ------------------------------------------------------------------------------
+Textbook context: Section: Clustered data | Subsection: Multilevel-models.
 
+```{r runnable-project-star-and-multilevel-models-in-r-02}
+# install.packages(c("lme4"))  # install manually if needed
+```
+
+### Box 03
+
+Textbook context: Section: Clustered data | Subsection: Multilevel-models.
+
+```{r runnable-project-star-and-multilevel-models-in-r-03}
 df <- read.csv(file.path("data", "star.csv"))
 
 # Create treatment indicator
@@ -86,12 +109,15 @@ summary(multi_model1)
 df2 <- df[!is.na(df$school_id), ]
 multi_model2 <- lmer(read_score ~ small_class + (1 | class_id) + (1 | school_id), data = df2)
 summary(multi_model2)
+```
 
-# ------------------------------------------------------------------------------
-# Box 04: The within estimator with municipal data in R
-# Textbook context: Section: Panel data | Subsection: Regression with individual fixed effects
-# ------------------------------------------------------------------------------
+## The within estimator with municipal data in R
 
+### Box 04
+
+Textbook context: Section: Panel data | Subsection: Regression with individual fixed effects.
+
+```{r runnable-the-within-estimator-with-municipal-data-in-r-04}
 df <- read.csv(file.path("data", "municip_data.csv"))
 df <- df[df$municip_name != "Gotland", ]
 
@@ -116,3 +142,4 @@ twoway_model <- plm(
   data = df
 )
 coeftest(twoway_model, vcov = vcovHC(twoway_model, type="HC0", cluster="group"))
+```

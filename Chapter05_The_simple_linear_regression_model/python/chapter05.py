@@ -5,7 +5,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 01: Inference for regression in Python
-# Source lines: CH5 Simple linear regression.tex:343-352
+# Textbook context: Section: Inference to the population with spherical error terms
 # ------------------------------------------------------------------------------
 
 import numpy as np
@@ -21,7 +21,7 @@ se_beta_1_hat = np.sqrt(var_hat_beta_1_hat)
 
 # ------------------------------------------------------------------------------
 # Box 02: Inference for regression in Python
-# Source lines: CH5 Simple linear regression.tex:357-360
+# Textbook context: Section: Inference to the population with spherical error terms
 # ------------------------------------------------------------------------------
 
 beta_1_H0 = 0
@@ -31,7 +31,7 @@ p_val = 2 * stats.t.sf(np.abs(t_stat), df=n-2)   # two-sided p-value
 
 # ------------------------------------------------------------------------------
 # Box 03: Inference for regression in Python
-# Source lines: CH5 Simple linear regression.tex:365-369
+# Textbook context: Section: Inference to the population with spherical error terms
 # ------------------------------------------------------------------------------
 
 alpha = 0.10  # 90% confidence interval
@@ -42,7 +42,7 @@ ub = beta_1_hat + t_crit * se_beta_1_hat
 
 # ------------------------------------------------------------------------------
 # Box 04: Inference for regression in Python
-# Source lines: CH5 Simple linear regression.tex:374-377
+# Textbook context: Section: Inference to the population with spherical error terms
 # ------------------------------------------------------------------------------
 
 import statsmodels.formula.api as smf
@@ -52,7 +52,7 @@ print(ols_model.summary())
 
 # ------------------------------------------------------------------------------
 # Box 05: Inference for regression in Python
-# Source lines: CH5 Simple linear regression.tex:382-387
+# Textbook context: Section: Inference to the population with spherical error terms
 # ------------------------------------------------------------------------------
 
 beta1_hat_sm = ols_model.params["living_area"]
@@ -64,7 +64,7 @@ ci_beta1_sm = ols_model.conf_int(alpha=0.10).loc["living_area"]  # 90% CI
 
 # ------------------------------------------------------------------------------
 # Box 06: Inference for regression in Python
-# Source lines: CH5 Simple linear regression.tex:392-397
+# Textbook context: Section: Inference to the population with spherical error terms
 # ------------------------------------------------------------------------------
 
 # If new_production is coded 0/1, this is fine as-is.
@@ -76,7 +76,7 @@ ci_model2_90 = ols_model2.conf_int(alpha=0.10)  # 90% CI for both coefficients
 
 # ------------------------------------------------------------------------------
 # Box 07: Robust inference in Python
-# Source lines: CH5 Simple linear regression.tex:476-482
+# Textbook context: Section: Asymptotic inference to the population
 # ------------------------------------------------------------------------------
 
 import numpy as np
@@ -89,7 +89,7 @@ se_beta_1_hat_r = np.sqrt(var_beta_1_hat_r)
 
 # ------------------------------------------------------------------------------
 # Box 08: Robust inference in Python
-# Source lines: CH5 Simple linear regression.tex:487-491
+# Textbook context: Section: Asymptotic inference to the population
 # ------------------------------------------------------------------------------
 
 alpha = 0.10
@@ -100,7 +100,7 @@ ub_r = beta_1_hat + t_crit * se_beta_1_hat_r
 
 # ------------------------------------------------------------------------------
 # Box 09: Robust inference in Python
-# Source lines: CH5 Simple linear regression.tex:497-503
+# Textbook context: Section: Asymptotic inference to the population
 # ------------------------------------------------------------------------------
 
 import statsmodels.formula.api as smf
@@ -113,7 +113,7 @@ print(ols_model_hc0.summary())
 
 # ------------------------------------------------------------------------------
 # Box 10: Robust inference in Python
-# Source lines: CH5 Simple linear regression.tex:508-517
+# Textbook context: Section: Asymptotic inference to the population
 # ------------------------------------------------------------------------------
 
 # find the position of "living_area" in the parameter vector
@@ -129,7 +129,7 @@ ci_hc0 = ols_model_hc0.conf_int(alpha=0.10)[j, :]   # 90% CI for beta_1
 
 # ------------------------------------------------------------------------------
 # Box 11: Data generating process and Monte Carlo simulations in Python
-# Source lines: CH5 Simple linear regression.tex:589-629
+# Textbook context: Section: Asymptotic inference to the population
 # ------------------------------------------------------------------------------
 
 import numpy as np
@@ -176,7 +176,7 @@ plt.show()
 
 # ------------------------------------------------------------------------------
 # Box 12: Data generating process and Monte Carlo simulations in Python
-# Source lines: CH5 Simple linear regression.tex:634-637
+# Textbook context: Section: Asymptotic inference to the population
 # ------------------------------------------------------------------------------
 
 var_beta1_r = (((X - xbar) ** 2) * (u_hat ** 2)).sum() / (SXX ** 2)

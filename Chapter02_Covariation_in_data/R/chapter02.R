@@ -5,14 +5,14 @@
 
 # ------------------------------------------------------------------------------
 # Box 01: Calculation of correlation in R
-# Source lines: CH2 Covariation in data.tex:62-62
+# Textbook context: Section: Pearson's correlation
 # ------------------------------------------------------------------------------
 
     df <- read.csv("apartment_price_data.csv")
 
 # ------------------------------------------------------------------------------
 # Box 02: Calculation of correlation in R
-# Source lines: CH2 Covariation in data.tex:70-71
+# Textbook context: Section: Pearson's correlation
 # ------------------------------------------------------------------------------
 
     xbar <- mean(df$living_area)
@@ -20,28 +20,28 @@
 
 # ------------------------------------------------------------------------------
 # Box 03: Calculation of correlation in R
-# Source lines: CH2 Covariation in data.tex:75-75
+# Textbook context: Section: Pearson's correlation
 # ------------------------------------------------------------------------------
 
     is.na(df$price)
 
 # ------------------------------------------------------------------------------
 # Box 04: Calculation of correlation in R
-# Source lines: CH2 Covariation in data.tex:79-79
+# Textbook context: Section: Pearson's correlation
 # ------------------------------------------------------------------------------
 
     !is.na(df$price) & !is.na(df$living_area)
 
 # ------------------------------------------------------------------------------
 # Box 05: Calculation of correlation in R
-# Source lines: CH2 Covariation in data.tex:83-83
+# Textbook context: Section: Pearson's correlation
 # ------------------------------------------------------------------------------
 
     df <- df[!is.na(df$price) & !is.na(df$living_area), ]
 
 # ------------------------------------------------------------------------------
 # Box 06: Calculation of correlation in R
-# Source lines: CH2 Covariation in data.tex:87-89
+# Textbook context: Section: Pearson's correlation
 # ------------------------------------------------------------------------------
 
     xbar <- mean(df$living_area)
@@ -50,7 +50,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 07: Calculation of correlation in R
-# Source lines: CH2 Covariation in data.tex:93-94
+# Textbook context: Section: Pearson's correlation
 # ------------------------------------------------------------------------------
 
       s_xy <- 1 / (n - 1) * sum((df$living_area - xbar) *
@@ -58,7 +58,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 08: Calculation of correlation in R
-# Source lines: CH2 Covariation in data.tex:102-103
+# Textbook context: Section: Pearson's correlation
 # ------------------------------------------------------------------------------
 
       s_x2 <- 1 / (n - 1) * sum((df$living_area - xbar)^2)
@@ -66,14 +66,14 @@
 
 # ------------------------------------------------------------------------------
 # Box 09: Calculation of correlation in R
-# Source lines: CH2 Covariation in data.tex:111-111
+# Textbook context: Section: Pearson's correlation
 # ------------------------------------------------------------------------------
 
       corr_xy <- s_xy / (sqrt(s_x2) * sqrt(s_y2))
 
 # ------------------------------------------------------------------------------
 # Box 10: Calculation of correlation in R
-# Source lines: CH2 Covariation in data.tex:115-116
+# Textbook context: Section: Pearson's correlation
 # ------------------------------------------------------------------------------
 
       corr_xy <- cov(df$living_area, df$price) / 
@@ -81,14 +81,14 @@
 
 # ------------------------------------------------------------------------------
 # Box 11: Calculation of correlation in R
-# Source lines: CH2 Covariation in data.tex:120-120
+# Textbook context: Section: Pearson's correlation
 # ------------------------------------------------------------------------------
 
       corr_xy <- cor(df$living_area, df$price)
 
 # ------------------------------------------------------------------------------
 # Box 12: Calculation of Spearman's correlation in R
-# Source lines: CH2 Covariation in data.tex:210-211
+# Textbook context: Section: Spearman's rank correlation coefficient
 # ------------------------------------------------------------------------------
 
     df$Rx <- rank(df$living_area)
@@ -96,7 +96,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 13: Calculation of Spearman's correlation in R
-# Source lines: CH2 Covariation in data.tex:215-216
+# Textbook context: Section: Spearman's rank correlation coefficient
 # ------------------------------------------------------------------------------
 
     mean_Rx <- (n + 1) / 2
@@ -104,7 +104,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 14: Calculation of Spearman's correlation in R
-# Source lines: CH2 Covariation in data.tex:220-222
+# Textbook context: Section: Spearman's rank correlation coefficient
 # ------------------------------------------------------------------------------
 
     covRxRy <- sum((df$Rx - mean_Rx)*(df$Ry-mean_Ry)) / (n - 1)
@@ -113,21 +113,21 @@ sRy <- sqrt(sum((df$Ry - mean_Ry)^2) / (n - 1))
 
 # ------------------------------------------------------------------------------
 # Box 15: Calculation of Spearman's correlation in R
-# Source lines: CH2 Covariation in data.tex:226-226
+# Textbook context: Section: Spearman's rank correlation coefficient
 # ------------------------------------------------------------------------------
 
     rS <- covRxRy / (sRx * sRy)
 
 # ------------------------------------------------------------------------------
 # Box 16: Calculation of Spearman's correlation in R
-# Source lines: CH2 Covariation in data.tex:230-230
+# Textbook context: Section: Spearman's rank correlation coefficient
 # ------------------------------------------------------------------------------
 
     rS_alt <- cor(df$Rx, df$Ry, method = "spearman")
 
 # ------------------------------------------------------------------------------
 # Box 17: Regression in R
-# Source lines: CH2 Covariation in data.tex:449-450
+# Textbook context: Section: Simple linear regression | Subsection: Coefficient of determination
 # ------------------------------------------------------------------------------
 
   beta_1_hat <- s_xy / s_x2
@@ -135,21 +135,21 @@ sRy <- sqrt(sum((df$Ry - mean_Ry)^2) / (n - 1))
 
 # ------------------------------------------------------------------------------
 # Box 18: Regression in R
-# Source lines: CH2 Covariation in data.tex:454-454
+# Textbook context: Section: Simple linear regression | Subsection: Coefficient of determination
 # ------------------------------------------------------------------------------
 
   y_hat <- beta_0_hat + beta_1_hat * df$living_area
 
 # ------------------------------------------------------------------------------
 # Box 19: Regression in R
-# Source lines: CH2 Covariation in data.tex:458-458
+# Textbook context: Section: Simple linear regression | Subsection: Coefficient of determination
 # ------------------------------------------------------------------------------
 
  u_hat <- df$price - y_hat
 
 # ------------------------------------------------------------------------------
 # Box 20: Regression in R
-# Source lines: CH2 Covariation in data.tex:462-464
+# Textbook context: Section: Simple linear regression | Subsection: Coefficient of determination
 # ------------------------------------------------------------------------------
 
   RSS <- sum(u_hat^2)
@@ -158,14 +158,14 @@ sRy <- sqrt(sum((df$Ry - mean_Ry)^2) / (n - 1))
 
 # ------------------------------------------------------------------------------
 # Box 21: Regression in R
-# Source lines: CH2 Covariation in data.tex:468-468
+# Textbook context: Section: Simple linear regression | Subsection: Coefficient of determination
 # ------------------------------------------------------------------------------
 
  ols_model <- lm(price ~ living_area, data=df)
 
 # ------------------------------------------------------------------------------
 # Box 22: Regression in R
-# Source lines: CH2 Covariation in data.tex:472-472
+# Textbook context: Section: Simple linear regression | Subsection: Coefficient of determination
 # ------------------------------------------------------------------------------
 
  summary(ols_model)

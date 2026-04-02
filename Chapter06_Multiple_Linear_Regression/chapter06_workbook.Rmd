@@ -1,0 +1,262 @@
+---
+title: "Chapter 06: Multiple Linear Regression"
+subtitle: "Regression with R and Python: Description, Prediction, and Causal Analysis for Applied Social Science and Econometrics"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+---
+
+This R Markdown workbook follows the chapter's code examples in textbook order. It is intended as a practical companion for advanced undergraduate and beginning master's students in applied social sciences and econometrics.
+
+> This workbook is a reference companion: code chunks are shown in textbook order but are not executed during rendering.
+
+- Companion R script: [R/chapter06.R](R/chapter06.R)
+- Chapter overview: [README.md](README.md)
+- Textbook chapter: `Multiple Linear Regression`
+
+> Some textbook chunks install packages. If those packages are already installed on your machine, you can skip the installation lines when working through the notebook.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>", eval = FALSE)
+chapter_dir <- dirname(normalizePath(knitr::current_input()))
+data_dir <- file.path(chapter_dir, "data")
+if (dir.exists(data_dir)) {
+  knitr::opts_knit$set(root.dir = data_dir)
+} else {
+  knitr::opts_knit$set(root.dir = chapter_dir)
+}
+```
+
+## Multiple regression in R
+
+### Box 01
+
+Textbook context: Section: The general multiple linear regression model.
+
+```{r multiple-regression-in-r-01}
+ df <- read.csv("apartment_price_data.csv")
+```
+
+### Box 02
+
+Textbook context: Section: The general multiple linear regression model.
+
+```{r multiple-regression-in-r-02}
+ ols_model <- lm(price ~ living_area + monthly_fee +
+ new_production, data=df)
+```
+
+### Box 03
+
+Textbook context: Section: The general multiple linear regression model.
+
+```{r multiple-regression-in-r-03}
+    library("lmtest")
+    library("sandwich")
+    rob_inf <- coeftest(ols_model,
+      vcov = vcovHC(ols_model, type = "HC0"))
+```
+
+### Box 04
+
+Textbook context: Section: The general multiple linear regression model.
+
+```{r multiple-regression-in-r-04}
+      lmtest::coefci(ols_model,
+  vcov. = vcovHC(ols_model, type = "HC0"),
+  level = 0.95)
+```
+
+### Box 05
+
+Textbook context: Section: The general multiple linear regression model.
+
+```{r multiple-regression-in-r-05}
+ b1 <- rob_inf["living_area", "Estimate"]
+ se1 <- rob_inf["living_area", "Std. Error"]
+ t_stat <- (b1 - 0.04) / se1
+ df_model <- ols_model$df.residual
+ p_value <- (1 - pt(abs(t_stat), df_model)) * 2
+```
+
+## $F$-test in R
+
+### Box 06
+
+Textbook context: Section: $F$-test.
+
+```{r f-test-in-r-06}
+ ols_model_l <- lm(price ~ living_area + monthly_fee +
+  new_production + build_year, data=df)
+ summary(ols_model_l)
+```
+
+### Box 07
+
+Textbook context: Section: $F$-test.
+
+```{r f-test-in-r-07}
+    n <- nobs(ols_model_l)
+```
+
+### Box 08
+
+Textbook context: Section: $F$-test.
+
+```{r f-test-in-r-08}
+    b <- !is.na(df$new_production) & !is.na(df$build_year)
+```
+
+### Box 09
+
+Textbook context: Section: $F$-test.
+
+```{r f-test-in-r-09}
+    ols_model_s <- lm(price ~ living_area + monthly_fee,
+                              data=df[b, ])
+```
+
+### Box 10
+
+Textbook context: Section: $F$-test.
+
+```{r f-test-in-r-10}
+    residuals_l <- residuals(ols_model_l)
+    residuals_s <- residuals(ols_model_s)
+    RSS_l <- sum(residuals_l^2)
+    RSS_s <- sum(residuals_s^2)
+```
+
+### Box 11
+
+Textbook context: Section: $F$-test.
+
+```{r f-test-in-r-11}
+    K <- 4
+    G <- 2
+```
+
+### Box 12
+
+Textbook context: Section: $F$-test.
+
+```{r f-test-in-r-12}
+    F_obs <- ((RSS_s - RSS_l) / (K - G)) / 
+             (RSS_l / (n - (K + 1)))
+```
+
+### Box 13
+
+Textbook context: Section: $F$-test.
+
+```{r f-test-in-r-13}
+ p <- 1 - pf(F_obs, df1=K-G, df2=n-(K+1))
+```
+
+### Box 14
+
+Textbook context: Section: $F$-test.
+
+```{r f-test-in-r-14}
+    anova(ols_model_s, ols_model_l)
+```
+
+### Box 15
+
+Textbook context: Section: $F$-test.
+
+```{r f-test-in-r-15}
+ summary(ols_model_l)
+```
+
+## Robust $F$-test in R
+
+### Box 16
+
+Textbook context: Section: $F$-test | Subsection: Robust $F$-test.
+
+```{r robust-f-test-in-r-16}
+    library("lmtest")
+    library("sandwich")
+```
+
+### Box 17
+
+Textbook context: Section: $F$-test | Subsection: Robust $F$-test.
+
+```{r robust-f-test-in-r-17}
+    waldtest(ols_model_s, ols_model_l,
+             vcov = vcovHC(ols_model_l, type = "HC0"))
+```
+
+## Confidence intervals for expected value and prediction intervals in R
+
+### Box 18
+
+Textbook context: Section: Uncertainty of the conditional expectation | Subsection: Prediction interval.
+
+```{r confidence-intervals-for-expected-value-and-prediction-intervals-in-r-18}
+ ols_model <- lm(price ~ living_area, data=df)
+ x0 <-80
+ yhat_x80 <- predict(ols_model,
+ newdata=data.frame(living_area=x0))
+```
+
+### Box 19
+
+Textbook context: Section: Uncertainty of the conditional expectation | Subsection: Prediction interval.
+
+```{r confidence-intervals-for-expected-value-and-prediction-intervals-in-r-19}
+  n <- nobs(ols_model)
+  RSS <- sum(residuals(ols_model)^2)
+  s2_epsilon <- RSS / (n - 2)
+  xbar <- mean(df$living_area)
+  SSX <- sum((df$living_area - xbar)^2)
+  var_eY_x0 <- s2_epsilon * (1 / n + (x0 - xbar)^2 / SSX)
+```
+
+### Box 20
+
+Textbook context: Section: Uncertainty of the conditional expectation | Subsection: Prediction interval.
+
+```{r confidence-intervals-for-expected-value-and-prediction-intervals-in-r-20}
+ alpha <- 0.05
+ t_crit <- qt(1-alpha/2, df=n-2)
+ lb_ci_eY_x0 <- yhat_x80 - t_crit * sqrt(var_eY_x0)
+ ub_ci_eY_x0 <- yhat_x80 + t_crit * sqrt(var_eY_x0)
+```
+
+### Box 21
+
+Textbook context: Section: Uncertainty of the conditional expectation | Subsection: Prediction interval.
+
+```{r confidence-intervals-for-expected-value-and-prediction-intervals-in-r-21}
+ var_tildeepsilon_x0 <- var_eY_x0 + s2_epsilon
+ lb_pi_x0 <- yhat_x80 - t_crit * sqrt(var_tildeepsilon_x0)
+ ub_pi_x0 <- yhat_x80 + t_crit * sqrt(var_tildeepsilon_x0)
+```
+
+### Box 22
+
+Textbook context: Section: Uncertainty of the conditional expectation | Subsection: Prediction interval.
+
+```{r confidence-intervals-for-expected-value-and-prediction-intervals-in-r-22}
+ ols_model2 <- lm(price ~ living_area + monthly_fee +
+ new_production, data=df)
+```
+
+### Box 23
+
+Textbook context: Section: Uncertainty of the conditional expectation | Subsection: Prediction interval.
+
+```{r confidence-intervals-for-expected-value-and-prediction-intervals-in-r-23}
+ eval_df <- data.frame(living_area=80,
+ monthly_fee=3000, new_production=1)
+ predict(ols_model2, newdata = eval_df,
+ interval = "confidence",
+ level=.95)
+ predict(ols_model2, newdata = eval_df,
+ interval = "prediction",
+ level=.95)
+```

@@ -5,7 +5,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 01: Calculation of correlation in Python
-# Source lines: CH2 Covariation in data.tex:130-133
+# Textbook context: Section: Pearson's correlation
 # ------------------------------------------------------------------------------
 
 import pandas as pd
@@ -15,7 +15,7 @@ df = pd.read_csv("apartment_price_data.csv")
 
 # ------------------------------------------------------------------------------
 # Box 02: Calculation of correlation in Python
-# Source lines: CH2 Covariation in data.tex:137-138
+# Textbook context: Section: Pearson's correlation
 # ------------------------------------------------------------------------------
 
 mask = df["price"].notna() & df["living_area"].notna()
@@ -23,7 +23,7 @@ df = df.loc[mask].copy()
 
 # ------------------------------------------------------------------------------
 # Box 03: Calculation of correlation in Python
-# Source lines: CH2 Covariation in data.tex:142-144
+# Textbook context: Section: Pearson's correlation
 # ------------------------------------------------------------------------------
 
 xbar = df["living_area"].mean()
@@ -32,14 +32,14 @@ n = len(df)
 
 # ------------------------------------------------------------------------------
 # Box 04: Calculation of correlation in Python
-# Source lines: CH2 Covariation in data.tex:148-148
+# Textbook context: Section: Pearson's correlation
 # ------------------------------------------------------------------------------
 
 s_xy = ((df["living_area"] - xbar) * (df["price"] - ybar)).sum() / (n - 1)
 
 # ------------------------------------------------------------------------------
 # Box 05: Calculation of correlation in Python
-# Source lines: CH2 Covariation in data.tex:152-153
+# Textbook context: Section: Pearson's correlation
 # ------------------------------------------------------------------------------
 
 s_x2 = ((df["living_area"] - xbar) ** 2).sum() / (n - 1)
@@ -47,21 +47,21 @@ s_y2 = ((df["price"] - ybar) ** 2).sum() / (n - 1)
 
 # ------------------------------------------------------------------------------
 # Box 06: Calculation of correlation in Python
-# Source lines: CH2 Covariation in data.tex:157-157
+# Textbook context: Section: Pearson's correlation
 # ------------------------------------------------------------------------------
 
 corr_xy = s_xy / (np.sqrt(s_x2) * np.sqrt(s_y2))
 
 # ------------------------------------------------------------------------------
 # Box 07: Calculation of correlation in Python
-# Source lines: CH2 Covariation in data.tex:161-161
+# Textbook context: Section: Pearson's correlation
 # ------------------------------------------------------------------------------
 
 corr_xy = df["living_area"].corr(df["price"], method="pearson")
 
 # ------------------------------------------------------------------------------
 # Box 08: Calculation of correlation in Python
-# Source lines: CH2 Covariation in data.tex:165-167
+# Textbook context: Section: Pearson's correlation
 # ------------------------------------------------------------------------------
 
 corr_xy = df["living_area"].cov(df["price"]) / (
@@ -70,7 +70,7 @@ corr_xy = df["living_area"].cov(df["price"]) / (
 
 # ------------------------------------------------------------------------------
 # Box 09: Calculation of Spearman's correlation in Python
-# Source lines: CH2 Covariation in data.tex:245-246
+# Textbook context: Section: Spearman's rank correlation coefficient
 # ------------------------------------------------------------------------------
 
 df["Rx"] = df["living_area"].rank(method="average")
@@ -78,7 +78,7 @@ df["Ry"] = df["price"].rank(method="average")
 
 # ------------------------------------------------------------------------------
 # Box 10: Calculation of Spearman's correlation in Python
-# Source lines: CH2 Covariation in data.tex:250-251
+# Textbook context: Section: Spearman's rank correlation coefficient
 # ------------------------------------------------------------------------------
 
 mean_Rx = (n + 1) / 2
@@ -86,7 +86,7 @@ mean_Ry = (n + 1) / 2
 
 # ------------------------------------------------------------------------------
 # Box 11: Calculation of Spearman's correlation in Python
-# Source lines: CH2 Covariation in data.tex:255-257
+# Textbook context: Section: Spearman's rank correlation coefficient
 # ------------------------------------------------------------------------------
 
 covRxRy = ((df["Rx"] - mean_Rx) * (df["Ry"] - mean_Ry)).sum() / (n - 1)
@@ -95,21 +95,21 @@ sRy = np.sqrt(((df["Ry"] - mean_Ry) ** 2).sum() / (n - 1))
 
 # ------------------------------------------------------------------------------
 # Box 12: Calculation of Spearman's correlation in Python
-# Source lines: CH2 Covariation in data.tex:261-261
+# Textbook context: Section: Spearman's rank correlation coefficient
 # ------------------------------------------------------------------------------
 
 rS = covRxRy / (sRx * sRy)
 
 # ------------------------------------------------------------------------------
 # Box 13: Calculation of Spearman's correlation in Python
-# Source lines: CH2 Covariation in data.tex:265-265
+# Textbook context: Section: Spearman's rank correlation coefficient
 # ------------------------------------------------------------------------------
 
 rS_alt = df["living_area"].corr(df["price"], method="spearman")
 
 # ------------------------------------------------------------------------------
 # Box 14: Calculation of Spearman's correlation in Python
-# Source lines: CH2 Covariation in data.tex:270-273
+# Textbook context: Section: Spearman's rank correlation coefficient
 # ------------------------------------------------------------------------------
 
 df_sub = df[df["price"] <= 10]
@@ -119,7 +119,7 @@ spearman_sub = df_sub["living_area"].corr(df_sub["price"], method="spearman")
 
 # ------------------------------------------------------------------------------
 # Box 15: Regression in Python
-# Source lines: CH2 Covariation in data.tex:486-487
+# Textbook context: Section: Simple linear regression | Subsection: Coefficient of determination
 # ------------------------------------------------------------------------------
 
 beta_1_hat = s_xy / s_x2
@@ -127,21 +127,21 @@ beta_0_hat = ybar - xbar * beta_1_hat
 
 # ------------------------------------------------------------------------------
 # Box 16: Regression in Python
-# Source lines: CH2 Covariation in data.tex:491-491
+# Textbook context: Section: Simple linear regression | Subsection: Coefficient of determination
 # ------------------------------------------------------------------------------
 
 y_hat = beta_0_hat + beta_1_hat * df["living_area"]
 
 # ------------------------------------------------------------------------------
 # Box 17: Regression in Python
-# Source lines: CH2 Covariation in data.tex:495-495
+# Textbook context: Section: Simple linear regression | Subsection: Coefficient of determination
 # ------------------------------------------------------------------------------
 
 u_hat = df["price"] - y_hat
 
 # ------------------------------------------------------------------------------
 # Box 18: Regression in Python
-# Source lines: CH2 Covariation in data.tex:499-501
+# Textbook context: Section: Simple linear regression | Subsection: Coefficient of determination
 # ------------------------------------------------------------------------------
 
 RSS = (u_hat ** 2).sum()
@@ -150,7 +150,7 @@ R2 = 1 - RSS / TSS
 
 # ------------------------------------------------------------------------------
 # Box 19: Regression in Python
-# Source lines: CH2 Covariation in data.tex:505-507
+# Textbook context: Section: Simple linear regression | Subsection: Coefficient of determination
 # ------------------------------------------------------------------------------
 
 import statsmodels.formula.api as smf
@@ -159,14 +159,14 @@ ols_model = smf.ols("price ~ living_area", data=df).fit()
 
 # ------------------------------------------------------------------------------
 # Box 20: Regression in Python
-# Source lines: CH2 Covariation in data.tex:511-511
+# Textbook context: Section: Simple linear regression | Subsection: Coefficient of determination
 # ------------------------------------------------------------------------------
 
 print(ols_model.summary())
 
 # ------------------------------------------------------------------------------
 # Box 21: Regression in Python
-# Source lines: CH2 Covariation in data.tex:515-518
+# Textbook context: Section: Simple linear regression | Subsection: Coefficient of determination
 # ------------------------------------------------------------------------------
 
 coefs = ols_model.params

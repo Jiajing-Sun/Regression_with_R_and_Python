@@ -5,7 +5,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 01: Monte Carlo simulation in R
-# Source lines: CH3 Basic probability.tex:281-283
+# Textbook context: Section: Estimators
 # ------------------------------------------------------------------------------
 
     n <- 50
@@ -14,7 +14,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 02: Monte Carlo simulation in R
-# Source lines: CH3 Basic probability.tex:289-296
+# Textbook context: Section: Estimators
 # ------------------------------------------------------------------------------
 
     nr_samples <- 10000
@@ -28,14 +28,14 @@
 
 # ------------------------------------------------------------------------------
 # Box 03: Monte Carlo simulation in R
-# Source lines: CH3 Basic probability.tex:314-314
+# Textbook context: Section: Estimators
 # ------------------------------------------------------------------------------
 
  hist(ybar_dist, breaks=50)
 
 # ------------------------------------------------------------------------------
 # Box 04: Hypothesis tests and confidence intervals with R
-# Source lines: CH3 Basic probability.tex:656-657
+# Textbook context: Section: Hypothesis testing and confidence intervals | Subsection: Confidence interval
 # ------------------------------------------------------------------------------
 
     dice_throws <- c(rep(1, 13), rep(2, 7), rep(3, 8),
@@ -43,7 +43,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 05: Hypothesis tests and confidence intervals with R
-# Source lines: CH3 Basic probability.tex:661-664
+# Textbook context: Section: Hypothesis testing and confidence intervals | Subsection: Confidence interval
 # ------------------------------------------------------------------------------
 
     n <- length(dice_throws)
@@ -53,7 +53,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 06: Hypothesis tests and confidence intervals with R
-# Source lines: CH3 Basic probability.tex:668-669
+# Textbook context: Section: Hypothesis testing and confidence intervals | Subsection: Confidence interval
 # ------------------------------------------------------------------------------
 
     se_dice_throws <- sqrt(var_dice_throws / n)
@@ -61,14 +61,14 @@
 
 # ------------------------------------------------------------------------------
 # Box 07: Hypothesis tests and confidence intervals with R
-# Source lines: CH3 Basic probability.tex:673-673
+# Textbook context: Section: Hypothesis testing and confidence intervals | Subsection: Confidence interval
 # ------------------------------------------------------------------------------
 
     p_value <- 2 * (1 - pt(abs(t_stat), df=n-1))
 
 # ------------------------------------------------------------------------------
 # Box 08: Hypothesis tests and confidence intervals with R
-# Source lines: CH3 Basic probability.tex:677-680
+# Textbook context: Section: Hypothesis testing and confidence intervals | Subsection: Confidence interval
 # ------------------------------------------------------------------------------
 
     alpha <- 0.05
@@ -78,7 +78,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 09: Hypothesis tests and confidence intervals with R
-# Source lines: CH3 Basic probability.tex:686-686
+# Textbook context: Section: Hypothesis testing and confidence intervals | Subsection: Confidence interval
 # ------------------------------------------------------------------------------
 
  t.test(dice_throws, mu=3.5)

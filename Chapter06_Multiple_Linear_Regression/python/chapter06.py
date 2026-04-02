@@ -5,7 +5,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 01: Multiple regression in Python
-# Source lines: CH6 Multiple linear regression.tex:176-186
+# Textbook context: Section: The general multiple linear regression model
 # ------------------------------------------------------------------------------
 
 import pandas as pd
@@ -22,7 +22,7 @@ print(ols_model.summary())
 
 # ------------------------------------------------------------------------------
 # Box 02: Multiple regression in Python
-# Source lines: CH6 Multiple linear regression.tex:191-192
+# Textbook context: Section: The general multiple linear regression model
 # ------------------------------------------------------------------------------
 
 ols_model_hc0 = ols_model.get_robustcov_results(cov_type="HC0", use_t=True)
@@ -30,7 +30,7 @@ print(ols_model_hc0.summary())
 
 # ------------------------------------------------------------------------------
 # Box 03: Multiple regression in Python
-# Source lines: CH6 Multiple linear regression.tex:197-209
+# Textbook context: Section: The general multiple linear regression model
 # ------------------------------------------------------------------------------
 
 import numpy as np
@@ -49,7 +49,7 @@ rob_table
 
 # ------------------------------------------------------------------------------
 # Box 04: Multiple regression in Python
-# Source lines: CH6 Multiple linear regression.tex:214-220
+# Textbook context: Section: The general multiple linear regression model
 # ------------------------------------------------------------------------------
 
 ci_95 = pd.DataFrame(
@@ -62,7 +62,7 @@ ci_95
 
 # ------------------------------------------------------------------------------
 # Box 05: Multiple regression in Python
-# Source lines: CH6 Multiple linear regression.tex:225-232
+# Textbook context: Section: The general multiple linear regression model
 # ------------------------------------------------------------------------------
 
 from scipy import stats
@@ -76,14 +76,14 @@ p_value = 2 * stats.t.sf(np.abs(t_stat), df=df_resid)
 
 # ------------------------------------------------------------------------------
 # Box 06: Multiple regression in Python
-# Source lines: CH6 Multiple linear regression.tex:237-237
+# Textbook context: Section: The general multiple linear regression model
 # ------------------------------------------------------------------------------
 
 ols_model_hc0.t_test("living_area = 0.04")
 
 # ------------------------------------------------------------------------------
 # Box 07: $F$-test in Python
-# Source lines: CH6 Multiple linear regression.tex:525-536
+# Textbook context: Section: $F$-test
 # ------------------------------------------------------------------------------
 
 import pandas as pd
@@ -101,7 +101,7 @@ n = len(df_cc)
 
 # ------------------------------------------------------------------------------
 # Box 08: $F$-test in Python
-# Source lines: CH6 Multiple linear regression.tex:541-549
+# Textbook context: Section: $F$-test
 # ------------------------------------------------------------------------------
 
 ols_model_l = smf.ols(
@@ -116,7 +116,7 @@ ols_model_s = smf.ols(
 
 # ------------------------------------------------------------------------------
 # Box 09: $F$-test in Python
-# Source lines: CH6 Multiple linear regression.tex:554-561
+# Textbook context: Section: $F$-test
 # ------------------------------------------------------------------------------
 
 RSS_l = np.sum(ols_model_l.resid ** 2)
@@ -130,14 +130,14 @@ p_value = stats.f.sf(F_obs, dfn=K - G, dfd=n - (K + 1))
 
 # ------------------------------------------------------------------------------
 # Box 10: $F$-test in Python
-# Source lines: CH6 Multiple linear regression.tex:566-566
+# Textbook context: Section: $F$-test
 # ------------------------------------------------------------------------------
 
 F_sm, p_sm, df_diff = ols_model_l.compare_f_test(ols_model_s)
 
 # ------------------------------------------------------------------------------
 # Box 11: $F$-test in Python
-# Source lines: CH6 Multiple linear regression.tex:571-574
+# Textbook context: Section: $F$-test
 # ------------------------------------------------------------------------------
 
 F_overall = ols_model_l.fvalue
@@ -147,14 +147,14 @@ df2 = int(ols_model_l.df_resid)
 
 # ------------------------------------------------------------------------------
 # Box 12: Robust $F$-test in Python
-# Source lines: CH6 Multiple linear regression.tex:614-614
+# Textbook context: Section: $F$-test | Subsection: Robust $F$-test
 # ------------------------------------------------------------------------------
 
 ols_model_l_hc0 = ols_model_l.get_robustcov_results(cov_type="HC0", use_t=True)
 
 # ------------------------------------------------------------------------------
 # Box 13: Robust $F$-test in Python
-# Source lines: CH6 Multiple linear regression.tex:619-622
+# Textbook context: Section: $F$-test | Subsection: Robust $F$-test
 # ------------------------------------------------------------------------------
 
 ftest_rob = ols_model_l_hc0.f_test("new_production = 0, build_year = 0")
@@ -164,7 +164,7 @@ p_rob = float(ftest_rob.pvalue)
 
 # ------------------------------------------------------------------------------
 # Box 14: Confidence intervals for expected value and prediction intervals in Python
-# Source lines: CH6 Multiple linear regression.tex:770-805
+# Textbook context: Section: Uncertainty of the conditional expectation | Subsection: Prediction interval
 # ------------------------------------------------------------------------------
 
 import pandas as pd
@@ -206,7 +206,7 @@ ub_pi = yhat_x80 + t_crit * np.sqrt(var_pred_x0)
 
 # ------------------------------------------------------------------------------
 # Box 15: Confidence intervals for expected value and prediction intervals in Python
-# Source lines: CH6 Multiple linear regression.tex:811-812
+# Textbook context: Section: Uncertainty of the conditional expectation | Subsection: Prediction interval
 # ------------------------------------------------------------------------------
 
 pred1 = ols_model.get_prediction(pd.DataFrame({"living_area": [x0]}))
@@ -214,7 +214,7 @@ pred1.summary_frame(alpha=0.05)
 
 # ------------------------------------------------------------------------------
 # Box 16: Confidence intervals for expected value and prediction intervals in Python
-# Source lines: CH6 Multiple linear regression.tex:820-832
+# Textbook context: Section: Uncertainty of the conditional expectation | Subsection: Prediction interval
 # ------------------------------------------------------------------------------
 
 df_mr = df[["price", "living_area", "monthly_fee", "new_production"]].dropna()

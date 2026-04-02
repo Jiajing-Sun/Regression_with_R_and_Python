@@ -1,0 +1,209 @@
+---
+title: "Chapter 05: The simple linear regression model"
+subtitle: "Runnable workbook for Regression with R and Python"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+---
+
+This runnable workbook supplements the reference workbook. It adds setup code and lightweight fixes so the chapter can usually be rendered and run end-to-end.
+
+- Runnable companion script: [R/chapter05.R](R/chapter05.R)
+- Reference workbook: [chapter05_workbook.Rmd](chapter05_workbook.Rmd)
+- Textbook chapter: `The simple linear regression model`
+- Package installation lines are shown as comments and are not run automatically during rendering.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>", message = FALSE, warning = FALSE)
+chapter_dir <- dirname(normalizePath(knitr::current_input()))
+knitr::opts_knit$set(root.dir = chapter_dir)
+```
+
+> This chapter uses hidden prerequisite setup from an earlier chapter so the later code can run in order.
+
+```{r prerequisites, include=FALSE}
+# Prerequisite code adapted from Chapter 02.
+    df <- read.csv(file.path("data", "apartment_price_data.csv"))
+
+    xbar <- mean(df$living_area)
+    ybar <- mean(df$price)
+
+    is.na(df$price)
+
+    !is.na(df$price) & !is.na(df$living_area)
+
+    df <- df[!is.na(df$price) & !is.na(df$living_area), ]
+
+    xbar <- mean(df$living_area)
+    ybar <- mean(df$price)
+    n <- nrow(df)
+
+      s_xy <- 1 / (n - 1) * sum((df$living_area - xbar) *
+                                (df$price - ybar))
+
+      s_x2 <- 1 / (n - 1) * sum((df$living_area - xbar)^2)
+      s_y2 <- 1 / (n - 1) * sum((df$price - ybar)^2)
+
+      corr_xy <- s_xy / (sqrt(s_x2) * sqrt(s_y2))
+
+      corr_xy <- cov(df$living_area, df$price) / 
+                 (sd(df$living_area) * sd(df$price))
+
+      corr_xy <- cor(df$living_area, df$price)
+
+    df$Rx <- rank(df$living_area)
+    df$Ry <- rank(df$price)
+
+    mean_Rx <- (n + 1) / 2
+    mean_Ry <- (n + 1) / 2
+
+    covRxRy <- sum((df$Rx - mean_Rx)*(df$Ry-mean_Ry)) / (n - 1)
+   sRx <- sqrt(sum((df$Rx - mean_Rx)^2) / (n - 1))
+sRy <- sqrt(sum((df$Ry - mean_Ry)^2) / (n - 1))
+
+    rS <- covRxRy / (sRx * sRy)
+
+    rS_alt <- cor(df$Rx, df$Ry, method = "spearman")
+
+  beta_1_hat <- s_xy / s_x2
+  beta_0_hat <- ybar - xbar * beta_1_hat
+
+  y_hat <- beta_0_hat + beta_1_hat * df$living_area
+
+ u_hat <- df$price - y_hat
+
+  RSS <- sum(u_hat^2)
+  TSS <- sum((df$price - ybar)^2)
+  R2 <- 1 - RSS / TSS
+
+ ols_model <- lm(price ~ living_area, data=df)
+
+ summary(ols_model)
+
+```
+
+## Inference for regression in R
+
+### Box 01
+
+Textbook context: Section: Inference to the population with spherical error terms.
+
+```{r runnable-inference-for-regression-in-r-01}
+ s2_epsilon <- RSS / (n - 2)
+ SSX <- sum((df$living_area - mean(df$living_area))^2)
+ var_hat_beta_1_hat <- s2_epsilon / SSX
+```
+
+### Box 02
+
+Textbook context: Section: Inference to the population with spherical error terms.
+
+```{r runnable-inference-for-regression-in-r-02}
+ beta_1_H0 <- 0
+ se_beta_1_hat <- sqrt(var_hat_beta_1_hat)
+ t_stat <- (beta_1_hat - beta_1_H0) / se_beta_1_hat
+ p_val <- 2 * (1 - pt(abs(t_stat), df=n-2))
+```
+
+### Box 03
+
+Textbook context: Section: Inference to the population with spherical error terms.
+
+```{r runnable-inference-for-regression-in-r-03}
+    alpha <- 0.1
+    t_crit <- qt(1-alpha/2, df=n-2)
+    lb <- beta_1_hat - t_crit * se_beta_1_hat
+    ub <- beta_1_hat + t_crit * se_beta_1_hat
+```
+
+### Box 04
+
+Textbook context: Section: Inference to the population with spherical error terms.
+
+```{r runnable-inference-for-regression-in-r-04}
+ sum_ols_model <- summary(ols_model)
+```
+
+### Box 05
+
+Textbook context: Section: Inference to the population with spherical error terms.
+
+```{r runnable-inference-for-regression-in-r-05}
+ reg_table <- sum_ols_model$coefficients
+```
+
+### Box 06
+
+Textbook context: Section: Inference to the population with spherical error terms.
+
+```{r runnable-inference-for-regression-in-r-06}
+ reg_table[2, 3]
+```
+
+### Box 07
+
+Textbook context: Section: Inference to the population with spherical error terms.
+
+```{r runnable-inference-for-regression-in-r-07}
+ confint(ols_model, level=0.9)
+```
+
+### Box 08
+
+Textbook context: Section: Inference to the population with spherical error terms.
+
+```{r runnable-inference-for-regression-in-r-08}
+ ols_model2 <- lm(price ~ new_production, data=df)
+```
+
+### Box 09
+
+Textbook context: Section: Inference to the population with spherical error terms.
+
+```{r runnable-inference-for-regression-in-r-09}
+    confint(ols_model2, level=0.9)
+```
+
+## Robust inference in R
+
+### Box 10
+
+Textbook context: Section: Asymptotic inference to the population.
+
+```{r runnable-robust-inference-in-r-10}
+ dx2 <- (df$living_area - mean(df$living_area))^2
+```
+
+### Box 11
+
+Textbook context: Section: Asymptotic inference to the population.
+
+```{r runnable-robust-inference-in-r-11}
+ var_beta_1_var_r <- sum(dx2 * u_hat^2) / (sum(dx2))^2
+```
+
+### Box 12
+
+Textbook context: Section: Asymptotic inference to the population.
+
+```{r runnable-robust-inference-in-r-12}
+ se_beta_1_hat_r <- sqrt(var_beta_1_var_r)
+```
+
+### Box 13
+
+Textbook context: Section: Asymptotic inference to the population.
+
+```{r runnable-robust-inference-in-r-13}
+    library("lmtest")
+    library("sandwich")
+```
+
+### Box 14
+
+Textbook context: Section: Asymptotic inference to the population.
+
+```{r runnable-robust-inference-in-r-14}
+ coeftest(ols_model, vcov=vcovHC(ols_model, type="HC0"))
+```

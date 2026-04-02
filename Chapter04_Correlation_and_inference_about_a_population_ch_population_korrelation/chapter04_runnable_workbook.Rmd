@@ -1,0 +1,47 @@
+---
+title: "Chapter 04: Correlation and inference about a population"
+subtitle: "Runnable workbook for Regression with R and Python"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+---
+
+This runnable workbook supplements the reference workbook. It adds setup code and lightweight fixes so the chapter can usually be rendered and run end-to-end.
+
+- Runnable companion script: [R/chapter04.R](R/chapter04.R)
+- Reference workbook: [chapter04_workbook.Rmd](chapter04_workbook.Rmd)
+- Textbook chapter: `Correlation and inference about a population`
+- Package installation lines are shown as comments and are not run automatically during rendering.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>", message = FALSE, warning = FALSE)
+chapter_dir <- dirname(normalizePath(knitr::current_input()))
+knitr::opts_knit$set(root.dir = chapter_dir)
+```
+
+## Calculating confidence intervals for correlation in R
+
+### Box 01
+
+Textbook context: Chapter context unavailable.
+
+```{r runnable-calculating-confidence-intervals-for-correlation-in-r-01}
+  df <- read.csv(file.path("data", "apartment_price_data.csv"))
+  corrXY <- cor(df$living_area, df$price)
+  Z <- 1/2 * log((1+corrXY)/(1-corrXY))
+  alpha <- 0.05
+  z_alpha_2 <- qnorm(1-alpha/2)
+  Z_L <- Z - z_alpha_2 * sqrt(1/(1000-3))
+  Z_U <- Z + z_alpha_2 * sqrt(1/(1000-3))
+  CI_L <- (exp(2*Z_L) - 1)/(exp(2*Z_L) + 1)
+  CI_U <- (exp(2*Z_U) - 1)/(exp(2*Z_U) + 1)
+```
+
+### Box 02
+
+Textbook context: Chapter context unavailable.
+
+```{r runnable-calculating-confidence-intervals-for-correlation-in-r-02}
+  cor.test(df$living_area, df$price, conf.level=0.95)
+```

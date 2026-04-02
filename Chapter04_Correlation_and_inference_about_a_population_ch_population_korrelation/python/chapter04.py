@@ -5,7 +5,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 01: Calculating confidence intervals for correlation in Python
-# Source lines: CH4 Correlation and inference.tex:115-140
+# Textbook context: Chapter context unavailable
 # ------------------------------------------------------------------------------
 
 import numpy as np
@@ -37,7 +37,7 @@ CI_U = (np.exp(2 * Z_U) - 1) / (np.exp(2 * Z_U) + 1)
 
 # ------------------------------------------------------------------------------
 # Box 02: Calculating confidence intervals for correlation in Python
-# Source lines: CH4 Correlation and inference.tex:148-156
+# Textbook context: Chapter context unavailable
 # ------------------------------------------------------------------------------
 
 res = stats.pearsonr(x, y)              # two-sided test by default

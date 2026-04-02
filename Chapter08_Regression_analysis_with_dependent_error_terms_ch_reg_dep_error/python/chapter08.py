@@ -5,7 +5,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 01: Project Star and clustering in Python
-# Source lines: CH8 Regression with dependent errors.tex:153-224
+# Textbook context: Section: Clustered data | Subsection: OLS with clustered data
 # ------------------------------------------------------------------------------
 
 import numpy as np
@@ -83,7 +83,7 @@ print(coef_table(ols_model3_cl))
 
 # ------------------------------------------------------------------------------
 # Box 02: Project Star and multilevel models in Python
-# Source lines: CH8 Regression with dependent errors.tex:304-348
+# Textbook context: Section: Clustered data | Subsection: Multilevel-models
 # ------------------------------------------------------------------------------
 
 import numpy as np
@@ -134,7 +134,7 @@ if "school_id" in df.columns and df["school_id"].notna().any():
 
 # ------------------------------------------------------------------------------
 # Box 03: The within estimator with municipal data in Python
-# Source lines: CH8 Regression with dependent errors.tex:520-543
+# Textbook context: Section: Panel data | Subsection: Regression with individual fixed effects
 # ------------------------------------------------------------------------------
 
 import pandas as pd

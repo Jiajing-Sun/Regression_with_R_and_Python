@@ -5,7 +5,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 01: Monte Carlo simulation in Python
-# Source lines: CH3 Basic probability.tex:331-334
+# Textbook context: Section: Estimators
 # ------------------------------------------------------------------------------
 
 import numpy as np
@@ -15,7 +15,7 @@ dice_throw = rng.integers(1, 7)   # 1,2,3,4,5,6 with equal probability
 
 # ------------------------------------------------------------------------------
 # Box 02: Monte Carlo simulation in Python
-# Source lines: CH3 Basic probability.tex:338-340
+# Textbook context: Section: Estimators
 # ------------------------------------------------------------------------------
 
 n = 50
@@ -24,7 +24,7 @@ ybar = dice_throws.mean()
 
 # ------------------------------------------------------------------------------
 # Box 03: Monte Carlo simulation in Python
-# Source lines: CH3 Basic probability.tex:344-354
+# Textbook context: Section: Estimators
 # ------------------------------------------------------------------------------
 
 nr_samples = 10000
@@ -41,7 +41,7 @@ for i in range(nr_samples):
 
 # ------------------------------------------------------------------------------
 # Box 04: Monte Carlo simulation in Python
-# Source lines: CH3 Basic probability.tex:358-359
+# Textbook context: Section: Estimators
 # ------------------------------------------------------------------------------
 
 mean_ybar = ybar_dist.mean()
@@ -49,7 +49,7 @@ var_ybar = ybar_dist.var(ddof=1)   # ddof=1 gives the sample variance
 
 # ------------------------------------------------------------------------------
 # Box 05: Monte Carlo simulation in Python
-# Source lines: CH3 Basic probability.tex:365-367
+# Textbook context: Section: Estimators
 # ------------------------------------------------------------------------------
 
 nr_samples = 10000
@@ -58,7 +58,7 @@ ybar_dist = rng.integers(1, 7, size=(nr_samples, n)).mean(axis=1)
 
 # ------------------------------------------------------------------------------
 # Box 06: Monte Carlo simulation in Python
-# Source lines: CH3 Basic probability.tex:371-374
+# Textbook context: Section: Estimators
 # ------------------------------------------------------------------------------
 
 import matplotlib.pyplot as plt
@@ -68,7 +68,7 @@ plt.show()
 
 # ------------------------------------------------------------------------------
 # Box 07: Hypothesis tests and confidence intervals with Python
-# Source lines: CH3 Basic probability.tex:701-710
+# Textbook context: Section: Hypothesis testing and confidence intervals | Subsection: Confidence interval
 # ------------------------------------------------------------------------------
 
 import numpy as np
@@ -84,7 +84,7 @@ dice_throws = np.concatenate([
 
 # ------------------------------------------------------------------------------
 # Box 08: Hypothesis tests and confidence intervals with Python
-# Source lines: CH3 Basic probability.tex:714-716
+# Textbook context: Section: Hypothesis testing and confidence intervals | Subsection: Confidence interval
 # ------------------------------------------------------------------------------
 
 n = dice_throws.size
@@ -93,7 +93,7 @@ var_dice_throws = dice_throws.var(ddof=1)   # sample variance (n-1)
 
 # ------------------------------------------------------------------------------
 # Box 09: Hypothesis tests and confidence intervals with Python
-# Source lines: CH3 Basic probability.tex:720-721
+# Textbook context: Section: Hypothesis testing and confidence intervals | Subsection: Confidence interval
 # ------------------------------------------------------------------------------
 
 se_dice_throws = np.sqrt(var_dice_throws / n)
@@ -101,7 +101,7 @@ t_stat = (mean_dice_throws - 3.5) / se_dice_throws
 
 # ------------------------------------------------------------------------------
 # Box 10: Hypothesis tests and confidence intervals with Python
-# Source lines: CH3 Basic probability.tex:725-727
+# Textbook context: Section: Hypothesis testing and confidence intervals | Subsection: Confidence interval
 # ------------------------------------------------------------------------------
 
 from scipy import stats
@@ -110,7 +110,7 @@ p_value = 2 * stats.t.sf(np.abs(t_stat), df=n-1)   # sf = 1 - cdf
 
 # ------------------------------------------------------------------------------
 # Box 11: Hypothesis tests and confidence intervals with Python
-# Source lines: CH3 Basic probability.tex:731-735
+# Textbook context: Section: Hypothesis testing and confidence intervals | Subsection: Confidence interval
 # ------------------------------------------------------------------------------
 
 alpha = 0.05
@@ -121,7 +121,7 @@ ci_upper = mean_dice_throws + t_crit * se_dice_throws
 
 # ------------------------------------------------------------------------------
 # Box 12: Hypothesis tests and confidence intervals with Python
-# Source lines: CH3 Basic probability.tex:739-741
+# Textbook context: Section: Hypothesis testing and confidence intervals | Subsection: Confidence interval
 # ------------------------------------------------------------------------------
 
 ttest_res = stats.ttest_1samp(dice_throws, popmean=3.5)  # default is two-sided
@@ -130,7 +130,7 @@ p_value_builtin = ttest_res.pvalue
 
 # ------------------------------------------------------------------------------
 # Box 13: Hypothesis tests and confidence intervals with Python
-# Source lines: CH3 Basic probability.tex:745-747
+# Textbook context: Section: Hypothesis testing and confidence intervals | Subsection: Confidence interval
 # ------------------------------------------------------------------------------
 
 ci_lower_alt, ci_upper_alt = stats.t.interval(

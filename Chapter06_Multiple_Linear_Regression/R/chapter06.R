@@ -5,14 +5,14 @@
 
 # ------------------------------------------------------------------------------
 # Box 01: Multiple regression in R
-# Source lines: CH6 Multiple linear regression.tex:122-122
+# Textbook context: Section: The general multiple linear regression model
 # ------------------------------------------------------------------------------
 
  df <- read.csv("apartment_price_data.csv")
 
 # ------------------------------------------------------------------------------
 # Box 02: Multiple regression in R
-# Source lines: CH6 Multiple linear regression.tex:126-127
+# Textbook context: Section: The general multiple linear regression model
 # ------------------------------------------------------------------------------
 
  ols_model <- lm(price ~ living_area + monthly_fee +
@@ -20,7 +20,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 03: Multiple regression in R
-# Source lines: CH6 Multiple linear regression.tex:131-134
+# Textbook context: Section: The general multiple linear regression model
 # ------------------------------------------------------------------------------
 
     library("lmtest")
@@ -30,7 +30,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 04: Multiple regression in R
-# Source lines: CH6 Multiple linear regression.tex:150-152
+# Textbook context: Section: The general multiple linear regression model
 # ------------------------------------------------------------------------------
 
       lmtest::coefci(ols_model,
@@ -39,7 +39,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 05: Multiple regression in R
-# Source lines: CH6 Multiple linear regression.tex:158-162
+# Textbook context: Section: The general multiple linear regression model
 # ------------------------------------------------------------------------------
 
  b1 <- rob_inf["living_area", "Estimate"]
@@ -50,7 +50,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 06: $F$-test in R
-# Source lines: CH6 Multiple linear regression.tex:441-443
+# Textbook context: Section: $F$-test
 # ------------------------------------------------------------------------------
 
  ols_model_l <- lm(price ~ living_area + monthly_fee +
@@ -59,21 +59,21 @@
 
 # ------------------------------------------------------------------------------
 # Box 07: $F$-test in R
-# Source lines: CH6 Multiple linear regression.tex:451-451
+# Textbook context: Section: $F$-test
 # ------------------------------------------------------------------------------
 
     n <- nobs(ols_model_l)
 
 # ------------------------------------------------------------------------------
 # Box 08: $F$-test in R
-# Source lines: CH6 Multiple linear regression.tex:465-465
+# Textbook context: Section: $F$-test
 # ------------------------------------------------------------------------------
 
     b <- !is.na(df$new_production) & !is.na(df$build_year)
 
 # ------------------------------------------------------------------------------
 # Box 09: $F$-test in R
-# Source lines: CH6 Multiple linear regression.tex:469-470
+# Textbook context: Section: $F$-test
 # ------------------------------------------------------------------------------
 
     ols_model_s <- lm(price ~ living_area + monthly_fee,
@@ -81,7 +81,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 10: $F$-test in R
-# Source lines: CH6 Multiple linear regression.tex:478-481
+# Textbook context: Section: $F$-test
 # ------------------------------------------------------------------------------
 
     residuals_l <- residuals(ols_model_l)
@@ -91,7 +91,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 11: $F$-test in R
-# Source lines: CH6 Multiple linear regression.tex:485-486
+# Textbook context: Section: $F$-test
 # ------------------------------------------------------------------------------
 
     K <- 4
@@ -99,7 +99,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 12: $F$-test in R
-# Source lines: CH6 Multiple linear regression.tex:490-491
+# Textbook context: Section: $F$-test
 # ------------------------------------------------------------------------------
 
     F_obs <- ((RSS_s - RSS_l) / (K - G)) / 
@@ -107,28 +107,28 @@
 
 # ------------------------------------------------------------------------------
 # Box 13: $F$-test in R
-# Source lines: CH6 Multiple linear regression.tex:495-495
+# Textbook context: Section: $F$-test
 # ------------------------------------------------------------------------------
 
  p <- 1 - pf(F_obs, df1=K-G, df2=n-(K+1))
 
 # ------------------------------------------------------------------------------
 # Box 14: $F$-test in R
-# Source lines: CH6 Multiple linear regression.tex:501-501
+# Textbook context: Section: $F$-test
 # ------------------------------------------------------------------------------
 
     anova(ols_model_s, ols_model_l)
 
 # ------------------------------------------------------------------------------
 # Box 15: $F$-test in R
-# Source lines: CH6 Multiple linear regression.tex:505-505
+# Textbook context: Section: $F$-test
 # ------------------------------------------------------------------------------
 
  summary(ols_model_l)
 
 # ------------------------------------------------------------------------------
 # Box 16: Robust $F$-test in R
-# Source lines: CH6 Multiple linear regression.tex:590-591
+# Textbook context: Section: $F$-test | Subsection: Robust $F$-test
 # ------------------------------------------------------------------------------
 
     library("lmtest")
@@ -136,7 +136,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 17: Robust $F$-test in R
-# Source lines: CH6 Multiple linear regression.tex:595-596
+# Textbook context: Section: $F$-test | Subsection: Robust $F$-test
 # ------------------------------------------------------------------------------
 
     waldtest(ols_model_s, ols_model_l,
@@ -144,7 +144,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 18: Confidence intervals for expected value and prediction intervals in R
-# Source lines: CH6 Multiple linear regression.tex:709-712
+# Textbook context: Section: Uncertainty of the conditional expectation | Subsection: Prediction interval
 # ------------------------------------------------------------------------------
 
  ols_model <- lm(price ~ living_area, data=df)
@@ -154,7 +154,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 19: Confidence intervals for expected value and prediction intervals in R
-# Source lines: CH6 Multiple linear regression.tex:716-721
+# Textbook context: Section: Uncertainty of the conditional expectation | Subsection: Prediction interval
 # ------------------------------------------------------------------------------
 
   n <- nobs(ols_model)
@@ -166,7 +166,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 20: Confidence intervals for expected value and prediction intervals in R
-# Source lines: CH6 Multiple linear regression.tex:725-728
+# Textbook context: Section: Uncertainty of the conditional expectation | Subsection: Prediction interval
 # ------------------------------------------------------------------------------
 
  alpha <- 0.05
@@ -176,7 +176,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 21: Confidence intervals for expected value and prediction intervals in R
-# Source lines: CH6 Multiple linear regression.tex:732-734
+# Textbook context: Section: Uncertainty of the conditional expectation | Subsection: Prediction interval
 # ------------------------------------------------------------------------------
 
  var_tildeepsilon_x0 <- var_eY_x0 + s2_epsilon
@@ -185,7 +185,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 22: Confidence intervals for expected value and prediction intervals in R
-# Source lines: CH6 Multiple linear regression.tex:740-741
+# Textbook context: Section: Uncertainty of the conditional expectation | Subsection: Prediction interval
 # ------------------------------------------------------------------------------
 
  ols_model2 <- lm(price ~ living_area + monthly_fee +
@@ -193,7 +193,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 23: Confidence intervals for expected value and prediction intervals in R
-# Source lines: CH6 Multiple linear regression.tex:745-752
+# Textbook context: Section: Uncertainty of the conditional expectation | Subsection: Prediction interval
 # ------------------------------------------------------------------------------
 
  eval_df <- data.frame(living_area=80,

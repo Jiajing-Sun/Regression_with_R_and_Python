@@ -1,0 +1,154 @@
+---
+title: "Chapter 05: The simple linear regression model"
+subtitle: "Regression with R and Python: Description, Prediction, and Causal Analysis for Applied Social Science and Econometrics"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+---
+
+This R Markdown workbook follows the chapter's code examples in textbook order. It is intended as a practical companion for advanced undergraduate and beginning master's students in applied social sciences and econometrics.
+
+> This workbook is a reference companion: code chunks are shown in textbook order but are not executed during rendering.
+
+- Companion R script: [R/chapter05.R](R/chapter05.R)
+- Chapter overview: [README.md](README.md)
+- Textbook chapter: `The simple linear regression model`
+
+> Some textbook chunks install packages. If those packages are already installed on your machine, you can skip the installation lines when working through the notebook.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>", eval = FALSE)
+chapter_dir <- dirname(normalizePath(knitr::current_input()))
+data_dir <- file.path(chapter_dir, "data")
+if (dir.exists(data_dir)) {
+  knitr::opts_knit$set(root.dir = data_dir)
+} else {
+  knitr::opts_knit$set(root.dir = chapter_dir)
+}
+```
+
+## Inference for regression in R
+
+### Box 01
+
+Textbook context: Section: Inference to the population with spherical error terms.
+
+```{r inference-for-regression-in-r-01}
+ s2_epsilon <- RSS / (n - 2)
+ SSX <- sum((df$living_area - mean(df$living_area))^2)
+ var_hat_beta_1_hat <- s2_epsilon / SSX
+```
+
+### Box 02
+
+Textbook context: Section: Inference to the population with spherical error terms.
+
+```{r inference-for-regression-in-r-02}
+ beta_1_H0 <- 0
+ se_beta_1_hat <- sqrt(var_hat_beta_1_hat)
+ t_stat <- (beta_1_hat - beta_1_H0) / se_beta_1_hat
+ p_val <- 2 * (1 - pt(abs(t_stat), df=n-2))
+```
+
+### Box 03
+
+Textbook context: Section: Inference to the population with spherical error terms.
+
+```{r inference-for-regression-in-r-03}
+    alpha <- 0.1
+    t_crit <- qt(1-alpha/2, df=n-2)
+    lb <- beta_1_hat - t_crit * se_beta_1_hat
+    ub <- beta_1_hat + t_crit * se_beta_1_hat
+```
+
+### Box 04
+
+Textbook context: Section: Inference to the population with spherical error terms.
+
+```{r inference-for-regression-in-r-04}
+ sum_ols_model <- summary(ols_model)
+```
+
+### Box 05
+
+Textbook context: Section: Inference to the population with spherical error terms.
+
+```{r inference-for-regression-in-r-05}
+ reg_table <- sum_ols_model$coefficients
+```
+
+### Box 06
+
+Textbook context: Section: Inference to the population with spherical error terms.
+
+```{r inference-for-regression-in-r-06}
+ reg_table[2, 3]
+```
+
+### Box 07
+
+Textbook context: Section: Inference to the population with spherical error terms.
+
+```{r inference-for-regression-in-r-07}
+ confint(ols_model, level=0.9)
+```
+
+### Box 08
+
+Textbook context: Section: Inference to the population with spherical error terms.
+
+```{r inference-for-regression-in-r-08}
+ ols_model2 <- lm(price ~ new_production, data=df)
+```
+
+### Box 09
+
+Textbook context: Section: Inference to the population with spherical error terms.
+
+```{r inference-for-regression-in-r-09}
+    confint(ols_model2, level=0.9)
+```
+
+## Robust inference in R
+
+### Box 10
+
+Textbook context: Section: Asymptotic inference to the population.
+
+```{r robust-inference-in-r-10}
+ dx2 <- (df$living_area - mean(df$living_area))^2
+```
+
+### Box 11
+
+Textbook context: Section: Asymptotic inference to the population.
+
+```{r robust-inference-in-r-11}
+ var_beta_1_var_r <- sum(dx2 * u_hat^2) / (sum(dx2))^2
+```
+
+### Box 12
+
+Textbook context: Section: Asymptotic inference to the population.
+
+```{r robust-inference-in-r-12}
+ se_beta_1_hat_r <- sqrt(var_beta_1_var_r)
+```
+
+### Box 13
+
+Textbook context: Section: Asymptotic inference to the population.
+
+```{r robust-inference-in-r-13}
+    library("lmtest")
+    library("sandwich")
+```
+
+### Box 14
+
+Textbook context: Section: Asymptotic inference to the population.
+
+```{r robust-inference-in-r-14}
+ coeftest(ols_model, vcov=vcovHC(ols_model, type="HC0"))
+```

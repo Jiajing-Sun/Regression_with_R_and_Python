@@ -1,0 +1,122 @@
+---
+title: "Chapter 03: Basic probability theory and statistical inference"
+subtitle: "Regression with R and Python: Description, Prediction, and Causal Analysis for Applied Social Science and Econometrics"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+---
+
+This R Markdown workbook follows the chapter's code examples in textbook order. It is intended as a practical companion for advanced undergraduate and beginning master's students in applied social sciences and econometrics.
+
+> This workbook is a reference companion: code chunks are shown in textbook order but are not executed during rendering.
+
+- Companion R script: [R/chapter03.R](R/chapter03.R)
+- Chapter overview: [README.md](README.md)
+- Textbook chapter: `Basic probability theory and statistical inference`
+
+> Some textbook chunks install packages. If those packages are already installed on your machine, you can skip the installation lines when working through the notebook.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>", eval = FALSE)
+chapter_dir <- dirname(normalizePath(knitr::current_input()))
+data_dir <- file.path(chapter_dir, "data")
+if (dir.exists(data_dir)) {
+  knitr::opts_knit$set(root.dir = data_dir)
+} else {
+  knitr::opts_knit$set(root.dir = chapter_dir)
+}
+```
+
+## Monte Carlo simulation in R
+
+### Box 01
+
+Textbook context: Section: Estimators.
+
+```{r monte-carlo-simulation-in-r-01}
+    n <- 50
+    dice_throws <- sample(1:6, n, replace=TRUE)
+    ybar <- mean(dice_throws)
+```
+
+### Box 02
+
+Textbook context: Section: Estimators.
+
+```{r monte-carlo-simulation-in-r-02}
+    nr_samples <- 10000
+    n <- 50
+    ybar_dist <- rep(NA, nr_samples)
+    for (i in 1:nr_samples){
+      dice_throws <- sample(1:6, n, replace=TRUE)
+      ybar_dist[i] <- mean(dice_throws)
+      print(i)
+    }
+```
+
+### Box 03
+
+Textbook context: Section: Estimators.
+
+```{r monte-carlo-simulation-in-r-03}
+ hist(ybar_dist, breaks=50)
+```
+
+## Hypothesis tests and confidence intervals with R
+
+### Box 04
+
+Textbook context: Section: Hypothesis testing and confidence intervals | Subsection: Confidence interval.
+
+```{r hypothesis-tests-and-confidence-intervals-with-r-04}
+    dice_throws <- c(rep(1, 13), rep(2, 7), rep(3, 8),
+                     rep(4, 9), rep(5, 9), rep(6, 4))
+```
+
+### Box 05
+
+Textbook context: Section: Hypothesis testing and confidence intervals | Subsection: Confidence interval.
+
+```{r hypothesis-tests-and-confidence-intervals-with-r-05}
+    n <- length(dice_throws)
+    mean_dice_throws <- mean(dice_throws)
+    var_dice_throws <- 
+      sum((dice_throws - mean_dice_throws)^2) / (n - 1)
+```
+
+### Box 06
+
+Textbook context: Section: Hypothesis testing and confidence intervals | Subsection: Confidence interval.
+
+```{r hypothesis-tests-and-confidence-intervals-with-r-06}
+    se_dice_throws <- sqrt(var_dice_throws / n)
+    t_stat <- (mean_dice_throws - 3.5) / se_dice_throws
+```
+
+### Box 07
+
+Textbook context: Section: Hypothesis testing and confidence intervals | Subsection: Confidence interval.
+
+```{r hypothesis-tests-and-confidence-intervals-with-r-07}
+    p_value <- 2 * (1 - pt(abs(t_stat), df=n-1))
+```
+
+### Box 08
+
+Textbook context: Section: Hypothesis testing and confidence intervals | Subsection: Confidence interval.
+
+```{r hypothesis-tests-and-confidence-intervals-with-r-08}
+    alpha <- 0.05
+    t_crit <- qt(1-alpha/2, n-1)
+    ci_lower <- mean_dice_throws - t_crit * se_dice_throws
+    ci_upper <- mean_dice_throws + t_crit * se_dice_throws
+```
+
+### Box 09
+
+Textbook context: Section: Hypothesis testing and confidence intervals | Subsection: Confidence interval.
+
+```{r hypothesis-tests-and-confidence-intervals-with-r-09}
+ t.test(dice_throws, mu=3.5)
+```

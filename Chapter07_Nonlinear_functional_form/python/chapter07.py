@@ -5,7 +5,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 01: Air pollution and weather in Python
-# Source lines: CH7 Nonlinear functional form.tex:528-531
+# Textbook context: Section: Example: Relationship between weather and air pollution
 # ------------------------------------------------------------------------------
 
 import numpy as np
@@ -15,7 +15,7 @@ df = pd.read_csv("pollution_sf.csv")
 
 # ------------------------------------------------------------------------------
 # Box 02: Air pollution and weather in Python
-# Source lines: CH7 Nonlinear functional form.tex:536-537
+# Textbook context: Section: Example: Relationship between weather and air pollution
 # ------------------------------------------------------------------------------
 
 bins = np.arange(0, 361, 10)  # 0,10,20,...,360
@@ -23,7 +23,7 @@ df["wind_cat"] = pd.cut(df["wind_direction"], bins=bins, include_lowest=True)
 
 # ------------------------------------------------------------------------------
 # Box 03: Air pollution and weather in Python
-# Source lines: CH7 Nonlinear functional form.tex:542-551
+# Textbook context: Section: Example: Relationship between weather and air pollution
 # ------------------------------------------------------------------------------
 
 df_agg = (
@@ -39,7 +39,7 @@ df_agg["wind_direction"] = df_agg["wind_cat"].apply(
 
 # ------------------------------------------------------------------------------
 # Box 04: Air pollution and weather in Python
-# Source lines: CH7 Nonlinear functional form.tex:556-559
+# Textbook context: Section: Example: Relationship between weather and air pollution
 # ------------------------------------------------------------------------------
 
 import matplotlib.pyplot as plt
@@ -49,7 +49,7 @@ plt.show()
 
 # ------------------------------------------------------------------------------
 # Box 05: Air pollution and weather in Python
-# Source lines: CH7 Nonlinear functional form.tex:564-573
+# Textbook context: Section: Example: Relationship between weather and air pollution
 # ------------------------------------------------------------------------------
 
 wd = df["wind_direction"]
@@ -65,7 +65,7 @@ df["strong_wind"] = np.where(ws.isna(), np.nan, (ws >= 3).astype(int))
 
 # ------------------------------------------------------------------------------
 # Box 06: Air pollution and weather in Python
-# Source lines: CH7 Nonlinear functional form.tex:578-580
+# Textbook context: Section: Example: Relationship between weather and air pollution
 # ------------------------------------------------------------------------------
 
 df["wind_direction2"] = df["wind_direction"] ** 2
@@ -74,7 +74,7 @@ df["wind_direction4"] = df["wind_direction"] ** 4
 
 # ------------------------------------------------------------------------------
 # Box 07: Air pollution and weather in Python
-# Source lines: CH7 Nonlinear functional form.tex:585-590
+# Textbook context: Section: Example: Relationship between weather and air pollution
 # ------------------------------------------------------------------------------
 
 import statsmodels.formula.api as smf
@@ -86,7 +86,7 @@ ols_model_poly = smf.ols(
 
 # ------------------------------------------------------------------------------
 # Box 08: Air pollution and weather in Python
-# Source lines: CH7 Nonlinear functional form.tex:595-598
+# Textbook context: Section: Example: Relationship between weather and air pollution
 # ------------------------------------------------------------------------------
 
 ols_model_poly_alt = smf.ols(
@@ -96,7 +96,7 @@ ols_model_poly_alt = smf.ols(
 
 # ------------------------------------------------------------------------------
 # Box 09: Air pollution and weather in Python
-# Source lines: CH7 Nonlinear functional form.tex:603-604
+# Textbook context: Section: Example: Relationship between weather and air pollution
 # ------------------------------------------------------------------------------
 
 newdata = pd.DataFrame({"wind_direction": np.arange(0, 361, 1)})
@@ -104,7 +104,7 @@ newdata["pred"] = ols_model_poly_alt.predict(newdata)
 
 # ------------------------------------------------------------------------------
 # Box 10: Air pollution and weather in Python
-# Source lines: CH7 Nonlinear functional form.tex:609-614
+# Textbook context: Section: Example: Relationship between weather and air pollution
 # ------------------------------------------------------------------------------
 
 newdata2 = newdata.copy()
@@ -116,7 +116,7 @@ newdata["pred_alt"] = ols_model_poly.predict(newdata2)
 
 # ------------------------------------------------------------------------------
 # Box 11: Air pollution and weather in Python
-# Source lines: CH7 Nonlinear functional form.tex:619-621
+# Textbook context: Section: Example: Relationship between weather and air pollution
 # ------------------------------------------------------------------------------
 
 plt.scatter(df_agg["wind_direction"], df_agg["pm25_mean"])
@@ -125,7 +125,7 @@ plt.show()
 
 # ------------------------------------------------------------------------------
 # Box 12: Air pollution and weather in Python
-# Source lines: CH7 Nonlinear functional form.tex:626-627
+# Textbook context: Section: Example: Relationship between weather and air pollution
 # ------------------------------------------------------------------------------
 
 df["land_wind_strong_wind"] = df["land_wind"] * df["strong_wind"]
@@ -133,7 +133,7 @@ df["land_wind_wind_speed"]  = df["land_wind"] * df["wind_speed"]
 
 # ------------------------------------------------------------------------------
 # Box 13: Air pollution and weather in Python
-# Source lines: CH7 Nonlinear functional form.tex:632-648
+# Textbook context: Section: Example: Relationship between weather and air pollution
 # ------------------------------------------------------------------------------
 
 ols_model1 = smf.ols("pm25 ~ land_wind", data=df).fit()

@@ -5,7 +5,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 01: Inference for regression in R
-# Source lines: CH5 Simple linear regression.tex:277-279
+# Textbook context: Section: Inference to the population with spherical error terms
 # ------------------------------------------------------------------------------
 
  s2_epsilon <- RSS / (n - 2)
@@ -14,7 +14,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 02: Inference for regression in R
-# Source lines: CH5 Simple linear regression.tex:283-286
+# Textbook context: Section: Inference to the population with spherical error terms
 # ------------------------------------------------------------------------------
 
  beta_1_H0 <- 0
@@ -24,7 +24,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 03: Inference for regression in R
-# Source lines: CH5 Simple linear regression.tex:294-297
+# Textbook context: Section: Inference to the population with spherical error terms
 # ------------------------------------------------------------------------------
 
     alpha <- 0.1
@@ -34,70 +34,70 @@
 
 # ------------------------------------------------------------------------------
 # Box 04: Inference for regression in R
-# Source lines: CH5 Simple linear regression.tex:303-303
+# Textbook context: Section: Inference to the population with spherical error terms
 # ------------------------------------------------------------------------------
 
  sum_ols_model <- summary(ols_model)
 
 # ------------------------------------------------------------------------------
 # Box 05: Inference for regression in R
-# Source lines: CH5 Simple linear regression.tex:307-307
+# Textbook context: Section: Inference to the population with spherical error terms
 # ------------------------------------------------------------------------------
 
  reg_table <- sum_ols_model$coefficients
 
 # ------------------------------------------------------------------------------
 # Box 06: Inference for regression in R
-# Source lines: CH5 Simple linear regression.tex:311-311
+# Textbook context: Section: Inference to the population with spherical error terms
 # ------------------------------------------------------------------------------
 
  reg_table[2, 3]
 
 # ------------------------------------------------------------------------------
 # Box 07: Inference for regression in R
-# Source lines: CH5 Simple linear regression.tex:315-315
+# Textbook context: Section: Inference to the population with spherical error terms
 # ------------------------------------------------------------------------------
 
  confint(ols_model, level=0.9)
 
 # ------------------------------------------------------------------------------
 # Box 08: Inference for regression in R
-# Source lines: CH5 Simple linear regression.tex:321-321
+# Textbook context: Section: Inference to the population with spherical error terms
 # ------------------------------------------------------------------------------
 
  ols_model2 <- lm(price ~ new_production, data=df)
 
 # ------------------------------------------------------------------------------
 # Box 09: Inference for regression in R
-# Source lines: CH5 Simple linear regression.tex:327-327
+# Textbook context: Section: Inference to the population with spherical error terms
 # ------------------------------------------------------------------------------
 
     confint(ols_model2, level=0.9)
 
 # ------------------------------------------------------------------------------
 # Box 10: Robust inference in R
-# Source lines: CH5 Simple linear regression.tex:440-440
+# Textbook context: Section: Asymptotic inference to the population
 # ------------------------------------------------------------------------------
 
  dx2 <- (df$living_area - mean(df$living_area))^2
 
 # ------------------------------------------------------------------------------
 # Box 11: Robust inference in R
-# Source lines: CH5 Simple linear regression.tex:444-444
+# Textbook context: Section: Asymptotic inference to the population
 # ------------------------------------------------------------------------------
 
  var_beta_1_var_r <- sum(dx2 * u_hat^2) / (sum(dx2))^2
 
 # ------------------------------------------------------------------------------
 # Box 12: Robust inference in R
-# Source lines: CH5 Simple linear regression.tex:448-448
+# Textbook context: Section: Asymptotic inference to the population
 # ------------------------------------------------------------------------------
 
  se_beta_1_hat_r <- sqrt(var_beta_1_var_r)
 
 # ------------------------------------------------------------------------------
 # Box 13: Robust inference in R
-# Source lines: CH5 Simple linear regression.tex:455-456
+# Textbook context: Section: Asymptotic inference to the population
 # ------------------------------------------------------------------------------
 
     library("lmtest")
@@ -105,7 +105,7 @@
 
 # ------------------------------------------------------------------------------
 # Box 14: Robust inference in R
-# Source lines: CH5 Simple linear regression.tex:460-460
+# Textbook context: Section: Asymptotic inference to the population
 # ------------------------------------------------------------------------------
 
  coeftest(ols_model, vcov=vcovHC(ols_model, type="HC0"))
