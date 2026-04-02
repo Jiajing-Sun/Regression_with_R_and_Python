@@ -3,7 +3,8 @@
 # Extracted from the current textbook LaTeX source in original order.
 
 # ------------------------------------------------------------------------------
-# Chunk 001 (Appendix Python.tex:1516-1518)
+# Chunk 001
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Using Python's documentation tools
 # ------------------------------------------------------------------------------
@@ -13,7 +14,8 @@ import numpy as np
 help(np.random.Generator.uniform)
 
 # ------------------------------------------------------------------------------
-# Chunk 002 (Appendix Python.tex:1524-1545)
+# Chunk 002
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Using Python's documentation tools
 # ------------------------------------------------------------------------------

@@ -3,7 +3,8 @@
 # Extracted from the current textbook LaTeX source in original order.
 
 # ------------------------------------------------------------------------------
-# Chunk 001 (Appendix R program.tex:1791-1815)
+# Chunk 001
+# Chapter: The R Programming Language
 # Section: Accessing data through APIs
 # Subsection: Examples
 # Subsubsection: World Bank indicators via WDI
@@ -36,7 +37,8 @@ plot(sweden$year, sweden$gdppc, type = "l",
      main = "Sweden: GDP per capita over time")
 
 # ------------------------------------------------------------------------------
-# Chunk 002 (Appendix R program.tex:1821-1825)
+# Chunk 002
+# Chapter: The R Programming Language
 # Section: Accessing data through APIs
 # Subsection: Examples
 # Subsubsection: World Bank indicators via WDI
@@ -49,7 +51,8 @@ saveRDS(wb, file = "data_cache/wb_le_gdppc.rds")
 # wb <- readRDS("data_cache/wb_le_gdppc.rds")
 
 # ------------------------------------------------------------------------------
-# Chunk 003 (Appendix R program.tex:1866-1877)
+# Chunk 003
+# Chapter: The R Programming Language
 # Section: Accessing data through APIs
 # Subsection: Examples
 # Subsubsection: FRED via fredr (API key required)
@@ -69,7 +72,8 @@ unrate <- fredr(
 head(unrate)
 
 # ------------------------------------------------------------------------------
-# Chunk 004 (Appendix R program.tex:1887-1896)
+# Chunk 004
+# Chapter: The R Programming Language
 # Section: Accessing data through APIs
 # Subsection: Examples
 # Subsubsection: Eurostat via eurostat
@@ -87,7 +91,8 @@ une_se <- une[une$geo == "SE" & une$sex == "T" & une$age == "TOTAL", ]
 head(une_se)
 
 # ------------------------------------------------------------------------------
-# Chunk 005 (Appendix R program.tex:1906-1912)
+# Chunk 005
+# Chapter: The R Programming Language
 # Section: Accessing data through APIs
 # Subsection: Examples
 # Subsubsection: OECD via OECD
@@ -102,7 +107,8 @@ cli <- get_dataset("MEI_CLI", start_time = 2018)
 head(cli)
 
 # ------------------------------------------------------------------------------
-# Chunk 006 (Appendix R program.tex:1922-1932)
+# Chunk 006
+# Chapter: The R Programming Language
 # Section: Accessing data through APIs
 # Subsection: Examples
 # Subsubsection: Market data via quantmod (Yahoo Finance interface)
@@ -121,7 +127,8 @@ head(MSFT)
 plot(Ad(MSFT), main = "MSFT adjusted close", ylab = "Price")
 
 # ------------------------------------------------------------------------------
-# Chunk 007 (Appendix R program.tex:1942-1955)
+# Chunk 007
+# Chapter: The R Programming Language
 # Section: Accessing data through APIs
 # Subsection: Examples
 # Subsubsection: Calling an API directly (advanced, but useful)

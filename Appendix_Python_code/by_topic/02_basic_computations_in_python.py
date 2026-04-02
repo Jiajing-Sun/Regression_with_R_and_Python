@@ -3,7 +3,8 @@
 # Extracted from the current textbook LaTeX source in original order.
 
 # ------------------------------------------------------------------------------
-# Chunk 001 (Appendix Python.tex:325-341)
+# Chunk 001
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic computations in Python
 # Subsubsection: Arithmetic and vectorized operations
@@ -28,7 +29,8 @@ math.sqrt(81)
 (5 + 9) * 2
 
 # ------------------------------------------------------------------------------
-# Chunk 002 (Appendix Python.tex:351-363)
+# Chunk 002
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic computations in Python
 # Subsubsection: Note (why you see ... in the Python prompt).
@@ -49,7 +51,8 @@ x * np.array([2, 2, 2, 2])
 x > 2
 
 # ------------------------------------------------------------------------------
-# Chunk 003 (Appendix Python.tex:370-378)
+# Chunk 003
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic computations in Python
 # Subsubsection: Note (why you see ... in the Python prompt).
@@ -67,7 +70,8 @@ x + np.array([1, 2])
 np.arange(1, 6) + np.array([1, 2, 3])
 
 # ------------------------------------------------------------------------------
-# Chunk 004 (Appendix Python.tex:383-383)
+# Chunk 004
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic computations in Python
 # Subsubsection: Note (why you see ... in the Python prompt).
@@ -77,7 +81,8 @@ np.arange(1, 6) + np.array([1, 2, 3])
 x.shape
 
 # ------------------------------------------------------------------------------
-# Chunk 005 (Appendix Python.tex:390-403)
+# Chunk 005
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic computations in Python
 # Subsubsection: Inspecting objects: type(), dir(), and help()
@@ -99,7 +104,8 @@ dir("hello")
 help(len)
 
 # ------------------------------------------------------------------------------
-# Chunk 006 (Appendix Python.tex:408-423)
+# Chunk 006
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic computations in Python
 # Subsubsection: Inspecting objects: type(), dir(), and help()
@@ -123,7 +129,8 @@ df.describe()
 df.info()
 
 # ------------------------------------------------------------------------------
-# Chunk 007 (Appendix Python.tex:433-448)
+# Chunk 007
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic computations in Python
 # Subsubsection: Fundamental constants and special values
@@ -148,7 +155,8 @@ np.log(np.array([1, 10, 100]))
 np.exp(np.array([0, 1, 2]))
 
 # ------------------------------------------------------------------------------
-# Chunk 008 (Appendix Python.tex:460-480)
+# Chunk 008
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic computations in Python
 # Subsubsection: Fundamental constants and special values
@@ -178,7 +186,8 @@ np.isnan(np.nan)
 np.isfinite(np.array([1.0, np.nan, np.inf]))
 
 # ------------------------------------------------------------------------------
-# Chunk 009 (Appendix Python.tex:489-500)
+# Chunk 009
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic computations in Python
 # Subsubsection: Fundamental constants and special values

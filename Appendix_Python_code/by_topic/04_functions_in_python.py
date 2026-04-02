@@ -3,7 +3,8 @@
 # Extracted from the current textbook LaTeX source in original order.
 
 # ------------------------------------------------------------------------------
-# Chunk 001 (Appendix Python.tex:691-694)
+# Chunk 001
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Functions in Python
 # Subsubsection: Defining and calling functions
@@ -15,7 +16,8 @@ def add_numbers(a, b):
 add_numbers(5, 3)
 
 # ------------------------------------------------------------------------------
-# Chunk 002 (Appendix Python.tex:701-706)
+# Chunk 002
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Functions in Python
 # Subsubsection: Defining and calling functions
@@ -30,7 +32,8 @@ power(3, p=4)       # explicit
 power(x=3, p=4)
 
 # ------------------------------------------------------------------------------
-# Chunk 003 (Appendix Python.tex:713-735)
+# Chunk 003
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Functions in Python
 # Subsubsection: Defining and calling functions

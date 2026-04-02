@@ -3,7 +3,8 @@
 # Extracted from the current textbook LaTeX source in original order.
 
 # ------------------------------------------------------------------------------
-# Chunk 001 (Appendix Python.tex:325-341)
+# Chunk 001
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic computations in Python
 # Subsubsection: Arithmetic and vectorized operations
@@ -28,7 +29,8 @@ math.sqrt(81)
 (5 + 9) * 2
 
 # ------------------------------------------------------------------------------
-# Chunk 002 (Appendix Python.tex:351-363)
+# Chunk 002
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic computations in Python
 # Subsubsection: Note (why you see ... in the Python prompt).
@@ -49,7 +51,8 @@ x * np.array([2, 2, 2, 2])
 x > 2
 
 # ------------------------------------------------------------------------------
-# Chunk 003 (Appendix Python.tex:370-378)
+# Chunk 003
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic computations in Python
 # Subsubsection: Note (why you see ... in the Python prompt).
@@ -67,7 +70,8 @@ x + np.array([1, 2])
 np.arange(1, 6) + np.array([1, 2, 3])
 
 # ------------------------------------------------------------------------------
-# Chunk 004 (Appendix Python.tex:383-383)
+# Chunk 004
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic computations in Python
 # Subsubsection: Note (why you see ... in the Python prompt).
@@ -77,7 +81,8 @@ np.arange(1, 6) + np.array([1, 2, 3])
 x.shape
 
 # ------------------------------------------------------------------------------
-# Chunk 005 (Appendix Python.tex:390-403)
+# Chunk 005
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic computations in Python
 # Subsubsection: Inspecting objects: type(), dir(), and help()
@@ -99,7 +104,8 @@ dir("hello")
 help(len)
 
 # ------------------------------------------------------------------------------
-# Chunk 006 (Appendix Python.tex:408-423)
+# Chunk 006
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic computations in Python
 # Subsubsection: Inspecting objects: type(), dir(), and help()
@@ -123,7 +129,8 @@ df.describe()
 df.info()
 
 # ------------------------------------------------------------------------------
-# Chunk 007 (Appendix Python.tex:433-448)
+# Chunk 007
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic computations in Python
 # Subsubsection: Fundamental constants and special values
@@ -148,7 +155,8 @@ np.log(np.array([1, 10, 100]))
 np.exp(np.array([0, 1, 2]))
 
 # ------------------------------------------------------------------------------
-# Chunk 008 (Appendix Python.tex:460-480)
+# Chunk 008
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic computations in Python
 # Subsubsection: Fundamental constants and special values
@@ -178,7 +186,8 @@ np.isnan(np.nan)
 np.isfinite(np.array([1.0, np.nan, np.inf]))
 
 # ------------------------------------------------------------------------------
-# Chunk 009 (Appendix Python.tex:489-500)
+# Chunk 009
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic computations in Python
 # Subsubsection: Fundamental constants and special values
@@ -199,7 +208,8 @@ np.finfo(np.float64).tiny
 np.finfo(np.float64).max
 
 # ------------------------------------------------------------------------------
-# Chunk 010 (Appendix Python.tex:527-534)
+# Chunk 010
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Loops and iteration in Python
 # Subsubsection: The for loop
@@ -215,7 +225,8 @@ for c in cities:
     print(c)
 
 # ------------------------------------------------------------------------------
-# Chunk 011 (Appendix Python.tex:541-544)
+# Chunk 011
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Loops and iteration in Python
 # Subsubsection: The for loop
@@ -228,7 +239,8 @@ for i, value in enumerate(x):
     print(i, value)
 
 # ------------------------------------------------------------------------------
-# Chunk 012 (Appendix Python.tex:551-555)
+# Chunk 012
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Loops and iteration in Python
 # Subsubsection: The for loop
@@ -242,7 +254,8 @@ for n, v in zip(names, values):
     print(n, v)
 
 # ------------------------------------------------------------------------------
-# Chunk 013 (Appendix Python.tex:562-570)
+# Chunk 013
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Loops and iteration in Python
 # Subsubsection: The for loop
@@ -260,7 +273,8 @@ for i, xi in enumerate(x):
 y
 
 # ------------------------------------------------------------------------------
-# Chunk 014 (Appendix Python.tex:579-582)
+# Chunk 014
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Loops and iteration in Python
 # Subsubsection: The while loop
@@ -272,7 +286,8 @@ while i <= 5:
     i = i + 1
 
 # ------------------------------------------------------------------------------
-# Chunk 015 (Appendix Python.tex:591-599)
+# Chunk 015
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Loops and iteration in Python
 # Subsubsection: The while loop
@@ -289,7 +304,8 @@ while value < 1000 and iter_ < 100:
 {"iter": iter_, "value": value}
 
 # ------------------------------------------------------------------------------
-# Chunk 016 (Appendix Python.tex:608-613)
+# Chunk 016
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Loops and iteration in Python
 # Subsubsection: break, continue, and loop else
@@ -303,7 +319,8 @@ for k in range(1, 11):
     print(k)
 
 # ------------------------------------------------------------------------------
-# Chunk 017 (Appendix Python.tex:619-624)
+# Chunk 017
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Loops and iteration in Python
 # Subsubsection: break, continue, and loop else
@@ -317,7 +334,8 @@ else:
     print("no divisor found")
 
 # ------------------------------------------------------------------------------
-# Chunk 018 (Appendix Python.tex:640-648)
+# Chunk 018
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Loops and iteration in Python
 # Subsubsection: Alternatives to explicit loops
@@ -335,7 +353,8 @@ x**2
 np.sum(x**2)
 
 # ------------------------------------------------------------------------------
-# Chunk 019 (Appendix Python.tex:655-659)
+# Chunk 019
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Loops and iteration in Python
 # Subsubsection: Alternatives to explicit loops
@@ -349,7 +368,8 @@ np.sum(x**2)
 [a for a in range(1, 6) if a > 2]
 
 # ------------------------------------------------------------------------------
-# Chunk 020 (Appendix Python.tex:666-667)
+# Chunk 020
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Loops and iteration in Python
 # Subsubsection: Alternatives to explicit loops
@@ -360,7 +380,8 @@ list(map(lambda a: a + 1, range(1, 6)))
 list(filter(lambda a: a > 2, range(1, 6)))
 
 # ------------------------------------------------------------------------------
-# Chunk 021 (Appendix Python.tex:673-673)
+# Chunk 021
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Loops and iteration in Python
 # Subsubsection: Alternatives to explicit loops
@@ -370,7 +391,8 @@ list(filter(lambda a: a > 2, range(1, 6)))
 sum(a*a for a in range(1, 11))   # sum of squares without building a list
 
 # ------------------------------------------------------------------------------
-# Chunk 022 (Appendix Python.tex:691-694)
+# Chunk 022
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Functions in Python
 # Subsubsection: Defining and calling functions
@@ -382,7 +404,8 @@ def add_numbers(a, b):
 add_numbers(5, 3)
 
 # ------------------------------------------------------------------------------
-# Chunk 023 (Appendix Python.tex:701-706)
+# Chunk 023
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Functions in Python
 # Subsubsection: Defining and calling functions
@@ -397,7 +420,8 @@ power(3, p=4)       # explicit
 power(x=3, p=4)
 
 # ------------------------------------------------------------------------------
-# Chunk 024 (Appendix Python.tex:713-735)
+# Chunk 024
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Functions in Python
 # Subsubsection: Defining and calling functions
@@ -429,7 +453,8 @@ approx_e_series_vec(10)
 math.exp(1)   # reference value
 
 # ------------------------------------------------------------------------------
-# Chunk 025 (Appendix Python.tex:763-769)
+# Chunk 025
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Core data structures in Python
 # Subsubsection: Lists (and basic indexing)
@@ -444,7 +469,8 @@ x_num[0]       # first element (Python uses 0-based indexing)
 x_num[1:4]     # a slice (elements 2 to 4)
 
 # ------------------------------------------------------------------------------
-# Chunk 026 (Appendix Python.tex:779-779)
+# Chunk 026
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Core data structures in Python
 # Subsubsection: Lists (and basic indexing)
@@ -454,7 +480,8 @@ x_num[1:4]     # a slice (elements 2 to 4)
 [1, "two", 3]     # allowed: heterogeneous list
 
 # ------------------------------------------------------------------------------
-# Chunk 027 (Appendix Python.tex:788-790)
+# Chunk 027
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Core data structures in Python
 # Subsubsection: Tuples
@@ -465,7 +492,8 @@ t
 t[1]          # second element
 
 # ------------------------------------------------------------------------------
-# Chunk 028 (Appendix Python.tex:799-806)
+# Chunk 028
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Core data structures in Python
 # Subsubsection: Dictionaries
@@ -481,7 +509,8 @@ emp
 emp["names"]     # access by key
 
 # ------------------------------------------------------------------------------
-# Chunk 029 (Appendix Python.tex:815-831)
+# Chunk 029
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Core data structures in Python
 # Subsubsection: NumPy arrays (vectors and matrices)
@@ -506,7 +535,8 @@ M[0, 1]       # row 1, column 2 (0-based)
 M[:, 0]       # first column
 
 # ------------------------------------------------------------------------------
-# Chunk 030 (Appendix Python.tex:840-852)
+# Chunk 030
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Core data structures in Python
 # Subsubsection: pandas DataFrames
@@ -527,7 +557,8 @@ df.loc[0:1, :]    # first two rows (label-based)
 df.loc[:, ["name", "age"]]
 
 # ------------------------------------------------------------------------------
-# Chunk 031 (Appendix Python.tex:866-871)
+# Chunk 031
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Core data structures in Python
 # Subsubsection: Arrays beyond two dimensions
@@ -541,7 +572,8 @@ A.shape
 A[0, :, 0]    # first "row block", all columns, first slice
 
 # ------------------------------------------------------------------------------
-# Chunk 032 (Appendix Python.tex:880-885)
+# Chunk 032
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Core data structures in Python
 # Subsubsection: Categorical data (similar in spirit to factors)
@@ -555,7 +587,8 @@ f.categories
 pd.value_counts(f)
 
 # ------------------------------------------------------------------------------
-# Chunk 033 (Appendix Python.tex:911-918)
+# Chunk 033
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Importing data and accessing external sources
 # Subsubsection: File paths and reproducibility
@@ -571,7 +604,8 @@ csv_path = project / "data" / "macro_panel.csv"
 csv_path
 
 # ------------------------------------------------------------------------------
-# Chunk 034 (Appendix Python.tex:923-923)
+# Chunk 034
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Importing data and accessing external sources
 # Subsubsection: File paths and reproducibility
@@ -580,7 +614,8 @@ csv_path
 csv_path.resolve()
 
 # ------------------------------------------------------------------------------
-# Chunk 035 (Appendix Python.tex:934-945)
+# Chunk 035
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Importing data and accessing external sources
 # Subsubsection: Delimited text files: CSV and friends
@@ -600,7 +635,8 @@ df.info()
 df.describe()
 
 # ------------------------------------------------------------------------------
-# Chunk 036 (Appendix Python.tex:955-959)
+# Chunk 036
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Importing data and accessing external sources
 # Subsubsection: Delimited text files: CSV and friends
@@ -613,7 +649,8 @@ df2 = pd.read_csv(csv_path, na_values=["", "NA", ".", "-999"])
 df3 = pd.read_csv(Path("data") / "macro_panel_semicolon.csv", sep=";")
 
 # ------------------------------------------------------------------------------
-# Chunk 037 (Appendix Python.tex:970-978)
+# Chunk 037
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Importing data and accessing external sources
 # Subsubsection: Excel workbooks (.xls and .xlsx)
@@ -630,7 +667,8 @@ survey_wave1 = pd.read_excel(xlsx_path, sheet_name="Wave1")
 survey_wave1.head()
 
 # ------------------------------------------------------------------------------
-# Chunk 038 (Appendix Python.tex:989-995)
+# Chunk 038
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Importing data and accessing external sources
 # Subsubsection: Stata, SPSS, and SAS files
@@ -645,7 +683,8 @@ firm_panel = pd.read_stata(stata_path)
 firm_panel.info()
 
 # ------------------------------------------------------------------------------
-# Chunk 039 (Appendix Python.tex:1008-1016)
+# Chunk 039
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Importing data and accessing external sources
 # Subsubsection: Modern columnar formats: Parquet/Arrow
@@ -662,7 +701,8 @@ df_parquet = pd.read_parquet(parquet_path)
 df_small = pd.read_parquet(parquet_path, columns=["id", "year", "outcome"])
 
 # ------------------------------------------------------------------------------
-# Chunk 040 (Appendix Python.tex:1025-1037)
+# Chunk 040
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Importing data and accessing external sources
 # Subsubsection: APIs and web data (a first look)
@@ -683,7 +723,8 @@ obj = resp.json()
 type(obj)
 
 # ------------------------------------------------------------------------------
-# Chunk 041 (Appendix Python.tex:1043-1046)
+# Chunk 041
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Importing data and accessing external sources
 # Subsubsection: APIs and web data (a first look)
@@ -695,7 +736,8 @@ df_api = pd.json_normalize(obj)
 df_api.head()
 
 # ------------------------------------------------------------------------------
-# Chunk 042 (Appendix Python.tex:1059-1066)
+# Chunk 042
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic dataset manipulation in Python
 # ------------------------------------------------------------------------------
@@ -710,7 +752,8 @@ df.head()
 df.info()
 
 # ------------------------------------------------------------------------------
-# Chunk 043 (Appendix Python.tex:1075-1082)
+# Chunk 043
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic dataset manipulation in Python
 # Subsubsection: Subsetting rows and columns
@@ -726,7 +769,8 @@ df_first10 = df.iloc[:10, :]
 unemp = df["unemp"]
 
 # ------------------------------------------------------------------------------
-# Chunk 044 (Appendix Python.tex:1091-1094)
+# Chunk 044
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic dataset manipulation in Python
 # Subsubsection: Filtering observations
@@ -738,7 +782,8 @@ high_unemp = df[df["unemp"] >= 8]
 len(high_unemp)
 
 # ------------------------------------------------------------------------------
-# Chunk 045 (Appendix Python.tex:1103-1109)
+# Chunk 045
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic dataset manipulation in Python
 # Subsubsection: Filtering observations
@@ -753,7 +798,8 @@ high_unemp2 = df2[df2["unemp"].notna() & (df2["unemp"] >= 8)]
 high_unemp2[["year", "quarter", "unemp"]].head()
 
 # ------------------------------------------------------------------------------
-# Chunk 046 (Appendix Python.tex:1118-1126)
+# Chunk 046
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic dataset manipulation in Python
 # Subsubsection: Creating new variables
@@ -770,7 +816,8 @@ df3["high_unemp"] = df3["unemp"] >= 8
 df3[["realgdp", "log_realgdp", "unemp", "high_unemp"]].head()
 
 # ------------------------------------------------------------------------------
-# Chunk 047 (Appendix Python.tex:1135-1137)
+# Chunk 047
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic dataset manipulation in Python
 # Subsubsection: Aggregating and grouping
@@ -781,7 +828,8 @@ avg_unemp_by_year = df.groupby("year", as_index=False)["unemp"].mean()
 avg_unemp_by_year.head()
 
 # ------------------------------------------------------------------------------
-# Chunk 048 (Appendix Python.tex:1143-1144)
+# Chunk 048
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic dataset manipulation in Python
 # Subsubsection: Aggregating and grouping
@@ -791,7 +839,8 @@ avg_by_year = df.groupby("year", as_index=False)[["unemp", "tbilrate", "infl"]].
 avg_by_year.head()
 
 # ------------------------------------------------------------------------------
-# Chunk 049 (Appendix Python.tex:1150-1156)
+# Chunk 049
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic dataset manipulation in Python
 # Subsubsection: Aggregating and grouping
@@ -806,7 +855,8 @@ summary_by_year = df.groupby("year").agg(
 summary_by_year.head()
 
 # ------------------------------------------------------------------------------
-# Chunk 050 (Appendix Python.tex:1165-1176)
+# Chunk 050
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic dataset manipulation in Python
 # Subsubsection: Preliminary analysis: quick summaries
@@ -826,7 +876,8 @@ df["unemp"].quantile([0.1, 0.5, 0.9])
 df["quarter"].value_counts().sort_index()
 
 # ------------------------------------------------------------------------------
-# Chunk 051 (Appendix Python.tex:1188-1193)
+# Chunk 051
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic dataset manipulation in Python
 # Subsubsection: Saving results and outputs
@@ -841,7 +892,8 @@ df3.to_pickle("output/macrodata_clean.pkl")
 df3_loaded = pd.read_pickle("output/macrodata_clean.pkl")
 
 # ------------------------------------------------------------------------------
-# Chunk 052 (Appendix Python.tex:1200-1208)
+# Chunk 052
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic dataset manipulation in Python
 # Subsubsection: Saving results and outputs
@@ -859,7 +911,8 @@ fit.save("output/fit_gdp_model.pickle")
 fit_loaded = sm.load("output/fit_gdp_model.pickle")
 
 # ------------------------------------------------------------------------------
-# Chunk 053 (Appendix Python.tex:1215-1221)
+# Chunk 053
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic dataset manipulation in Python
 # Subsubsection: Saving results and outputs
@@ -875,7 +928,8 @@ coef_table.to_csv("output/coef_table.csv", index=False)
 coef_table.to_excel("output/coef_table.xlsx", index=False)
 
 # ------------------------------------------------------------------------------
-# Chunk 054 (Appendix Python.tex:1228-1233)
+# Chunk 054
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic dataset manipulation in Python
 # Subsubsection: Saving results and outputs
@@ -890,7 +944,8 @@ fname = Path("output") / f"gdp_model_{spec}_years_{start_year}_{end_year}.pickle
 fit.save(fname)
 
 # ------------------------------------------------------------------------------
-# Chunk 055 (Appendix Python.tex:1254-1257)
+# Chunk 055
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Data Visualisation in Python
 # Subsubsection: Saving figures to a fixed folder.
@@ -902,7 +957,8 @@ FIG_DIR = Path("Your_Folder")
 FIG_DIR.mkdir(parents=True, exist_ok=True)
 
 # ------------------------------------------------------------------------------
-# Chunk 056 (Appendix Python.tex:1263-1269)
+# Chunk 056
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Data Visualisation in Python
 # Subsubsection: Saving figures to a fixed folder.
@@ -917,7 +973,8 @@ co2_raw.info()
 co2_raw.index.min(), co2_raw.index.max()
 
 # ------------------------------------------------------------------------------
-# Chunk 057 (Appendix Python.tex:1275-1278)
+# Chunk 057
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Data Visualisation in Python
 # Subsubsection: Saving figures to a fixed folder.
@@ -929,7 +986,8 @@ co2 = co2_raw["co2"].resample("M").mean().dropna()
 co2.head()
 
 # ------------------------------------------------------------------------------
-# Chunk 058 (Appendix Python.tex:1284-1287)
+# Chunk 058
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Data Visualisation in Python
 # Subsubsection: Saving figures to a fixed folder.
@@ -941,7 +999,8 @@ ax = co2.plot()
 plt.show()
 
 # ------------------------------------------------------------------------------
-# Chunk 059 (Appendix Python.tex:1293-1301)
+# Chunk 059
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Data Visualisation in Python
 # Subsubsection: Saving figures to a fixed folder.
@@ -958,7 +1017,8 @@ plt.tight_layout()
 plt.show()
 
 # ------------------------------------------------------------------------------
-# Chunk 060 (Appendix Python.tex:1307-1315)
+# Chunk 060
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Data Visualisation in Python
 # Subsubsection: Saving figures to a fixed folder.
@@ -975,7 +1035,8 @@ plt.savefig(FIG_DIR / "co2_timeseries_py.png", dpi=120)
 plt.close()
 
 # ------------------------------------------------------------------------------
-# Chunk 061 (Appendix Python.tex:1334-1352)
+# Chunk 061
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Data Visualisation in Python
 # Subsubsection: Saving figures to a fixed folder.
@@ -1002,7 +1063,8 @@ df.head()
 df.describe()
 
 # ------------------------------------------------------------------------------
-# Chunk 062 (Appendix Python.tex:1360-1370)
+# Chunk 062
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Data Visualisation in Python
 # Subsubsection: Saving figures to a fixed folder.
@@ -1021,7 +1083,8 @@ plt.savefig(FIG_DIR / "hist-iris-py.png", dpi=120)
 plt.close()
 
 # ------------------------------------------------------------------------------
-# Chunk 063 (Appendix Python.tex:1376-1384)
+# Chunk 063
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Data Visualisation in Python
 # Subsubsection: Saving figures to a fixed folder.
@@ -1038,7 +1101,8 @@ plt.savefig(FIG_DIR / "scatter-iris-py.png", dpi=120)
 plt.close()
 
 # ------------------------------------------------------------------------------
-# Chunk 064 (Appendix Python.tex:1390-1401)
+# Chunk 064
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Data Visualisation in Python
 # Subsubsection: Saving figures to a fixed folder.
@@ -1058,7 +1122,8 @@ plt.savefig(FIG_DIR / "box-plot-iris-py.png", dpi=120)
 plt.close()
 
 # ------------------------------------------------------------------------------
-# Chunk 065 (Appendix Python.tex:1407-1416)
+# Chunk 065
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Data Visualisation in Python
 # Subsubsection: Saving figures to a fixed folder.
@@ -1076,7 +1141,8 @@ plt.savefig(FIG_DIR / "pair-plot-iris-py.png", dpi=120)
 plt.close()
 
 # ------------------------------------------------------------------------------
-# Chunk 066 (Appendix Python.tex:1422-1435)
+# Chunk 066
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Data Visualisation in Python
 # Subsubsection: Saving figures to a fixed folder.
@@ -1098,7 +1164,8 @@ plt.savefig(FIG_DIR / "correlation-iris-py.png", dpi=120)
 plt.close()
 
 # ------------------------------------------------------------------------------
-# Chunk 067 (Appendix Python.tex:1441-1455)
+# Chunk 067
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Data Visualisation in Python
 # Subsubsection: Saving figures to a fixed folder.
@@ -1121,7 +1188,8 @@ plt.savefig(FIG_DIR / "3d-iris-py.png", dpi=120)
 plt.close()
 
 # ------------------------------------------------------------------------------
-# Chunk 068 (Appendix Python.tex:1516-1518)
+# Chunk 068
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Using Python's documentation tools
 # ------------------------------------------------------------------------------
@@ -1131,7 +1199,8 @@ import numpy as np
 help(np.random.Generator.uniform)
 
 # ------------------------------------------------------------------------------
-# Chunk 069 (Appendix Python.tex:1524-1545)
+# Chunk 069
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Using Python's documentation tools
 # ------------------------------------------------------------------------------
@@ -1160,7 +1229,8 @@ plt.savefig(FIG_DIR / "help-uniform-python.png", dpi=150, bbox_inches="tight")
 plt.close()
 
 # ------------------------------------------------------------------------------
-# Chunk 070 (Appendix Python.tex:1573-1576)
+# Chunk 070
+# Chapter: The Python Programming Language
 # Section: Probability Distributions
 # Subsection: Discrete and Continuous Probability Distributions
 # ------------------------------------------------------------------------------
@@ -1171,7 +1241,8 @@ import scipy.stats as st
 rng = np.random.default_rng(123456789) # reproducible random numbers
 
 # ------------------------------------------------------------------------------
-# Chunk 071 (Appendix Python.tex:1836-1884)
+# Chunk 071
+# Chapter: The Python Programming Language
 # Section: Probability Distributions
 # Subsection: The Inverse c.d.f. (Inverse Transform) Method
 # ------------------------------------------------------------------------------
@@ -1227,7 +1298,8 @@ plt.savefig("figures/inverse-cdf-python.png", dpi=150)
 plt.close()
 
 # ------------------------------------------------------------------------------
-# Chunk 072 (Appendix Python.tex:1889-1890)
+# Chunk 072
+# Chapter: The Python Programming Language
 # Section: Probability Distributions
 # Subsection: The Inverse c.d.f. (Inverse Transform) Method
 # ------------------------------------------------------------------------------
@@ -1236,7 +1308,8 @@ plt.close()
 sample_norm_fast = st.norm.ppf(u)
 
 # ------------------------------------------------------------------------------
-# Chunk 073 (Appendix Python.tex:2047-2079)
+# Chunk 073
+# Chapter: The Python Programming Language
 # Section: Accessing Data via APIs (Python)
 # Subsection: Example: World Bank data via wbgapi
 # ------------------------------------------------------------------------------
@@ -1276,7 +1349,8 @@ plt.tight_layout()
 plt.show()
 
 # ------------------------------------------------------------------------------
-# Chunk 074 (Appendix Python.tex:2125-2142)
+# Chunk 074
+# Chapter: The Python Programming Language
 # Section: Accessing Data via APIs (Python)
 # Subsection: Example: financial time series from Yahoo Finance
 # ------------------------------------------------------------------------------
@@ -1301,7 +1375,8 @@ plt.tight_layout()
 plt.show()
 
 # ------------------------------------------------------------------------------
-# Chunk 075 (Appendix Python.tex:2153-2170)
+# Chunk 075
+# Chapter: The Python Programming Language
 # Section: Accessing Data via APIs (Python)
 # Subsection: Example: FRED, OECD, and Eurostat
 # Subsubsection: FRED (requires an API key).
@@ -1327,7 +1402,8 @@ plt.tight_layout()
 plt.show()
 
 # ------------------------------------------------------------------------------
-# Chunk 076 (Appendix Python.tex:2177-2193)
+# Chunk 076
+# Chapter: The Python Programming Language
 # Section: Accessing Data via APIs (Python)
 # Subsection: Example: FRED, OECD, and Eurostat
 # Subsubsection: OECD via SDMX (no key).
@@ -1352,7 +1428,8 @@ df_oecd = pd.DataFrame(data).reset_index()
 print(df_oecd.head())
 
 # ------------------------------------------------------------------------------
-# Chunk 077 (Appendix Python.tex:2200-2216)
+# Chunk 077
+# Chapter: The Python Programming Language
 # Section: Accessing Data via APIs (Python)
 # Subsection: Example: FRED, OECD, and Eurostat
 # Subsubsection: Eurostat (no key).

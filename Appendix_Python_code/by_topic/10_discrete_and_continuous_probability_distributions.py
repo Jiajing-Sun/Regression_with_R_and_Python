@@ -3,7 +3,8 @@
 # Extracted from the current textbook LaTeX source in original order.
 
 # ------------------------------------------------------------------------------
-# Chunk 001 (Appendix Python.tex:1573-1576)
+# Chunk 001
+# Chapter: The Python Programming Language
 # Section: Probability Distributions
 # Subsection: Discrete and Continuous Probability Distributions
 # ------------------------------------------------------------------------------

@@ -3,7 +3,8 @@
 # Extracted from the current textbook LaTeX source in original order.
 
 # ------------------------------------------------------------------------------
-# Chunk 001 (Appendix Python.tex:527-534)
+# Chunk 001
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Loops and iteration in Python
 # Subsubsection: The for loop
@@ -19,7 +20,8 @@ for c in cities:
     print(c)
 
 # ------------------------------------------------------------------------------
-# Chunk 002 (Appendix Python.tex:541-544)
+# Chunk 002
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Loops and iteration in Python
 # Subsubsection: The for loop
@@ -32,7 +34,8 @@ for i, value in enumerate(x):
     print(i, value)
 
 # ------------------------------------------------------------------------------
-# Chunk 003 (Appendix Python.tex:551-555)
+# Chunk 003
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Loops and iteration in Python
 # Subsubsection: The for loop
@@ -46,7 +49,8 @@ for n, v in zip(names, values):
     print(n, v)
 
 # ------------------------------------------------------------------------------
-# Chunk 004 (Appendix Python.tex:562-570)
+# Chunk 004
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Loops and iteration in Python
 # Subsubsection: The for loop
@@ -64,7 +68,8 @@ for i, xi in enumerate(x):
 y
 
 # ------------------------------------------------------------------------------
-# Chunk 005 (Appendix Python.tex:579-582)
+# Chunk 005
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Loops and iteration in Python
 # Subsubsection: The while loop
@@ -76,7 +81,8 @@ while i <= 5:
     i = i + 1
 
 # ------------------------------------------------------------------------------
-# Chunk 006 (Appendix Python.tex:591-599)
+# Chunk 006
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Loops and iteration in Python
 # Subsubsection: The while loop
@@ -93,7 +99,8 @@ while value < 1000 and iter_ < 100:
 {"iter": iter_, "value": value}
 
 # ------------------------------------------------------------------------------
-# Chunk 007 (Appendix Python.tex:608-613)
+# Chunk 007
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Loops and iteration in Python
 # Subsubsection: break, continue, and loop else
@@ -107,7 +114,8 @@ for k in range(1, 11):
     print(k)
 
 # ------------------------------------------------------------------------------
-# Chunk 008 (Appendix Python.tex:619-624)
+# Chunk 008
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Loops and iteration in Python
 # Subsubsection: break, continue, and loop else
@@ -121,7 +129,8 @@ else:
     print("no divisor found")
 
 # ------------------------------------------------------------------------------
-# Chunk 009 (Appendix Python.tex:640-648)
+# Chunk 009
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Loops and iteration in Python
 # Subsubsection: Alternatives to explicit loops
@@ -139,7 +148,8 @@ x**2
 np.sum(x**2)
 
 # ------------------------------------------------------------------------------
-# Chunk 010 (Appendix Python.tex:655-659)
+# Chunk 010
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Loops and iteration in Python
 # Subsubsection: Alternatives to explicit loops
@@ -153,7 +163,8 @@ np.sum(x**2)
 [a for a in range(1, 6) if a > 2]
 
 # ------------------------------------------------------------------------------
-# Chunk 011 (Appendix Python.tex:666-667)
+# Chunk 011
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Loops and iteration in Python
 # Subsubsection: Alternatives to explicit loops
@@ -164,7 +175,8 @@ list(map(lambda a: a + 1, range(1, 6)))
 list(filter(lambda a: a > 2, range(1, 6)))
 
 # ------------------------------------------------------------------------------
-# Chunk 012 (Appendix Python.tex:673-673)
+# Chunk 012
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Loops and iteration in Python
 # Subsubsection: Alternatives to explicit loops

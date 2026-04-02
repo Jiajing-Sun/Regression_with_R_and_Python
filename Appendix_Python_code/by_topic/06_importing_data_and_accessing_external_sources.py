@@ -3,7 +3,8 @@
 # Extracted from the current textbook LaTeX source in original order.
 
 # ------------------------------------------------------------------------------
-# Chunk 001 (Appendix Python.tex:911-918)
+# Chunk 001
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Importing data and accessing external sources
 # Subsubsection: File paths and reproducibility
@@ -19,7 +20,8 @@ csv_path = project / "data" / "macro_panel.csv"
 csv_path
 
 # ------------------------------------------------------------------------------
-# Chunk 002 (Appendix Python.tex:923-923)
+# Chunk 002
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Importing data and accessing external sources
 # Subsubsection: File paths and reproducibility
@@ -28,7 +30,8 @@ csv_path
 csv_path.resolve()
 
 # ------------------------------------------------------------------------------
-# Chunk 003 (Appendix Python.tex:934-945)
+# Chunk 003
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Importing data and accessing external sources
 # Subsubsection: Delimited text files: CSV and friends
@@ -48,7 +51,8 @@ df.info()
 df.describe()
 
 # ------------------------------------------------------------------------------
-# Chunk 004 (Appendix Python.tex:955-959)
+# Chunk 004
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Importing data and accessing external sources
 # Subsubsection: Delimited text files: CSV and friends
@@ -61,7 +65,8 @@ df2 = pd.read_csv(csv_path, na_values=["", "NA", ".", "-999"])
 df3 = pd.read_csv(Path("data") / "macro_panel_semicolon.csv", sep=";")
 
 # ------------------------------------------------------------------------------
-# Chunk 005 (Appendix Python.tex:970-978)
+# Chunk 005
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Importing data and accessing external sources
 # Subsubsection: Excel workbooks (.xls and .xlsx)
@@ -78,7 +83,8 @@ survey_wave1 = pd.read_excel(xlsx_path, sheet_name="Wave1")
 survey_wave1.head()
 
 # ------------------------------------------------------------------------------
-# Chunk 006 (Appendix Python.tex:989-995)
+# Chunk 006
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Importing data and accessing external sources
 # Subsubsection: Stata, SPSS, and SAS files
@@ -93,7 +99,8 @@ firm_panel = pd.read_stata(stata_path)
 firm_panel.info()
 
 # ------------------------------------------------------------------------------
-# Chunk 007 (Appendix Python.tex:1008-1016)
+# Chunk 007
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Importing data and accessing external sources
 # Subsubsection: Modern columnar formats: Parquet/Arrow
@@ -110,7 +117,8 @@ df_parquet = pd.read_parquet(parquet_path)
 df_small = pd.read_parquet(parquet_path, columns=["id", "year", "outcome"])
 
 # ------------------------------------------------------------------------------
-# Chunk 008 (Appendix Python.tex:1025-1037)
+# Chunk 008
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Importing data and accessing external sources
 # Subsubsection: APIs and web data (a first look)
@@ -131,7 +139,8 @@ obj = resp.json()
 type(obj)
 
 # ------------------------------------------------------------------------------
-# Chunk 009 (Appendix Python.tex:1043-1046)
+# Chunk 009
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Importing data and accessing external sources
 # Subsubsection: APIs and web data (a first look)

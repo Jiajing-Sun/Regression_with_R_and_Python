@@ -3,7 +3,8 @@
 # Extracted from the current textbook LaTeX source in original order.
 
 # ------------------------------------------------------------------------------
-# Chunk 001 (Appendix R program.tex:1301-1305)
+# Chunk 001
+# Chapter: The R Programming Language
 # Section: Probability Distributions
 # Subsection: Reproducibility: setting the seed
 # ------------------------------------------------------------------------------
@@ -15,7 +16,8 @@ set.seed(1234)
 rnorm(5)   # identical output
 
 # ------------------------------------------------------------------------------
-# Chunk 002 (Appendix R program.tex:1340-1350)
+# Chunk 002
+# Chapter: The R Programming Language
 # Section: Probability Distributions
 # Subsection: The inverse c.d.f. (quantile) method
 # Subsubsection: Example 1: inverse c.d.f. for the exponential distribution
@@ -34,7 +36,8 @@ c(mean_icdf = mean(x_icdf), mean_rexp = mean(x_rexp))
 c(var_icdf  = var(x_icdf),  var_rexp  = var(x_rexp))
 
 # ------------------------------------------------------------------------------
-# Chunk 003 (Appendix R program.tex:1371-1388)
+# Chunk 003
+# Chapter: The R Programming Language
 # Section: Probability Distributions
 # Subsection: The inverse c.d.f. (quantile) method
 # Subsubsection: The generalized inverse (discrete case)
@@ -60,7 +63,8 @@ x_sample <- sample(vals, size = n, replace = TRUE, prob = probs)
 x_sample
 
 # ------------------------------------------------------------------------------
-# Chunk 004 (Appendix R program.tex:1404-1412)
+# Chunk 004
+# Chapter: The R Programming Language
 # Section: Probability Distributions
 # Subsection: The inverse c.d.f. (quantile) method
 # Subsubsection: Example 2: numerical inversion when no closed-form quantile exists

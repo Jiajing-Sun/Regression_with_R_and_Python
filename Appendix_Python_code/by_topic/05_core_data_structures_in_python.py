@@ -3,7 +3,8 @@
 # Extracted from the current textbook LaTeX source in original order.
 
 # ------------------------------------------------------------------------------
-# Chunk 001 (Appendix Python.tex:763-769)
+# Chunk 001
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Core data structures in Python
 # Subsubsection: Lists (and basic indexing)
@@ -18,7 +19,8 @@ x_num[0]       # first element (Python uses 0-based indexing)
 x_num[1:4]     # a slice (elements 2 to 4)
 
 # ------------------------------------------------------------------------------
-# Chunk 002 (Appendix Python.tex:779-779)
+# Chunk 002
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Core data structures in Python
 # Subsubsection: Lists (and basic indexing)
@@ -28,7 +30,8 @@ x_num[1:4]     # a slice (elements 2 to 4)
 [1, "two", 3]     # allowed: heterogeneous list
 
 # ------------------------------------------------------------------------------
-# Chunk 003 (Appendix Python.tex:788-790)
+# Chunk 003
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Core data structures in Python
 # Subsubsection: Tuples
@@ -39,7 +42,8 @@ t
 t[1]          # second element
 
 # ------------------------------------------------------------------------------
-# Chunk 004 (Appendix Python.tex:799-806)
+# Chunk 004
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Core data structures in Python
 # Subsubsection: Dictionaries
@@ -55,7 +59,8 @@ emp
 emp["names"]     # access by key
 
 # ------------------------------------------------------------------------------
-# Chunk 005 (Appendix Python.tex:815-831)
+# Chunk 005
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Core data structures in Python
 # Subsubsection: NumPy arrays (vectors and matrices)
@@ -80,7 +85,8 @@ M[0, 1]       # row 1, column 2 (0-based)
 M[:, 0]       # first column
 
 # ------------------------------------------------------------------------------
-# Chunk 006 (Appendix Python.tex:840-852)
+# Chunk 006
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Core data structures in Python
 # Subsubsection: pandas DataFrames
@@ -101,7 +107,8 @@ df.loc[0:1, :]    # first two rows (label-based)
 df.loc[:, ["name", "age"]]
 
 # ------------------------------------------------------------------------------
-# Chunk 007 (Appendix Python.tex:866-871)
+# Chunk 007
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Core data structures in Python
 # Subsubsection: Arrays beyond two dimensions
@@ -115,7 +122,8 @@ A.shape
 A[0, :, 0]    # first "row block", all columns, first slice
 
 # ------------------------------------------------------------------------------
-# Chunk 008 (Appendix Python.tex:880-885)
+# Chunk 008
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Core data structures in Python
 # Subsubsection: Categorical data (similar in spirit to factors)

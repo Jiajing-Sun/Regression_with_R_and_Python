@@ -3,7 +3,8 @@
 # Extracted from the current textbook LaTeX source in original order.
 
 # ------------------------------------------------------------------------------
-# Chunk 001 (Appendix Python.tex:1836-1884)
+# Chunk 001
+# Chapter: The Python Programming Language
 # Section: Probability Distributions
 # Subsection: The Inverse c.d.f. (Inverse Transform) Method
 # ------------------------------------------------------------------------------
@@ -59,7 +60,8 @@ plt.savefig("figures/inverse-cdf-python.png", dpi=150)
 plt.close()
 
 # ------------------------------------------------------------------------------
-# Chunk 002 (Appendix Python.tex:1889-1890)
+# Chunk 002
+# Chapter: The Python Programming Language
 # Section: Probability Distributions
 # Subsection: The Inverse c.d.f. (Inverse Transform) Method
 # ------------------------------------------------------------------------------

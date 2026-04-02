@@ -3,7 +3,8 @@
 # Extracted from the current textbook LaTeX source in original order.
 
 # ------------------------------------------------------------------------------
-# Chunk 001 (Appendix Python.tex:2047-2079)
+# Chunk 001
+# Chapter: The Python Programming Language
 # Section: Accessing Data via APIs (Python)
 # Subsection: Example: World Bank data via wbgapi
 # ------------------------------------------------------------------------------

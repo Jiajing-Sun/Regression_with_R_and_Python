@@ -3,7 +3,8 @@
 # Extracted from the current textbook LaTeX source in original order.
 
 # ------------------------------------------------------------------------------
-# Chunk 001 (Appendix Python.tex:2153-2170)
+# Chunk 001
+# Chapter: The Python Programming Language
 # Section: Accessing Data via APIs (Python)
 # Subsection: Example: FRED, OECD, and Eurostat
 # Subsubsection: FRED (requires an API key).
@@ -29,7 +30,8 @@ plt.tight_layout()
 plt.show()
 
 # ------------------------------------------------------------------------------
-# Chunk 002 (Appendix Python.tex:2177-2193)
+# Chunk 002
+# Chapter: The Python Programming Language
 # Section: Accessing Data via APIs (Python)
 # Subsection: Example: FRED, OECD, and Eurostat
 # Subsubsection: OECD via SDMX (no key).
@@ -54,7 +56,8 @@ df_oecd = pd.DataFrame(data).reset_index()
 print(df_oecd.head())
 
 # ------------------------------------------------------------------------------
-# Chunk 003 (Appendix Python.tex:2200-2216)
+# Chunk 003
+# Chapter: The Python Programming Language
 # Section: Accessing Data via APIs (Python)
 # Subsection: Example: FRED, OECD, and Eurostat
 # Subsubsection: Eurostat (no key).

@@ -3,7 +3,8 @@
 # Extracted from the current textbook LaTeX source in original order.
 
 # ------------------------------------------------------------------------------
-# Chunk 001 (Appendix R program.tex:1470-1477)
+# Chunk 001
+# Chapter: The R Programming Language
 # Section: Tidyverse packages
 # Subsection: Data Manipulation with dplyr
 # ------------------------------------------------------------------------------
@@ -18,7 +19,8 @@ starwars %>%
   head()
 
 # ------------------------------------------------------------------------------
-# Chunk 002 (Appendix R program.tex:1484-1488)
+# Chunk 002
+# Chapter: The R Programming Language
 # Section: Tidyverse packages
 # Subsection: Data Manipulation with dplyr
 # Paragraph: Filtering and selecting.
@@ -31,7 +33,8 @@ starwars %>%
   head(10)
 
 # ------------------------------------------------------------------------------
-# Chunk 003 (Appendix R program.tex:1495-1501)
+# Chunk 003
+# Chapter: The R Programming Language
 # Section: Tidyverse packages
 # Subsection: Data Manipulation with dplyr
 # Paragraph: Creating new variables with mutate().
@@ -46,7 +49,8 @@ starwars %>%
   head(10)
 
 # ------------------------------------------------------------------------------
-# Chunk 004 (Appendix R program.tex:1508-1518)
+# Chunk 004
+# Chapter: The R Programming Language
 # Section: Tidyverse packages
 # Subsection: Data Manipulation with dplyr
 # Paragraph: Grouped summaries.
@@ -65,7 +69,8 @@ starwars %>%
   arrange(desc(avg_height))
 
 # ------------------------------------------------------------------------------
-# Chunk 005 (Appendix R program.tex:1541-1543)
+# Chunk 005
+# Chapter: The R Programming Language
 # Section: Tidyverse packages
 # Subsection: Data Visualization with ggplot2
 # ------------------------------------------------------------------------------
@@ -75,7 +80,8 @@ starwars %>%
 library(ggplot2)
 
 # ------------------------------------------------------------------------------
-# Chunk 006 (Appendix R program.tex:1551-1552)
+# Chunk 006
+# Chapter: The R Programming Language
 # Section: Tidyverse packages
 # Subsection: Data Visualization with ggplot2
 # Subsubsection: Starting with the data
@@ -85,7 +91,8 @@ ggplot(data = diamonds) +
   labs(title = "The diamonds dataset (ggplot2)")
 
 # ------------------------------------------------------------------------------
-# Chunk 007 (Appendix R program.tex:1560-1563)
+# Chunk 007
+# Chapter: The R Programming Language
 # Section: Tidyverse packages
 # Subsection: Data Visualization with ggplot2
 # Subsubsection: Adding aesthetics and a geometric layer
@@ -97,7 +104,8 @@ ggplot(diamonds, aes(x = carat, y = price, colour = cut)) +
        x = "Carat", y = "Price (USD)")
 
 # ------------------------------------------------------------------------------
-# Chunk 008 (Appendix R program.tex:1571-1574)
+# Chunk 008
+# Chapter: The R Programming Language
 # Section: Tidyverse packages
 # Subsection: Data Visualization with ggplot2
 # Subsubsection: Histograms and density
@@ -109,7 +117,8 @@ ggplot(diamonds, aes(x = price)) +
        x = "Price (USD)", y = "Count")
 
 # ------------------------------------------------------------------------------
-# Chunk 009 (Appendix R program.tex:1582-1586)
+# Chunk 009
+# Chapter: The R Programming Language
 # Section: Tidyverse packages
 # Subsection: Data Visualization with ggplot2
 # Subsubsection: Facets (small multiples)
@@ -122,7 +131,8 @@ ggplot(diamonds, aes(x = carat, y = price)) +
        x = "Carat", y = "Price (USD)")
 
 # ------------------------------------------------------------------------------
-# Chunk 010 (Appendix R program.tex:1594-1598)
+# Chunk 010
+# Chapter: The R Programming Language
 # Section: Tidyverse packages
 # Subsection: Data Visualization with ggplot2
 # Subsubsection: Statistical transformations (smoothing)
@@ -135,7 +145,8 @@ ggplot(diamonds, aes(x = carat, y = price)) +
        x = "Carat", y = "Price (USD)")
 
 # ------------------------------------------------------------------------------
-# Chunk 011 (Appendix R program.tex:1606-1610)
+# Chunk 011
+# Chapter: The R Programming Language
 # Section: Tidyverse packages
 # Subsection: Data Visualization with ggplot2
 # Subsubsection: Coordinates and zooming
@@ -148,7 +159,8 @@ ggplot(diamonds, aes(x = carat, y = price, colour = cut)) +
        x = "Carat", y = "Price (USD)")
 
 # ------------------------------------------------------------------------------
-# Chunk 012 (Appendix R program.tex:1618-1623)
+# Chunk 012
+# Chapter: The R Programming Language
 # Section: Tidyverse packages
 # Subsection: Data Visualization with ggplot2
 # Subsubsection: Themes
@@ -162,7 +174,8 @@ ggplot(diamonds, aes(x = carat, y = price)) +
        x = "Carat", y = "Price (USD)")
 
 # ------------------------------------------------------------------------------
-# Chunk 013 (Appendix R program.tex:1631-1640)
+# Chunk 013
+# Chapter: The R Programming Language
 # Section: Tidyverse packages
 # Subsection: Data Visualization with ggplot2
 # Subsubsection: Saving and reusing plots

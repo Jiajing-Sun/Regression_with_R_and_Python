@@ -3,7 +3,8 @@
 # Extracted from the current textbook LaTeX source in original order.
 
 # ------------------------------------------------------------------------------
-# Chunk 001 (Appendix Python.tex:1059-1066)
+# Chunk 001
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic dataset manipulation in Python
 # ------------------------------------------------------------------------------
@@ -18,7 +19,8 @@ df.head()
 df.info()
 
 # ------------------------------------------------------------------------------
-# Chunk 002 (Appendix Python.tex:1075-1082)
+# Chunk 002
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic dataset manipulation in Python
 # Subsubsection: Subsetting rows and columns
@@ -34,7 +36,8 @@ df_first10 = df.iloc[:10, :]
 unemp = df["unemp"]
 
 # ------------------------------------------------------------------------------
-# Chunk 003 (Appendix Python.tex:1091-1094)
+# Chunk 003
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic dataset manipulation in Python
 # Subsubsection: Filtering observations
@@ -46,7 +49,8 @@ high_unemp = df[df["unemp"] >= 8]
 len(high_unemp)
 
 # ------------------------------------------------------------------------------
-# Chunk 004 (Appendix Python.tex:1103-1109)
+# Chunk 004
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic dataset manipulation in Python
 # Subsubsection: Filtering observations
@@ -61,7 +65,8 @@ high_unemp2 = df2[df2["unemp"].notna() & (df2["unemp"] >= 8)]
 high_unemp2[["year", "quarter", "unemp"]].head()
 
 # ------------------------------------------------------------------------------
-# Chunk 005 (Appendix Python.tex:1118-1126)
+# Chunk 005
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic dataset manipulation in Python
 # Subsubsection: Creating new variables
@@ -78,7 +83,8 @@ df3["high_unemp"] = df3["unemp"] >= 8
 df3[["realgdp", "log_realgdp", "unemp", "high_unemp"]].head()
 
 # ------------------------------------------------------------------------------
-# Chunk 006 (Appendix Python.tex:1135-1137)
+# Chunk 006
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic dataset manipulation in Python
 # Subsubsection: Aggregating and grouping
@@ -89,7 +95,8 @@ avg_unemp_by_year = df.groupby("year", as_index=False)["unemp"].mean()
 avg_unemp_by_year.head()
 
 # ------------------------------------------------------------------------------
-# Chunk 007 (Appendix Python.tex:1143-1144)
+# Chunk 007
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic dataset manipulation in Python
 # Subsubsection: Aggregating and grouping
@@ -99,7 +106,8 @@ avg_by_year = df.groupby("year", as_index=False)[["unemp", "tbilrate", "infl"]].
 avg_by_year.head()
 
 # ------------------------------------------------------------------------------
-# Chunk 008 (Appendix Python.tex:1150-1156)
+# Chunk 008
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic dataset manipulation in Python
 # Subsubsection: Aggregating and grouping
@@ -114,7 +122,8 @@ summary_by_year = df.groupby("year").agg(
 summary_by_year.head()
 
 # ------------------------------------------------------------------------------
-# Chunk 009 (Appendix Python.tex:1165-1176)
+# Chunk 009
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic dataset manipulation in Python
 # Subsubsection: Preliminary analysis: quick summaries
@@ -134,7 +143,8 @@ df["unemp"].quantile([0.1, 0.5, 0.9])
 df["quarter"].value_counts().sort_index()
 
 # ------------------------------------------------------------------------------
-# Chunk 010 (Appendix Python.tex:1188-1193)
+# Chunk 010
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic dataset manipulation in Python
 # Subsubsection: Saving results and outputs
@@ -149,7 +159,8 @@ df3.to_pickle("output/macrodata_clean.pkl")
 df3_loaded = pd.read_pickle("output/macrodata_clean.pkl")
 
 # ------------------------------------------------------------------------------
-# Chunk 011 (Appendix Python.tex:1200-1208)
+# Chunk 011
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic dataset manipulation in Python
 # Subsubsection: Saving results and outputs
@@ -167,7 +178,8 @@ fit.save("output/fit_gdp_model.pickle")
 fit_loaded = sm.load("output/fit_gdp_model.pickle")
 
 # ------------------------------------------------------------------------------
-# Chunk 012 (Appendix Python.tex:1215-1221)
+# Chunk 012
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic dataset manipulation in Python
 # Subsubsection: Saving results and outputs
@@ -183,7 +195,8 @@ coef_table.to_csv("output/coef_table.csv", index=False)
 coef_table.to_excel("output/coef_table.xlsx", index=False)
 
 # ------------------------------------------------------------------------------
-# Chunk 013 (Appendix Python.tex:1228-1233)
+# Chunk 013
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Basic dataset manipulation in Python
 # Subsubsection: Saving results and outputs

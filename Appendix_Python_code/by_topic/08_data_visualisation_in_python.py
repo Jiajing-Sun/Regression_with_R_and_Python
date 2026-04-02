@@ -3,7 +3,8 @@
 # Extracted from the current textbook LaTeX source in original order.
 
 # ------------------------------------------------------------------------------
-# Chunk 001 (Appendix Python.tex:1254-1257)
+# Chunk 001
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Data Visualisation in Python
 # Subsubsection: Saving figures to a fixed folder.
@@ -15,7 +16,8 @@ FIG_DIR = Path("Your_Folder")
 FIG_DIR.mkdir(parents=True, exist_ok=True)
 
 # ------------------------------------------------------------------------------
-# Chunk 002 (Appendix Python.tex:1263-1269)
+# Chunk 002
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Data Visualisation in Python
 # Subsubsection: Saving figures to a fixed folder.
@@ -30,7 +32,8 @@ co2_raw.info()
 co2_raw.index.min(), co2_raw.index.max()
 
 # ------------------------------------------------------------------------------
-# Chunk 003 (Appendix Python.tex:1275-1278)
+# Chunk 003
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Data Visualisation in Python
 # Subsubsection: Saving figures to a fixed folder.
@@ -42,7 +45,8 @@ co2 = co2_raw["co2"].resample("M").mean().dropna()
 co2.head()
 
 # ------------------------------------------------------------------------------
-# Chunk 004 (Appendix Python.tex:1284-1287)
+# Chunk 004
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Data Visualisation in Python
 # Subsubsection: Saving figures to a fixed folder.
@@ -54,7 +58,8 @@ ax = co2.plot()
 plt.show()
 
 # ------------------------------------------------------------------------------
-# Chunk 005 (Appendix Python.tex:1293-1301)
+# Chunk 005
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Data Visualisation in Python
 # Subsubsection: Saving figures to a fixed folder.
@@ -71,7 +76,8 @@ plt.tight_layout()
 plt.show()
 
 # ------------------------------------------------------------------------------
-# Chunk 006 (Appendix Python.tex:1307-1315)
+# Chunk 006
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Data Visualisation in Python
 # Subsubsection: Saving figures to a fixed folder.
@@ -88,7 +94,8 @@ plt.savefig(FIG_DIR / "co2_timeseries_py.png", dpi=120)
 plt.close()
 
 # ------------------------------------------------------------------------------
-# Chunk 007 (Appendix Python.tex:1334-1352)
+# Chunk 007
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Data Visualisation in Python
 # Subsubsection: Saving figures to a fixed folder.
@@ -115,7 +122,8 @@ df.head()
 df.describe()
 
 # ------------------------------------------------------------------------------
-# Chunk 008 (Appendix Python.tex:1360-1370)
+# Chunk 008
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Data Visualisation in Python
 # Subsubsection: Saving figures to a fixed folder.
@@ -134,7 +142,8 @@ plt.savefig(FIG_DIR / "hist-iris-py.png", dpi=120)
 plt.close()
 
 # ------------------------------------------------------------------------------
-# Chunk 009 (Appendix Python.tex:1376-1384)
+# Chunk 009
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Data Visualisation in Python
 # Subsubsection: Saving figures to a fixed folder.
@@ -151,7 +160,8 @@ plt.savefig(FIG_DIR / "scatter-iris-py.png", dpi=120)
 plt.close()
 
 # ------------------------------------------------------------------------------
-# Chunk 010 (Appendix Python.tex:1390-1401)
+# Chunk 010
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Data Visualisation in Python
 # Subsubsection: Saving figures to a fixed folder.
@@ -171,7 +181,8 @@ plt.savefig(FIG_DIR / "box-plot-iris-py.png", dpi=120)
 plt.close()
 
 # ------------------------------------------------------------------------------
-# Chunk 011 (Appendix Python.tex:1407-1416)
+# Chunk 011
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Data Visualisation in Python
 # Subsubsection: Saving figures to a fixed folder.
@@ -189,7 +200,8 @@ plt.savefig(FIG_DIR / "pair-plot-iris-py.png", dpi=120)
 plt.close()
 
 # ------------------------------------------------------------------------------
-# Chunk 012 (Appendix Python.tex:1422-1435)
+# Chunk 012
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Data Visualisation in Python
 # Subsubsection: Saving figures to a fixed folder.
@@ -211,7 +223,8 @@ plt.savefig(FIG_DIR / "correlation-iris-py.png", dpi=120)
 plt.close()
 
 # ------------------------------------------------------------------------------
-# Chunk 013 (Appendix Python.tex:1441-1455)
+# Chunk 013
+# Chapter: The Python Programming Language
 # Section: Python Programming Fundamentals
 # Subsection: Data Visualisation in Python
 # Subsubsection: Saving figures to a fixed folder.

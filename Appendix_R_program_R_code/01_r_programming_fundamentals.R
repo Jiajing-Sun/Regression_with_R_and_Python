@@ -3,7 +3,8 @@
 # Extracted from the current textbook LaTeX source in original order.
 
 # ------------------------------------------------------------------------------
-# Chunk 001 (Appendix R program.tex:132-143)
+# Chunk 001
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Basic computations in R
 # Subsubsection: Arithmetic and vectorized operations
@@ -23,7 +24,8 @@ sqrt(81)
 (5 + 9) * 2
 
 # ------------------------------------------------------------------------------
-# Chunk 002 (Appendix R program.tex:149-159)
+# Chunk 002
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Basic computations in R
 # Subsubsection: Arithmetic and vectorized operations
@@ -42,7 +44,8 @@ x * c(2, 2, 2, 2)
 x > 2
 
 # ------------------------------------------------------------------------------
-# Chunk 003 (Appendix R program.tex:166-171)
+# Chunk 003
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Basic computations in R
 # Subsubsection: Arithmetic and vectorized operations
@@ -57,7 +60,8 @@ x > 2
 1:5 + c(1, 2)
 
 # ------------------------------------------------------------------------------
-# Chunk 004 (Appendix R program.tex:179-189)
+# Chunk 004
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Basic computations in R
 # Subsubsection: Inspecting objects: str(), class(), and typeof()
@@ -76,7 +80,8 @@ str("hello")
 typeof("hello")
 
 # ------------------------------------------------------------------------------
-# Chunk 005 (Appendix R program.tex:195-204)
+# Chunk 005
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Basic computations in R
 # Subsubsection: Inspecting objects: str(), class(), and typeof()
@@ -94,7 +99,8 @@ summary(df)
 str(df)
 
 # ------------------------------------------------------------------------------
-# Chunk 006 (Appendix R program.tex:214-222)
+# Chunk 006
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Basic computations in R
 # Subsubsection: Fundamental constants and special values
@@ -112,7 +118,8 @@ log(10)
 exp(2)
 
 # ------------------------------------------------------------------------------
-# Chunk 007 (Appendix R program.tex:234-245)
+# Chunk 007
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Basic computations in R
 # Subsubsection: Fundamental constants and special values
@@ -133,7 +140,8 @@ is.nan(0/0)
 is.finite(1/0)
 
 # ------------------------------------------------------------------------------
-# Chunk 008 (Appendix R program.tex:252-257)
+# Chunk 008
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Basic computations in R
 # Subsubsection: Fundamental constants and special values
@@ -148,7 +156,8 @@ is.finite(1/0)
 .Machine$double.xmax
 
 # ------------------------------------------------------------------------------
-# Chunk 009 (Appendix R program.tex:285-294)
+# Chunk 009
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Loops and iteration in R
 # Subsubsection: The for loop
@@ -166,7 +175,8 @@ for (c in cities) {
 }
 
 # ------------------------------------------------------------------------------
-# Chunk 010 (Appendix R program.tex:301-305)
+# Chunk 010
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Loops and iteration in R
 # Subsubsection: The for loop
@@ -180,7 +190,8 @@ for (i in seq_along(x)) {
 }
 
 # ------------------------------------------------------------------------------
-# Chunk 011 (Appendix R program.tex:312-321)
+# Chunk 011
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Loops and iteration in R
 # Subsubsection: The for loop
@@ -199,7 +210,8 @@ for (i in seq_along(x)) {
 y
 
 # ------------------------------------------------------------------------------
-# Chunk 012 (Appendix R program.tex:330-334)
+# Chunk 012
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Loops and iteration in R
 # Subsubsection: The while loop
@@ -212,7 +224,8 @@ while (i <= 5) {
 }
 
 # ------------------------------------------------------------------------------
-# Chunk 013 (Appendix R program.tex:343-352)
+# Chunk 013
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Loops and iteration in R
 # Subsubsection: The while loop
@@ -230,7 +243,8 @@ while (value < 1000 && iter < 100) {
 c(iter = iter, value = value)
 
 # ------------------------------------------------------------------------------
-# Chunk 014 (Appendix R program.tex:361-369)
+# Chunk 014
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Loops and iteration in R
 # Subsubsection: The repeat loop
@@ -247,7 +261,8 @@ repeat {
 }
 
 # ------------------------------------------------------------------------------
-# Chunk 015 (Appendix R program.tex:385-391)
+# Chunk 015
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Loops and iteration in R
 # Subsubsection: Alternatives to explicit loops
@@ -263,7 +278,8 @@ x^2
 sum(x^2)
 
 # ------------------------------------------------------------------------------
-# Chunk 016 (Appendix R program.tex:404-408)
+# Chunk 016
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Loops and iteration in R
 # Subsubsection: Alternatives to explicit loops
@@ -277,7 +293,8 @@ lapply(1:5, function(a) a + 1)
 sapply(1:5, function(a) a + 1)
 
 # ------------------------------------------------------------------------------
-# Chunk 017 (Appendix R program.tex:416-417)
+# Chunk 017
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Loops and iteration in R
 # Subsubsection: Alternatives to explicit loops
@@ -288,7 +305,8 @@ sapply(1:5, function(a) a + 1)
 sapply(1:5, \(a) a + 1)
 
 # ------------------------------------------------------------------------------
-# Chunk 018 (Appendix R program.tex:435-439)
+# Chunk 018
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Functions in R
 # Subsubsection: Defining and calling functions
@@ -301,7 +319,8 @@ add_numbers <- function(a, b) {
 add_numbers(5, 3)
 
 # ------------------------------------------------------------------------------
-# Chunk 019 (Appendix R program.tex:446-452)
+# Chunk 019
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Functions in R
 # Subsubsection: Defining and calling functions
@@ -317,7 +336,8 @@ power(3, p = 4)   # explicit
 power(x = 3, p = 4)
 
 # ------------------------------------------------------------------------------
-# Chunk 020 (Appendix R program.tex:459-481)
+# Chunk 020
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Functions in R
 # Subsubsection: Defining and calling functions
@@ -349,7 +369,8 @@ approx_e_series_vec(10)
 exp(1)  # reference value
 
 # ------------------------------------------------------------------------------
-# Chunk 021 (Appendix R program.tex:502-508)
+# Chunk 021
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Core data structures in R
 # Subsubsection: Vectors (atomic vectors)
@@ -364,7 +385,8 @@ x_num[1]      # first element
 x_num[2:4]    # a slice
 
 # ------------------------------------------------------------------------------
-# Chunk 022 (Appendix R program.tex:515-515)
+# Chunk 022
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Core data structures in R
 # Subsubsection: Vectors (atomic vectors)
@@ -374,7 +396,8 @@ x_num[2:4]    # a slice
 c(1, "two", 3)    # coerces to character
 
 # ------------------------------------------------------------------------------
-# Chunk 023 (Appendix R program.tex:524-535)
+# Chunk 023
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Core data structures in R
 # Subsubsection: Lists
@@ -394,7 +417,8 @@ employee_list$names   # access by name
 employee_list[[1]]    # access by position
 
 # ------------------------------------------------------------------------------
-# Chunk 024 (Appendix R program.tex:544-556)
+# Chunk 024
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Core data structures in R
 # Subsubsection: Data frames
@@ -415,7 +439,8 @@ df[1:2, ]        # first two rows
 df[, c("name", "age")]
 
 # ------------------------------------------------------------------------------
-# Chunk 025 (Appendix R program.tex:570-579)
+# Chunk 025
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Core data structures in R
 # Subsubsection: Matrices
@@ -433,7 +458,8 @@ M[1, 2]      # row 1, column 2
 M[, 1]       # first column
 
 # ------------------------------------------------------------------------------
-# Chunk 026 (Appendix R program.tex:588-591)
+# Chunk 026
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Core data structures in R
 # Subsubsection: Arrays
@@ -445,7 +471,8 @@ dim(A)
 A[1, , 1]    # first row, all columns, first "slice"
 
 # ------------------------------------------------------------------------------
-# Chunk 027 (Appendix R program.tex:600-603)
+# Chunk 027
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Core data structures in R
 # Subsubsection: Factors
@@ -457,7 +484,8 @@ levels(f)
 table(f)
 
 # ------------------------------------------------------------------------------
-# Chunk 028 (Appendix R program.tex:628-637)
+# Chunk 028
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Importing data and accessing external sources
 # Subsubsection: File paths and reproducibility
@@ -475,7 +503,8 @@ getwd()
 # here("data", "my_file.csv")
 
 # ------------------------------------------------------------------------------
-# Chunk 029 (Appendix R program.tex:646-651)
+# Chunk 029
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Importing data and accessing external sources
 # Subsubsection: Delimited text files: CSV and friends
@@ -489,7 +518,8 @@ head(df_base)
 str(df_base)
 
 # ------------------------------------------------------------------------------
-# Chunk 030 (Appendix R program.tex:655-662)
+# Chunk 030
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Importing data and accessing external sources
 # Subsubsection: Delimited text files: CSV and friends
@@ -505,7 +535,8 @@ df <- read_csv("data/macro_panel.csv")
 glimpse(df)
 
 # ------------------------------------------------------------------------------
-# Chunk 031 (Appendix R program.tex:672-674)
+# Chunk 031
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Importing data and accessing external sources
 # Subsubsection: Delimited text files: CSV and friends
@@ -516,7 +547,8 @@ df2 <- read.csv("data/macro_panel.csv", na.strings = c("", "NA", ".",
         "-999"))
 
 # ------------------------------------------------------------------------------
-# Chunk 032 (Appendix R program.tex:683-690)
+# Chunk 032
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Importing data and accessing external sources
 # Subsubsection: Excel workbooks (.xls and .xlsx)
@@ -532,7 +564,8 @@ survey_wave1 <- read_excel("data/household_survey.xlsx",
 head(survey_wave1)
 
 # ------------------------------------------------------------------------------
-# Chunk 033 (Appendix R program.tex:700-706)
+# Chunk 033
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Importing data and accessing external sources
 # Subsubsection: Stata, SPSS, and SAS files
@@ -547,7 +580,8 @@ experiment <- read_sav("data/experiment_data.sav")
 str(firm_panel)
 
 # ------------------------------------------------------------------------------
-# Chunk 034 (Appendix R program.tex:716-723)
+# Chunk 034
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Importing data and accessing external sources
 # Subsubsection: Modern columnar formats: Parquet/Arrow
@@ -563,7 +597,8 @@ df_small <- read_parquet("data/large_panel.parquet",
                          col_select = c("id", "year", "outcome"))
 
 # ------------------------------------------------------------------------------
-# Chunk 035 (Appendix R program.tex:731-745)
+# Chunk 035
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Importing data and accessing external sources
 # Subsubsection: APIs and web data (a first look)
@@ -586,7 +621,8 @@ obj <- fromJSON(content_txt)
 str(obj)
 
 # ------------------------------------------------------------------------------
-# Chunk 036 (Appendix R program.tex:758-760)
+# Chunk 036
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Basic dataset manipulation in R
 # ------------------------------------------------------------------------------
@@ -596,7 +632,8 @@ head(airquality)
 str(airquality)
 
 # ------------------------------------------------------------------------------
-# Chunk 037 (Appendix R program.tex:769-776)
+# Chunk 037
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Basic dataset manipulation in R
 # Subsubsection: Subsetting rows and columns
@@ -612,7 +649,8 @@ aq_first10 <- airquality[1:10, ]
 temp <- airquality$Temp
 
 # ------------------------------------------------------------------------------
-# Chunk 038 (Appendix R program.tex:786-793)
+# Chunk 038
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Basic dataset manipulation in R
 # Subsubsection: Filtering observations
@@ -628,7 +666,8 @@ high_ozone <- airquality[!is.na(airquality$Ozone)
 nrow(high_ozone)
 
 # ------------------------------------------------------------------------------
-# Chunk 039 (Appendix R program.tex:801-809)
+# Chunk 039
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Basic dataset manipulation in R
 # Subsubsection: Creating new variables
@@ -645,7 +684,8 @@ aq$HighWind <- aq$Wind > 15
 head(aq)
 
 # ------------------------------------------------------------------------------
-# Chunk 040 (Appendix R program.tex:818-827)
+# Chunk 040
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Basic dataset manipulation in R
 # Subsubsection: Aggregating and grouping
@@ -663,7 +703,8 @@ avg_ozone_by_month <- aggregate(Ozone ~ Month, data = airquality,
 avg_ozone_by_month
 
 # ------------------------------------------------------------------------------
-# Chunk 041 (Appendix R program.tex:833-836)
+# Chunk 041
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Basic dataset manipulation in R
 # Subsubsection: Aggregating and grouping
@@ -675,7 +716,8 @@ avg_by_month <- aggregate(cbind(Temp, Wind) ~ Month,
 avg_by_month
 
 # ------------------------------------------------------------------------------
-# Chunk 042 (Appendix R program.tex:845-856)
+# Chunk 042
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Basic dataset manipulation in R
 # Subsubsection: Preliminary analysis: quick summaries
@@ -695,7 +737,8 @@ quantile(airquality$Temp, probs = c(0.1, 0.5, 0.9), na.rm = TRUE)
 table(airquality$Month)
 
 # ------------------------------------------------------------------------------
-# Chunk 043 (Appendix R program.tex:870-873)
+# Chunk 043
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Basic dataset manipulation in R
 # Subsubsection: Saving results and outputs
@@ -708,7 +751,8 @@ saveRDS(fit, file = "output/fit_ozone_model.rds")
 fit_loaded <- readRDS("output/fit_ozone_model.rds")
 
 # ------------------------------------------------------------------------------
-# Chunk 044 (Appendix R program.tex:877-882)
+# Chunk 044
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Basic dataset manipulation in R
 # Subsubsection: Saving results and outputs
@@ -723,7 +767,8 @@ res_fit  <- resid(fit)
 save(fit, coef_fit, res_fit, file = "output/model_objects.RData")
 
 # ------------------------------------------------------------------------------
-# Chunk 045 (Appendix R program.tex:889-894)
+# Chunk 045
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Basic dataset manipulation in R
 # Subsubsection: Saving results and outputs
@@ -738,7 +783,8 @@ summary_df <- data.frame(
 write.csv(summary_df, file = "output/coef_table.csv", row.names = FALSE)
 
 # ------------------------------------------------------------------------------
-# Chunk 046 (Appendix R program.tex:898-900)
+# Chunk 046
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Basic dataset manipulation in R
 # Subsubsection: Saving results and outputs
@@ -750,7 +796,8 @@ library(writexl)
 write_xlsx(summary_df, path = "output/coef_table.xlsx")
 
 # ------------------------------------------------------------------------------
-# Chunk 047 (Appendix R program.tex:907-911)
+# Chunk 047
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Basic dataset manipulation in R
 # Subsubsection: Saving results and outputs
@@ -764,7 +811,8 @@ fname <- paste0("output/ozone_model_", spec, "_year_", year, ".rds")
 saveRDS(fit, file = fname)
 
 # ------------------------------------------------------------------------------
-# Chunk 048 (Appendix R program.tex:932-946)
+# Chunk 048
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Data visualization in R
 # Subsubsection: Base graphics: common plot types
@@ -787,7 +835,8 @@ boxplot(Temp ~ factor(Month), data = airquality,
         main = "Temperature by month")
 
 # ------------------------------------------------------------------------------
-# Chunk 049 (Appendix R program.tex:954-961)
+# Chunk 049
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Data visualization in R
 # Subsubsection: Saving plots without embedding figures
@@ -803,7 +852,8 @@ plot(airquality$Temp, airquality$Ozone,
 dev.off()
 
 # ------------------------------------------------------------------------------
-# Chunk 050 (Appendix R program.tex:969-977)
+# Chunk 050
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Data visualization in R
 # Subsubsection: ggplot2: a quick example
@@ -820,7 +870,8 @@ p <- ggplot(airquality, aes(x = Temp, y = Ozone)) +
 p
 
 # ------------------------------------------------------------------------------
-# Chunk 051 (Appendix R program.tex:983-984)
+# Chunk 051
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Data visualization in R
 # Subsubsection: ggplot2: a quick example
@@ -830,7 +881,8 @@ ggsave("output/figures/R/ozone_vs_temp_ggplot.png", plot = p,
        width = 7.5, height = 5.5, dpi = 150)
 
 # ------------------------------------------------------------------------------
-# Chunk 052 (Appendix R program.tex:1000-1000)
+# Chunk 052
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Getting help in R (and in RStudio)
 # Subsubsection: Help pages: your first stop
@@ -839,7 +891,8 @@ ggsave("output/figures/R/ozone_vs_temp_ggplot.png", plot = p,
 ?runif
 
 # ------------------------------------------------------------------------------
-# Chunk 053 (Appendix R program.tex:1006-1006)
+# Chunk 053
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Getting help in R (and in RStudio)
 # Subsubsection: Help pages: your first stop
@@ -848,7 +901,8 @@ ggsave("output/figures/R/ozone_vs_temp_ggplot.png", plot = p,
 help(runif)
 
 # ------------------------------------------------------------------------------
-# Chunk 054 (Appendix R program.tex:1035-1035)
+# Chunk 054
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Getting help in R (and in RStudio)
 # Subsubsection: Running the examples directly
@@ -857,7 +911,8 @@ help(runif)
 example(runif)
 
 # ------------------------------------------------------------------------------
-# Chunk 055 (Appendix R program.tex:1045-1046)
+# Chunk 055
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Getting help in R (and in RStudio)
 # Subsubsection: Quick checks: args(), formals(), and namespaces
@@ -867,7 +922,8 @@ args(runif)
 formals(runif)
 
 # ------------------------------------------------------------------------------
-# Chunk 056 (Appendix R program.tex:1052-1052)
+# Chunk 056
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Getting help in R (and in RStudio)
 # Subsubsection: Quick checks: args(), formals(), and namespaces
@@ -876,7 +932,8 @@ formals(runif)
 stats::runif(5)
 
 # ------------------------------------------------------------------------------
-# Chunk 057 (Appendix R program.tex:1064-1065)
+# Chunk 057
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Getting help in R (and in RStudio)
 # Subsubsection: Searching for help when you do not know the function name
@@ -887,7 +944,8 @@ stats::runif(5)
 help.search("uniform")
 
 # ------------------------------------------------------------------------------
-# Chunk 058 (Appendix R program.tex:1072-1072)
+# Chunk 058
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Getting help in R (and in RStudio)
 # Subsubsection: Searching for help when you do not know the function name
@@ -897,7 +955,8 @@ help.search("uniform")
 apropos("unif")
 
 # ------------------------------------------------------------------------------
-# Chunk 059 (Appendix R program.tex:1079-1080)
+# Chunk 059
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Getting help in R (and in RStudio)
 # Subsubsection: Searching for help when you do not know the function name
@@ -908,7 +967,8 @@ RSiteSearch("uniform distribution")
 RSiteSearch("random effects")
 
 # ------------------------------------------------------------------------------
-# Chunk 060 (Appendix R program.tex:1090-1090)
+# Chunk 060
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Getting help in R (and in RStudio)
 # Subsubsection: Vignettes: longer, tutorial-style documentation
@@ -917,7 +977,8 @@ RSiteSearch("random effects")
 browseVignettes()
 
 # ------------------------------------------------------------------------------
-# Chunk 061 (Appendix R program.tex:1096-1096)
+# Chunk 061
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Getting help in R (and in RStudio)
 # Subsubsection: Vignettes: longer, tutorial-style documentation
@@ -926,7 +987,8 @@ browseVignettes()
 browseVignettes(package = "ggplot2")
 
 # ------------------------------------------------------------------------------
-# Chunk 062 (Appendix R program.tex:1102-1102)
+# Chunk 062
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Getting help in R (and in RStudio)
 # Subsubsection: Vignettes: longer, tutorial-style documentation
@@ -935,7 +997,8 @@ browseVignettes(package = "ggplot2")
 vignette(package = "survival")
 
 # ------------------------------------------------------------------------------
-# Chunk 063 (Appendix R program.tex:1121-1125)
+# Chunk 063
+# Chapter: The R Programming Language
 # Section: R Programming Fundamentals
 # Subsection: Getting help in R (and in RStudio)
 # Subsubsection: Online help pages and HTML vs. text help
