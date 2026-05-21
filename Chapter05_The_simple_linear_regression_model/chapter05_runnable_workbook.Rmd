@@ -17,7 +17,12 @@ This runnable workbook supplements the reference workbook. It adds setup code an
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>", message = FALSE, warning = FALSE)
 chapter_dir <- dirname(normalizePath(knitr::current_input()))
-knitr::opts_knit$set(root.dir = chapter_dir)
+data_dir <- file.path(chapter_dir, "data")
+if (dir.exists(data_dir)) {
+  knitr::opts_knit$set(root.dir = data_dir)
+} else {
+  knitr::opts_knit$set(root.dir = chapter_dir)
+}
 ```
 
 > This chapter uses hidden prerequisite setup from an earlier chapter so the later code can run in order.
@@ -47,7 +52,7 @@ knitr::opts_knit$set(root.dir = chapter_dir)
 
       corr_xy <- s_xy / (sqrt(s_x2) * sqrt(s_y2))
 
-      corr_xy <- cov(df$living_area, df$price) / 
+      corr_xy <- cov(df$living_area, df$price) /
                  (sd(df$living_area) * sd(df$price))
 
       corr_xy <- cor(df$living_area, df$price)

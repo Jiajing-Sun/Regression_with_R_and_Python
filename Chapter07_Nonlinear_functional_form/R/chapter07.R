@@ -3,6 +3,18 @@
 # Generated from the current textbook LaTeX source.
 # Code blocks are kept in textbook order; relative paths follow the book examples.
 
+# Run from the chapter data directory when data/ exists, so printed paths such as
+# "apartment_price_data.csv" work from the companion repository.
+args <- commandArgs(trailingOnly = FALSE)
+file_arg <- grep("^--file=", args, value = TRUE)
+if (length(file_arg) > 0) {
+  script_dir <- dirname(normalizePath(sub("^--file=", "", file_arg[1])))
+  data_dir <- file.path(dirname(script_dir), "data")
+  if (dir.exists(data_dir)) {
+    setwd(data_dir)
+  }
+}
+
 # ------------------------------------------------------------------------------
 # Box 01: Air pollution and weather in R
 # Textbook context: Section: Example: Relationship between weather and air pollution
@@ -83,7 +95,7 @@
 # Textbook context: Section: Example: Relationship between weather and air pollution
 # ------------------------------------------------------------------------------
 
-    ols_model_poly_alt <- lm(pm25 ~ 
+    ols_model_poly_alt <- lm(pm25 ~
       poly(wind_direction, 4), data=df)
 
 # ------------------------------------------------------------------------------

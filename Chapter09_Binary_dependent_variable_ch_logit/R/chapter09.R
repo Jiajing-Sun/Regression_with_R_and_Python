@@ -3,6 +3,18 @@
 # Generated from the current textbook LaTeX source.
 # Code blocks are kept in textbook order; relative paths follow the book examples.
 
+# Run from the chapter data directory when data/ exists, so printed paths such as
+# "apartment_price_data.csv" work from the companion repository.
+args <- commandArgs(trailingOnly = FALSE)
+file_arg <- grep("^--file=", args, value = TRUE)
+if (length(file_arg) > 0) {
+  script_dir <- dirname(normalizePath(sub("^--file=", "", file_arg[1])))
+  data_dir <- file.path(dirname(script_dir), "data")
+  if (dir.exists(data_dir)) {
+    setwd(data_dir)
+  }
+}
+
 # ------------------------------------------------------------------------------
 # Box 01: Logistic regression in R
 # Textbook context: Section: Estimation and inference under logistic regression model | Subsection: Assumptions about the error term
@@ -48,7 +60,7 @@
 # ------------------------------------------------------------------------------
 
     df$lnpop <- log(df$pop)
-    logit_model2 <- glm(df$high_income ~ 
+    logit_model2 <- glm(df$high_income ~
       share_tertiary_school + lnpop,
       family = binomial(link = "logit"), data=df)
 
@@ -162,8 +174,8 @@
 # ------------------------------------------------------------------------------
 
     df_incr_blood_pressure <- df
-    df_incr_blood_pressure$blood_pressure <- 
-      df_incr_blood_pressure$blood_pressure + 
+    df_incr_blood_pressure$blood_pressure <-
+      df_incr_blood_pressure$blood_pressure +
       std_dev_blood_pressure
     df_incr_blood_pressure$pred <- predict(logit_model2,
       newdata=df_incr_blood_pressure, type="response")

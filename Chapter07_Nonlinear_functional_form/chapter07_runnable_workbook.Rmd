@@ -17,7 +17,12 @@ This runnable workbook supplements the reference workbook. It adds setup code an
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>", message = FALSE, warning = FALSE)
 chapter_dir <- dirname(normalizePath(knitr::current_input()))
-knitr::opts_knit$set(root.dir = chapter_dir)
+data_dir <- file.path(chapter_dir, "data")
+if (dir.exists(data_dir)) {
+  knitr::opts_knit$set(root.dir = data_dir)
+} else {
+  knitr::opts_knit$set(root.dir = chapter_dir)
+}
 ```
 
 ## Air pollution and weather in R
@@ -110,7 +115,7 @@ Textbook context: Section: Example: Relationship between weather and air polluti
 Textbook context: Section: Example: Relationship between weather and air pollution.
 
 ```{r runnable-air-pollution-and-weather-in-r-09}
-    ols_model_poly_alt <- lm(pm25 ~ 
+    ols_model_poly_alt <- lm(pm25 ~
       poly(wind_direction, 4), data=df)
 ```
 

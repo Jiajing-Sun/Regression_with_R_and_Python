@@ -17,7 +17,12 @@ This runnable workbook supplements the reference workbook. It adds setup code an
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>", message = FALSE, warning = FALSE)
 chapter_dir <- dirname(normalizePath(knitr::current_input()))
-knitr::opts_knit$set(root.dir = chapter_dir)
+data_dir <- file.path(chapter_dir, "data")
+if (dir.exists(data_dir)) {
+  knitr::opts_knit$set(root.dir = data_dir)
+} else {
+  knitr::opts_knit$set(root.dir = chapter_dir)
+}
 ```
 
 ## Monte Carlo simulation in R
@@ -73,7 +78,7 @@ Textbook context: Section: Hypothesis testing and confidence intervals | Subsect
 ```{r runnable-hypothesis-tests-and-confidence-intervals-with-r-05}
     n <- length(dice_throws)
     mean_dice_throws <- mean(dice_throws)
-    var_dice_throws <- 
+    var_dice_throws <-
       sum((dice_throws - mean_dice_throws)^2) / (n - 1)
 ```
 

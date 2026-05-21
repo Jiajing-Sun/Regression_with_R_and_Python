@@ -17,7 +17,12 @@ This runnable workbook supplements the reference workbook. It adds setup code an
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>", message = FALSE, warning = FALSE)
 chapter_dir <- dirname(normalizePath(knitr::current_input()))
-knitr::opts_knit$set(root.dir = chapter_dir)
+data_dir <- file.path(chapter_dir, "data")
+if (dir.exists(data_dir)) {
+  knitr::opts_knit$set(root.dir = data_dir)
+} else {
+  knitr::opts_knit$set(root.dir = chapter_dir)
+}
 ```
 
 ## Logistic regression in R
@@ -72,7 +77,7 @@ Textbook context: Section: Estimation and inference under logistic regression mo
 
 ```{r runnable-logistic-regression-in-r-06}
     df$lnpop <- log(df$pop)
-    logit_model2 <- glm(df$high_income ~ 
+    logit_model2 <- glm(df$high_income ~
       share_tertiary_school + lnpop,
       family = binomial(link = "logit"), data=df)
 ```
@@ -199,8 +204,8 @@ Textbook context: Section: Example: the risk of having a heart disease.
 
 ```{r runnable-example-in-r-with-the-probability-of-heart-disease-17}
     df_incr_blood_pressure <- df
-    df_incr_blood_pressure$blood_pressure <- 
-      df_incr_blood_pressure$blood_pressure + 
+    df_incr_blood_pressure$blood_pressure <-
+      df_incr_blood_pressure$blood_pressure +
       std_dev_blood_pressure
     df_incr_blood_pressure$pred <- predict(logit_model2,
       newdata=df_incr_blood_pressure, type="response")

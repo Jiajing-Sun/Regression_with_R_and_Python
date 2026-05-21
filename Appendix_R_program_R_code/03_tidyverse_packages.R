@@ -14,7 +14,7 @@
 library(dplyr)
 
 # Inspect the data
-starwars %>% 
+starwars %>%
   select(name, species, homeworld, height, mass) %>%
   head()
 

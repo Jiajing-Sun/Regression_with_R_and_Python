@@ -1,6 +1,6 @@
 ---
 title: "Chapter 04: Correlation and inference about a population"
-subtitle: "Regression with R and Python: Description, Prediction, and Causal Analysis for Applied Social Science and Econometrics"
+subtitle: "Regression with R and Python: Description, Prediction, and Causal Inference for Applied Social Science and Econometrics"
 output:
   html_document:
     toc: true

@@ -1,6 +1,6 @@
 # Chapter 04: Correlation and inference about a population
 
-Companion materials for *Regression with R and Python: Description, Prediction, and Causal Analysis for Applied Social Science and Econometrics*.
+Companion materials for *Regression with R and Python: Description, Prediction, and Causal Inference for Applied Social Science and Econometrics*.
 
 ## R Markdown workbooks
 
@@ -15,8 +15,20 @@ Companion materials for *Regression with R and Python: Description, Prediction, 
 
 - Calculating confidence intervals for correlation in Python
 
+## Box-level snippets
+
+These files are the QR-code targets for the printed code boxes. The full chapter scripts remain the easiest way to run the chapter end-to-end.
+
+### R box files
+
+- [`R/boxes/box01_calculating_confidence_intervals_for_correlation_in_r.R`](R/boxes/box01_calculating_confidence_intervals_for_correlation_in_r.R) - Calculating confidence intervals for correlation in R
+
+### Python box files
+
+- [`python/boxes/box01_calculating_confidence_intervals_for_correlation_in_python.py`](python/boxes/box01_calculating_confidence_intervals_for_correlation_in_python.py) - Calculating confidence intervals for correlation in Python
+
 ## Notes
 
 - Scripts mirror the current textbook code blocks in the order they appear in the book.
 - The repository is aimed at advanced undergraduate and beginning master's students in applied social sciences and econometrics.
-- Relative file paths are left as printed in the textbook source.
+- Chapter scripts automatically use the local `data/` folder when one exists, so the printed textbook paths work from the companion repository.

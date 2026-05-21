@@ -3,13 +3,25 @@
 # Generated from the current textbook LaTeX source.
 # Code blocks are kept in textbook order; relative paths follow the book examples.
 
+# Run from the chapter data directory when data/ exists, so printed paths such as
+# "apartment_price_data.csv" work from the companion repository.
+args <- commandArgs(trailingOnly = FALSE)
+file_arg <- grep("^--file=", args, value = TRUE)
+if (length(file_arg) > 0) {
+  script_dir <- dirname(normalizePath(sub("^--file=", "", file_arg[1])))
+  data_dir <- file.path(dirname(script_dir), "data")
+  if (dir.exists(data_dir)) {
+    setwd(data_dir)
+  }
+}
+
 # ------------------------------------------------------------------------------
 # Box 01: Project Star and clustering in R
 # Textbook context: Section: Clustered data | Subsection: OLS with clustered data
 # ------------------------------------------------------------------------------
 
 # Load data
-df <- read.csv(file.path("data", "star.csv"))
+df <- read.csv("star.csv")
 
 # NOTE (updated data schema):
 # class_type  : class assignment (e.g. "SMALL", "REGULAR", "AIDE")
@@ -59,14 +71,14 @@ coeftest(ols_model3, vcov = V_cl3)
 # Textbook context: Section: Clustered data | Subsection: Multilevel-models
 # ------------------------------------------------------------------------------
 
-    install.packages(c("lme4"))
+    # install.packages(c("lme4"))
 
 # ------------------------------------------------------------------------------
 # Box 03: Project Star and multilevel models in R
 # Textbook context: Section: Clustered data | Subsection: Multilevel-models
 # ------------------------------------------------------------------------------
 
-df <- read.csv(file.path("data", "star.csv"))
+df <- read.csv("star.csv")
 
 # Create treatment indicator
 df$small_class <- ifelse(df$class_type == "SMALL", 1, NA)
@@ -92,7 +104,7 @@ summary(multi_model2)
 # Textbook context: Section: Panel data | Subsection: Regression with individual fixed effects
 # ------------------------------------------------------------------------------
 
-df <- read.csv(file.path("data", "municip_data.csv"))
+df <- read.csv("municip_data.csv")
 df <- df[df$municip_name != "Gotland", ]
 
 library(plm)

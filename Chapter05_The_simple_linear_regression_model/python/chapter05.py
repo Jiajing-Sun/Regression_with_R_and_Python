@@ -3,6 +3,32 @@
 # Generated from the current textbook LaTeX source.
 # Code blocks are kept in textbook order; relative paths follow the book examples.
 
+# Run from the chapter data directory when data/ exists, so printed paths such as
+# "apartment_price_data.csv" work from the companion repository.
+from pathlib import Path
+import os as _os
+
+_data_dir = Path(__file__).resolve().parents[1] / "data"
+if _data_dir.exists():
+    _os.chdir(_data_dir)
+
+# Runnable setup for standalone execution.
+import pandas as pd
+import numpy as np
+
+df = pd.read_csv("apartment_price_data.csv")
+df = df.loc[df["price"].notna() & df["living_area"].notna()].copy()
+xbar = df["living_area"].mean()
+ybar = df["price"].mean()
+n = len(df)
+s_xy = ((df["living_area"] - xbar) * (df["price"] - ybar)).sum() / (n - 1)
+s_x2 = ((df["living_area"] - xbar) ** 2).sum() / (n - 1)
+beta_1_hat = s_xy / s_x2
+beta_0_hat = ybar - xbar * beta_1_hat
+y_hat = beta_0_hat + beta_1_hat * df["living_area"]
+u_hat = df["price"] - y_hat
+RSS = (u_hat ** 2).sum()
+
 # ------------------------------------------------------------------------------
 # Box 01: Inference for regression in Python
 # Textbook context: Section: Inference to the population with spherical error terms

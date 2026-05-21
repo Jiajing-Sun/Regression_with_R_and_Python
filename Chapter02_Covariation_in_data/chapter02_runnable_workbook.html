@@ -380,7 +380,7 @@ automatically during rendering.</li>
 <div id="box-01" class="section level3">
 <h3>Box 01</h3>
 <p>Textbook context: Section: Pearson’s correlation.</p>
-<pre class="r"><code>    df &lt;- read.csv(file.path(&quot;data&quot;, &quot;apartment_price_data.csv&quot;))</code></pre>
+<pre class="r"><code>    df &lt;- read.csv(&quot;apartment_price_data.csv&quot;)</code></pre>
 </div>
 <div id="box-02" class="section level3">
 <h3>Box 02</h3>
@@ -586,7 +586,7 @@ automatically during rendering.</li>
 <div id="box-10" class="section level3">
 <h3>Box 10</h3>
 <p>Textbook context: Section: Pearson’s correlation.</p>
-<pre class="r"><code>      corr_xy &lt;- cov(df$living_area, df$price) / 
+<pre class="r"><code>      corr_xy &lt;- cov(df$living_area, df$price) /
                  (sd(df$living_area) * sd(df$price))</code></pre>
 </div>
 <div id="box-11" class="section level3">
@@ -672,23 +672,23 @@ Coefficient of determination.</p>
 <p>Textbook context: Section: Simple linear regression | Subsection:
 Coefficient of determination.</p>
 <pre class="r"><code> summary(ols_model)
-#&gt; 
+#&gt;
 #&gt; Call:
 #&gt; lm(formula = price ~ living_area, data = df)
-#&gt; 
+#&gt;
 #&gt; Residuals:
-#&gt;     Min      1Q  Median      3Q     Max 
-#&gt; -2.7262 -1.0215 -0.2609  0.7578  9.4753 
-#&gt; 
+#&gt;     Min      1Q  Median      3Q     Max
+#&gt; -2.7262 -1.0215 -0.2609  0.7578  9.4753
+#&gt;
 #&gt; Coefficients:
-#&gt;             Estimate Std. Error t value Pr(&gt;|t|)    
+#&gt;             Estimate Std. Error t value Pr(&gt;|t|)
 #&gt; (Intercept) 0.990282   0.132493   7.474  1.7e-13 ***
 #&gt; living_area 0.017178   0.001907   9.006  &lt; 2e-16 ***
 #&gt; ---
 #&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-#&gt; 
+#&gt;
 #&gt; Residual standard error: 1.424 on 998 degrees of freedom
-#&gt; Multiple R-squared:  0.07517,    Adjusted R-squared:  0.07424 
+#&gt; Multiple R-squared:  0.07517,    Adjusted R-squared:  0.07424
 #&gt; F-statistic: 81.11 on 1 and 998 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>

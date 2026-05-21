@@ -3,6 +3,15 @@
 # Generated from the current textbook LaTeX source.
 # Code blocks are kept in textbook order; relative paths follow the book examples.
 
+# Run from the chapter data directory when data/ exists, so printed paths such as
+# "apartment_price_data.csv" work from the companion repository.
+from pathlib import Path
+import os as _os
+
+_data_dir = Path(__file__).resolve().parents[1] / "data"
+if _data_dir.exists():
+    _os.chdir(_data_dir)
+
 # ------------------------------------------------------------------------------
 # Box 01: Project Star and clustering in Python
 # Textbook context: Section: Clustered data | Subsection: OLS with clustered data
@@ -13,7 +22,7 @@ import pandas as pd
 import statsmodels.formula.api as smf
 
 # Load data
-df = pd.read_csv("data/star.csv")
+df = pd.read_csv("star.csv")
 
 # NOTE (updated data schema):
 # class_type  : class assignment (e.g. "SMALL", "REGULAR", "AIDE")
@@ -90,7 +99,7 @@ import numpy as np
 import pandas as pd
 import statsmodels.formula.api as smf
 
-df = pd.read_csv("data/star.csv")
+df = pd.read_csv("star.csv")
 
 # Create treatment indicator
 df["small_class"] = np.where(df["class_type"] == "SMALL", 1.0, np.nan)
@@ -125,7 +134,7 @@ if "school_id" in df.columns and df["school_id"].notna().any():
 
     print(multi_model2.summary())
 
-    sigma2_class2 = float(multi_model2.cov_re.iloc[0, 0])
+    sigma2_class2 = float(multi_model2.cov_re.iloc[0, 0]) if multi_model2.cov_re.size else 0.0
     sigma2_school2 = float(multi_model2.vcomp[0])
     sigma2_u2 = float(multi_model2.scale)
 
@@ -141,7 +150,7 @@ import pandas as pd
 import statsmodels.api as sm
 from linearmodels.panel import PanelOLS
 
-df = pd.read_csv("data/municip_data.csv")
+df = pd.read_csv("municip_data.csv")
 df = df[df["municip_name"] != "Gotland"].copy()
 
 # Create a (municipality, year) index

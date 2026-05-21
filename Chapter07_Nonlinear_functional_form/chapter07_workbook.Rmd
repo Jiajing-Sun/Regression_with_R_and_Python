@@ -1,6 +1,6 @@
 ---
 title: "Chapter 07: Nonlinear functional form"
-subtitle: "Regression with R and Python: Description, Prediction, and Causal Analysis for Applied Social Science and Econometrics"
+subtitle: "Regression with R and Python: Description, Prediction, and Causal Inference for Applied Social Science and Econometrics"
 output:
   html_document:
     toc: true
@@ -118,7 +118,7 @@ Textbook context: Section: Example: Relationship between weather and air polluti
 Textbook context: Section: Example: Relationship between weather and air pollution.
 
 ```{r air-pollution-and-weather-in-r-09}
-    ols_model_poly_alt <- lm(pm25 ~ 
+    ols_model_poly_alt <- lm(pm25 ~
       poly(wind_direction, 4), data=df)
 ```
 

@@ -1,6 +1,6 @@
 ---
 title: "Chapter 06: Multiple Linear Regression"
-subtitle: "Regression with R and Python: Description, Prediction, and Causal Analysis for Applied Social Science and Econometrics"
+subtitle: "Regression with R and Python: Description, Prediction, and Causal Inference for Applied Social Science and Econometrics"
 output:
   html_document:
     toc: true
@@ -80,32 +80,44 @@ Textbook context: Section: The general multiple linear regression model.
  p_value <- (1 - pt(abs(t_stat), df_model)) * 2
 ```
 
-## $F$-test in R
+## Added-variable plot in R
 
 ### Box 06
 
-Textbook context: Section: $F$-test.
+Textbook context: Section: Regression anatomy and partial regression plots | Subsection: Added-variable plots.
 
-```{r f-test-in-r-06}
- ols_model_l <- lm(price ~ living_area + monthly_fee +
-  new_production + build_year, data=df)
- summary(ols_model_l)
+```{r added-variable-plot-in-r-06}
+df <- read.csv("apartment_price_data.csv")
+
+res_y <- residuals(lm(price ~ monthly_fee, data=df))
+res_x <- residuals(lm(living_area ~ monthly_fee, data=df))
+
+av_model <- lm(res_y ~ res_x)
+coef(av_model)
+coef(lm(price ~ living_area + monthly_fee, data=df))
 ```
 
 ### Box 07
 
-Textbook context: Section: $F$-test.
+Textbook context: Section: Regression anatomy and partial regression plots | Subsection: Added-variable plots.
 
-```{r f-test-in-r-07}
-    n <- nobs(ols_model_l)
+```{r added-variable-plot-in-r-07}
+plot(res_x, res_y,
+     xlab = "Living area residuals",
+     ylab = "Price residuals")
+abline(av_model)
 ```
+
+## $F$-test in R
 
 ### Box 08
 
 Textbook context: Section: $F$-test.
 
 ```{r f-test-in-r-08}
-    b <- !is.na(df$new_production) & !is.na(df$build_year)
+ ols_model_l <- lm(price ~ living_area + monthly_fee +
+  new_production + build_year, data=df)
+ summary(ols_model_l)
 ```
 
 ### Box 09
@@ -113,8 +125,7 @@ Textbook context: Section: $F$-test.
 Textbook context: Section: $F$-test.
 
 ```{r f-test-in-r-09}
-    ols_model_s <- lm(price ~ living_area + monthly_fee,
-                              data=df[b, ])
+    n <- nobs(ols_model_l)
 ```
 
 ### Box 10
@@ -122,10 +133,7 @@ Textbook context: Section: $F$-test.
 Textbook context: Section: $F$-test.
 
 ```{r f-test-in-r-10}
-    residuals_l <- residuals(ols_model_l)
-    residuals_s <- residuals(ols_model_s)
-    RSS_l <- sum(residuals_l^2)
-    RSS_s <- sum(residuals_s^2)
+    b <- !is.na(df$new_production) & !is.na(df$build_year)
 ```
 
 ### Box 11
@@ -133,8 +141,8 @@ Textbook context: Section: $F$-test.
 Textbook context: Section: $F$-test.
 
 ```{r f-test-in-r-11}
-    K <- 4
-    G <- 2
+    ols_model_s <- lm(price ~ living_area + monthly_fee,
+                              data=df[b, ])
 ```
 
 ### Box 12
@@ -142,8 +150,10 @@ Textbook context: Section: $F$-test.
 Textbook context: Section: $F$-test.
 
 ```{r f-test-in-r-12}
-    F_obs <- ((RSS_s - RSS_l) / (K - G)) / 
-             (RSS_l / (n - (K + 1)))
+    residuals_l <- residuals(ols_model_l)
+    residuals_s <- residuals(ols_model_s)
+    RSS_l <- sum(residuals_l^2)
+    RSS_s <- sum(residuals_s^2)
 ```
 
 ### Box 13
@@ -151,7 +161,8 @@ Textbook context: Section: $F$-test.
 Textbook context: Section: $F$-test.
 
 ```{r f-test-in-r-13}
- p <- 1 - pf(F_obs, df1=K-G, df2=n-(K+1))
+    K <- 4
+    G <- 2
 ```
 
 ### Box 14
@@ -159,7 +170,8 @@ Textbook context: Section: $F$-test.
 Textbook context: Section: $F$-test.
 
 ```{r f-test-in-r-14}
-    anova(ols_model_s, ols_model_l)
+    F_obs <- ((RSS_s - RSS_l) / (K - G)) /
+             (RSS_l / (n - (K + 1)))
 ```
 
 ### Box 15
@@ -167,47 +179,63 @@ Textbook context: Section: $F$-test.
 Textbook context: Section: $F$-test.
 
 ```{r f-test-in-r-15}
+ p <- 1 - pf(F_obs, df1=K-G, df2=n-(K+1))
+```
+
+### Box 16
+
+Textbook context: Section: $F$-test.
+
+```{r f-test-in-r-16}
+    anova(ols_model_s, ols_model_l)
+```
+
+### Box 17
+
+Textbook context: Section: $F$-test.
+
+```{r f-test-in-r-17}
  summary(ols_model_l)
 ```
 
 ## Robust $F$-test in R
 
-### Box 16
+### Box 18
 
 Textbook context: Section: $F$-test | Subsection: Robust $F$-test.
 
-```{r robust-f-test-in-r-16}
+```{r robust-f-test-in-r-18}
     library("lmtest")
     library("sandwich")
 ```
 
-### Box 17
+### Box 19
 
 Textbook context: Section: $F$-test | Subsection: Robust $F$-test.
 
-```{r robust-f-test-in-r-17}
+```{r robust-f-test-in-r-19}
     waldtest(ols_model_s, ols_model_l,
              vcov = vcovHC(ols_model_l, type = "HC0"))
 ```
 
 ## Confidence intervals for expected value and prediction intervals in R
 
-### Box 18
+### Box 20
 
 Textbook context: Section: Uncertainty of the conditional expectation | Subsection: Prediction interval.
 
-```{r confidence-intervals-for-expected-value-and-prediction-intervals-in-r-18}
+```{r confidence-intervals-for-expected-value-and-prediction-intervals-in-r-20}
  ols_model <- lm(price ~ living_area, data=df)
  x0 <-80
  yhat_x80 <- predict(ols_model,
  newdata=data.frame(living_area=x0))
 ```
 
-### Box 19
+### Box 21
 
 Textbook context: Section: Uncertainty of the conditional expectation | Subsection: Prediction interval.
 
-```{r confidence-intervals-for-expected-value-and-prediction-intervals-in-r-19}
+```{r confidence-intervals-for-expected-value-and-prediction-intervals-in-r-21}
   n <- nobs(ols_model)
   RSS <- sum(residuals(ols_model)^2)
   s2_epsilon <- RSS / (n - 2)
@@ -216,34 +244,15 @@ Textbook context: Section: Uncertainty of the conditional expectation | Subsecti
   var_eY_x0 <- s2_epsilon * (1 / n + (x0 - xbar)^2 / SSX)
 ```
 
-### Box 20
-
-Textbook context: Section: Uncertainty of the conditional expectation | Subsection: Prediction interval.
-
-```{r confidence-intervals-for-expected-value-and-prediction-intervals-in-r-20}
- alpha <- 0.05
- t_crit <- qt(1-alpha/2, df=n-2)
- lb_ci_eY_x0 <- yhat_x80 - t_crit * sqrt(var_eY_x0)
- ub_ci_eY_x0 <- yhat_x80 + t_crit * sqrt(var_eY_x0)
-```
-
-### Box 21
-
-Textbook context: Section: Uncertainty of the conditional expectation | Subsection: Prediction interval.
-
-```{r confidence-intervals-for-expected-value-and-prediction-intervals-in-r-21}
- var_tildeepsilon_x0 <- var_eY_x0 + s2_epsilon
- lb_pi_x0 <- yhat_x80 - t_crit * sqrt(var_tildeepsilon_x0)
- ub_pi_x0 <- yhat_x80 + t_crit * sqrt(var_tildeepsilon_x0)
-```
-
 ### Box 22
 
 Textbook context: Section: Uncertainty of the conditional expectation | Subsection: Prediction interval.
 
 ```{r confidence-intervals-for-expected-value-and-prediction-intervals-in-r-22}
- ols_model2 <- lm(price ~ living_area + monthly_fee +
- new_production, data=df)
+ alpha <- 0.05
+ t_crit <- qt(1-alpha/2, df=n-2)
+ lb_ci_eY_x0 <- yhat_x80 - t_crit * sqrt(var_eY_x0)
+ ub_ci_eY_x0 <- yhat_x80 + t_crit * sqrt(var_eY_x0)
 ```
 
 ### Box 23
@@ -251,6 +260,25 @@ Textbook context: Section: Uncertainty of the conditional expectation | Subsecti
 Textbook context: Section: Uncertainty of the conditional expectation | Subsection: Prediction interval.
 
 ```{r confidence-intervals-for-expected-value-and-prediction-intervals-in-r-23}
+ var_tildeepsilon_x0 <- var_eY_x0 + s2_epsilon
+ lb_pi_x0 <- yhat_x80 - t_crit * sqrt(var_tildeepsilon_x0)
+ ub_pi_x0 <- yhat_x80 + t_crit * sqrt(var_tildeepsilon_x0)
+```
+
+### Box 24
+
+Textbook context: Section: Uncertainty of the conditional expectation | Subsection: Prediction interval.
+
+```{r confidence-intervals-for-expected-value-and-prediction-intervals-in-r-24}
+ ols_model2 <- lm(price ~ living_area + monthly_fee +
+ new_production, data=df)
+```
+
+### Box 25
+
+Textbook context: Section: Uncertainty of the conditional expectation | Subsection: Prediction interval.
+
+```{r confidence-intervals-for-expected-value-and-prediction-intervals-in-r-25}
  eval_df <- data.frame(living_area=80,
  monthly_fee=3000, new_production=1)
  predict(ols_model2, newdata = eval_df,

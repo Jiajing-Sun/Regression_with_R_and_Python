@@ -378,7 +378,7 @@ automatically during rendering.</li>
 <div id="box-01" class="section level3">
 <h3>Box 01</h3>
 <p>Textbook context: Chapter context unavailable.</p>
-<pre class="r"><code>  df &lt;- read.csv(file.path(&quot;data&quot;, &quot;apartment_price_data.csv&quot;))
+<pre class="r"><code>  df &lt;- read.csv(&quot;apartment_price_data.csv&quot;)
   corrXY &lt;- cor(df$living_area, df$price)
   Z &lt;- 1/2 * log((1+corrXY)/(1-corrXY))
   alpha &lt;- 0.05
@@ -392,16 +392,16 @@ automatically during rendering.</li>
 <h3>Box 02</h3>
 <p>Textbook context: Chapter context unavailable.</p>
 <pre class="r"><code>  cor.test(df$living_area, df$price, conf.level=0.95)
-#&gt; 
+#&gt;
 #&gt;  Pearson&#39;s product-moment correlation
-#&gt; 
+#&gt;
 #&gt; data:  df$living_area and df$price
 #&gt; t = 9.0063, df = 998, p-value &lt; 2.2e-16
 #&gt; alternative hypothesis: true correlation is not equal to 0
 #&gt; 95 percent confidence interval:
 #&gt;  0.2158421 0.3305417
 #&gt; sample estimates:
-#&gt;       cor 
+#&gt;       cor
 #&gt; 0.2741666</code></pre>
 </div>
 </div>

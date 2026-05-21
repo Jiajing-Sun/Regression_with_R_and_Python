@@ -3,6 +3,33 @@
 # Generated from the current textbook LaTeX source.
 # Code blocks are kept in textbook order; relative paths follow the book examples.
 
+# Run from the chapter data directory when data/ exists, so printed paths such as
+# "apartment_price_data.csv" work from the companion repository.
+args <- commandArgs(trailingOnly = FALSE)
+file_arg <- grep("^--file=", args, value = TRUE)
+if (length(file_arg) > 0) {
+  script_dir <- dirname(normalizePath(sub("^--file=", "", file_arg[1])))
+  data_dir <- file.path(dirname(script_dir), "data")
+  if (dir.exists(data_dir)) {
+    setwd(data_dir)
+  }
+}
+
+# Runnable setup for standalone execution.
+df <- read.csv("apartment_price_data.csv")
+df <- df[!is.na(df$price) & !is.na(df$living_area), ]
+xbar <- mean(df$living_area)
+ybar <- mean(df$price)
+n <- nrow(df)
+s_xy <- sum((df$living_area - xbar) * (df$price - ybar)) / (n - 1)
+s_x2 <- sum((df$living_area - xbar)^2) / (n - 1)
+beta_1_hat <- s_xy / s_x2
+beta_0_hat <- ybar - xbar * beta_1_hat
+y_hat <- beta_0_hat + beta_1_hat * df$living_area
+u_hat <- df$price - y_hat
+RSS <- sum(u_hat^2)
+ols_model <- lm(price ~ living_area, data=df)
+
 # ------------------------------------------------------------------------------
 # Box 01: Inference for regression in R
 # Textbook context: Section: Inference to the population with spherical error terms

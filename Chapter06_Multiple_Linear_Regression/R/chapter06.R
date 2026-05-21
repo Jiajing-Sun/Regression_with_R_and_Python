@@ -3,6 +3,18 @@
 # Generated from the current textbook LaTeX source.
 # Code blocks are kept in textbook order; relative paths follow the book examples.
 
+# Run from the chapter data directory when data/ exists, so printed paths such as
+# "apartment_price_data.csv" work from the companion repository.
+args <- commandArgs(trailingOnly = FALSE)
+file_arg <- grep("^--file=", args, value = TRUE)
+if (length(file_arg) > 0) {
+  script_dir <- dirname(normalizePath(sub("^--file=", "", file_arg[1])))
+  data_dir <- file.path(dirname(script_dir), "data")
+  if (dir.exists(data_dir)) {
+    setwd(data_dir)
+  }
+}
+
 # ------------------------------------------------------------------------------
 # Box 01: Multiple regression in R
 # Textbook context: Section: The general multiple linear regression model
@@ -49,7 +61,31 @@
  p_value <- (1 - pt(abs(t_stat), df_model)) * 2
 
 # ------------------------------------------------------------------------------
-# Box 06: $F$-test in R
+# Box 06: Added-variable plot in R
+# Textbook context: Section: Regression anatomy and partial regression plots | Subsection: Added-variable plots
+# ------------------------------------------------------------------------------
+
+df <- read.csv("apartment_price_data.csv")
+
+res_y <- residuals(lm(price ~ monthly_fee, data=df))
+res_x <- residuals(lm(living_area ~ monthly_fee, data=df))
+
+av_model <- lm(res_y ~ res_x)
+coef(av_model)
+coef(lm(price ~ living_area + monthly_fee, data=df))
+
+# ------------------------------------------------------------------------------
+# Box 07: Added-variable plot in R
+# Textbook context: Section: Regression anatomy and partial regression plots | Subsection: Added-variable plots
+# ------------------------------------------------------------------------------
+
+plot(res_x, res_y,
+     xlab = "Living area residuals",
+     ylab = "Price residuals")
+abline(av_model)
+
+# ------------------------------------------------------------------------------
+# Box 08: $F$-test in R
 # Textbook context: Section: $F$-test
 # ------------------------------------------------------------------------------
 
@@ -58,21 +94,21 @@
  summary(ols_model_l)
 
 # ------------------------------------------------------------------------------
-# Box 07: $F$-test in R
+# Box 09: $F$-test in R
 # Textbook context: Section: $F$-test
 # ------------------------------------------------------------------------------
 
     n <- nobs(ols_model_l)
 
 # ------------------------------------------------------------------------------
-# Box 08: $F$-test in R
+# Box 10: $F$-test in R
 # Textbook context: Section: $F$-test
 # ------------------------------------------------------------------------------
 
     b <- !is.na(df$new_production) & !is.na(df$build_year)
 
 # ------------------------------------------------------------------------------
-# Box 09: $F$-test in R
+# Box 11: $F$-test in R
 # Textbook context: Section: $F$-test
 # ------------------------------------------------------------------------------
 
@@ -80,7 +116,7 @@
                               data=df[b, ])
 
 # ------------------------------------------------------------------------------
-# Box 10: $F$-test in R
+# Box 12: $F$-test in R
 # Textbook context: Section: $F$-test
 # ------------------------------------------------------------------------------
 
@@ -90,7 +126,7 @@
     RSS_s <- sum(residuals_s^2)
 
 # ------------------------------------------------------------------------------
-# Box 11: $F$-test in R
+# Box 13: $F$-test in R
 # Textbook context: Section: $F$-test
 # ------------------------------------------------------------------------------
 
@@ -98,36 +134,36 @@
     G <- 2
 
 # ------------------------------------------------------------------------------
-# Box 12: $F$-test in R
-# Textbook context: Section: $F$-test
-# ------------------------------------------------------------------------------
-
-    F_obs <- ((RSS_s - RSS_l) / (K - G)) / 
-             (RSS_l / (n - (K + 1)))
-
-# ------------------------------------------------------------------------------
-# Box 13: $F$-test in R
-# Textbook context: Section: $F$-test
-# ------------------------------------------------------------------------------
-
- p <- 1 - pf(F_obs, df1=K-G, df2=n-(K+1))
-
-# ------------------------------------------------------------------------------
 # Box 14: $F$-test in R
 # Textbook context: Section: $F$-test
 # ------------------------------------------------------------------------------
 
-    anova(ols_model_s, ols_model_l)
+    F_obs <- ((RSS_s - RSS_l) / (K - G)) /
+             (RSS_l / (n - (K + 1)))
 
 # ------------------------------------------------------------------------------
 # Box 15: $F$-test in R
 # Textbook context: Section: $F$-test
 # ------------------------------------------------------------------------------
 
+ p <- 1 - pf(F_obs, df1=K-G, df2=n-(K+1))
+
+# ------------------------------------------------------------------------------
+# Box 16: $F$-test in R
+# Textbook context: Section: $F$-test
+# ------------------------------------------------------------------------------
+
+    anova(ols_model_s, ols_model_l)
+
+# ------------------------------------------------------------------------------
+# Box 17: $F$-test in R
+# Textbook context: Section: $F$-test
+# ------------------------------------------------------------------------------
+
  summary(ols_model_l)
 
 # ------------------------------------------------------------------------------
-# Box 16: Robust $F$-test in R
+# Box 18: Robust $F$-test in R
 # Textbook context: Section: $F$-test | Subsection: Robust $F$-test
 # ------------------------------------------------------------------------------
 
@@ -135,7 +171,7 @@
     library("sandwich")
 
 # ------------------------------------------------------------------------------
-# Box 17: Robust $F$-test in R
+# Box 19: Robust $F$-test in R
 # Textbook context: Section: $F$-test | Subsection: Robust $F$-test
 # ------------------------------------------------------------------------------
 
@@ -143,7 +179,7 @@
              vcov = vcovHC(ols_model_l, type = "HC0"))
 
 # ------------------------------------------------------------------------------
-# Box 18: Confidence intervals for expected value and prediction intervals in R
+# Box 20: Confidence intervals for expected value and prediction intervals in R
 # Textbook context: Section: Uncertainty of the conditional expectation | Subsection: Prediction interval
 # ------------------------------------------------------------------------------
 
@@ -153,7 +189,7 @@
  newdata=data.frame(living_area=x0))
 
 # ------------------------------------------------------------------------------
-# Box 19: Confidence intervals for expected value and prediction intervals in R
+# Box 21: Confidence intervals for expected value and prediction intervals in R
 # Textbook context: Section: Uncertainty of the conditional expectation | Subsection: Prediction interval
 # ------------------------------------------------------------------------------
 
@@ -165,7 +201,7 @@
   var_eY_x0 <- s2_epsilon * (1 / n + (x0 - xbar)^2 / SSX)
 
 # ------------------------------------------------------------------------------
-# Box 20: Confidence intervals for expected value and prediction intervals in R
+# Box 22: Confidence intervals for expected value and prediction intervals in R
 # Textbook context: Section: Uncertainty of the conditional expectation | Subsection: Prediction interval
 # ------------------------------------------------------------------------------
 
@@ -175,7 +211,7 @@
  ub_ci_eY_x0 <- yhat_x80 + t_crit * sqrt(var_eY_x0)
 
 # ------------------------------------------------------------------------------
-# Box 21: Confidence intervals for expected value and prediction intervals in R
+# Box 23: Confidence intervals for expected value and prediction intervals in R
 # Textbook context: Section: Uncertainty of the conditional expectation | Subsection: Prediction interval
 # ------------------------------------------------------------------------------
 
@@ -184,7 +220,7 @@
  ub_pi_x0 <- yhat_x80 + t_crit * sqrt(var_tildeepsilon_x0)
 
 # ------------------------------------------------------------------------------
-# Box 22: Confidence intervals for expected value and prediction intervals in R
+# Box 24: Confidence intervals for expected value and prediction intervals in R
 # Textbook context: Section: Uncertainty of the conditional expectation | Subsection: Prediction interval
 # ------------------------------------------------------------------------------
 
@@ -192,7 +228,7 @@
  new_production, data=df)
 
 # ------------------------------------------------------------------------------
-# Box 23: Confidence intervals for expected value and prediction intervals in R
+# Box 25: Confidence intervals for expected value and prediction intervals in R
 # Textbook context: Section: Uncertainty of the conditional expectation | Subsection: Prediction interval
 # ------------------------------------------------------------------------------
 

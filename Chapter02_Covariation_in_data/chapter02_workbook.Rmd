@@ -1,6 +1,6 @@
 ---
 title: "Chapter 02: Covariation in data"
-subtitle: "Regression with R and Python: Description, Prediction, and Causal Analysis for Applied Social Science and Econometrics"
+subtitle: "Regression with R and Python: Description, Prediction, and Causal Inference for Applied Social Science and Econometrics"
 output:
   html_document:
     toc: true
@@ -112,7 +112,7 @@ Textbook context: Section: Pearson's correlation.
 Textbook context: Section: Pearson's correlation.
 
 ```{r calculation-of-correlation-in-r-10}
-      corr_xy <- cov(df$living_area, df$price) / 
+      corr_xy <- cov(df$living_area, df$price) /
                  (sd(df$living_area) * sd(df$price))
 ```
 

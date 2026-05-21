@@ -350,7 +350,7 @@ display: none;
 
 <h1 class="title toc-ignore">Chapter 06: Multiple Linear Regression</h1>
 <h3 class="subtitle">Regression with R and Python: Description,
-Prediction, and Causal Analysis for Applied Social Science and
+Prediction, and Causal Inference for Applied Social Science and
 Econometrics</h3>
 
 </div>
@@ -358,6 +358,7 @@ Econometrics</h3>
 <div id="TOC">
 <ul>
 <li><a href="#multiple-regression-in-r" id="toc-multiple-regression-in-r">Multiple regression in R</a></li>
+<li><a href="#added-variable-plot-in-r" id="toc-added-variable-plot-in-r">Added-variable plot in R</a></li>
 <li><a href="#f-test-in-r" id="toc-f-test-in-r"><span class="math inline">\(F\)</span>-test in R</a></li>
 <li><a href="#robust-f-test-in-r" id="toc-robust-f-test-in-r">Robust
 <span class="math inline">\(F\)</span>-test in R</a></li>
@@ -427,77 +428,102 @@ model.</p>
  p_value &lt;- (1 - pt(abs(t_stat), df_model)) * 2</code></pre>
 </div>
 </div>
-<div id="f-test-in-r" class="section level2">
-<h2><span class="math inline">\(F\)</span>-test in R</h2>
+<div id="added-variable-plot-in-r" class="section level2">
+<h2>Added-variable plot in R</h2>
 <div id="box-06" class="section level3">
 <h3>Box 06</h3>
+<p>Textbook context: Section: Regression anatomy and partial regression
+plots | Subsection: Added-variable plots.</p>
+<pre class="r"><code>df &lt;- read.csv(&quot;apartment_price_data.csv&quot;)
+
+res_y &lt;- residuals(lm(price ~ monthly_fee, data=df))
+res_x &lt;- residuals(lm(living_area ~ monthly_fee, data=df))
+
+av_model &lt;- lm(res_y ~ res_x)
+coef(av_model)
+coef(lm(price ~ living_area + monthly_fee, data=df))</code></pre>
+</div>
+<div id="box-07" class="section level3">
+<h3>Box 07</h3>
+<p>Textbook context: Section: Regression anatomy and partial regression
+plots | Subsection: Added-variable plots.</p>
+<pre class="r"><code>plot(res_x, res_y,
+     xlab = &quot;Living area residuals&quot;,
+     ylab = &quot;Price residuals&quot;)
+abline(av_model)</code></pre>
+</div>
+</div>
+<div id="f-test-in-r" class="section level2">
+<h2><span class="math inline">\(F\)</span>-test in R</h2>
+<div id="box-08" class="section level3">
+<h3>Box 08</h3>
 <p>Textbook context: Section: <span class="math inline">\(F\)</span>-test.</p>
 <pre class="r"><code> ols_model_l &lt;- lm(price ~ living_area + monthly_fee +
   new_production + build_year, data=df)
  summary(ols_model_l)</code></pre>
 </div>
-<div id="box-07" class="section level3">
-<h3>Box 07</h3>
+<div id="box-09" class="section level3">
+<h3>Box 09</h3>
 <p>Textbook context: Section: <span class="math inline">\(F\)</span>-test.</p>
 <pre class="r"><code>    n &lt;- nobs(ols_model_l)</code></pre>
 </div>
-<div id="box-08" class="section level3">
-<h3>Box 08</h3>
+<div id="box-10" class="section level3">
+<h3>Box 10</h3>
 <p>Textbook context: Section: <span class="math inline">\(F\)</span>-test.</p>
 <pre class="r"><code>    b &lt;- !is.na(df$new_production) &amp; !is.na(df$build_year)</code></pre>
 </div>
-<div id="box-09" class="section level3">
-<h3>Box 09</h3>
+<div id="box-11" class="section level3">
+<h3>Box 11</h3>
 <p>Textbook context: Section: <span class="math inline">\(F\)</span>-test.</p>
 <pre class="r"><code>    ols_model_s &lt;- lm(price ~ living_area + monthly_fee,
                               data=df[b, ])</code></pre>
 </div>
-<div id="box-10" class="section level3">
-<h3>Box 10</h3>
+<div id="box-12" class="section level3">
+<h3>Box 12</h3>
 <p>Textbook context: Section: <span class="math inline">\(F\)</span>-test.</p>
 <pre class="r"><code>    residuals_l &lt;- residuals(ols_model_l)
     residuals_s &lt;- residuals(ols_model_s)
     RSS_l &lt;- sum(residuals_l^2)
     RSS_s &lt;- sum(residuals_s^2)</code></pre>
 </div>
-<div id="box-11" class="section level3">
-<h3>Box 11</h3>
+<div id="box-13" class="section level3">
+<h3>Box 13</h3>
 <p>Textbook context: Section: <span class="math inline">\(F\)</span>-test.</p>
 <pre class="r"><code>    K &lt;- 4
     G &lt;- 2</code></pre>
 </div>
-<div id="box-12" class="section level3">
-<h3>Box 12</h3>
-<p>Textbook context: Section: <span class="math inline">\(F\)</span>-test.</p>
-<pre class="r"><code>    F_obs &lt;- ((RSS_s - RSS_l) / (K - G)) / 
-             (RSS_l / (n - (K + 1)))</code></pre>
-</div>
-<div id="box-13" class="section level3">
-<h3>Box 13</h3>
-<p>Textbook context: Section: <span class="math inline">\(F\)</span>-test.</p>
-<pre class="r"><code> p &lt;- 1 - pf(F_obs, df1=K-G, df2=n-(K+1))</code></pre>
-</div>
 <div id="box-14" class="section level3">
 <h3>Box 14</h3>
 <p>Textbook context: Section: <span class="math inline">\(F\)</span>-test.</p>
-<pre class="r"><code>    anova(ols_model_s, ols_model_l)</code></pre>
+<pre class="r"><code>    F_obs &lt;- ((RSS_s - RSS_l) / (K - G)) /
+             (RSS_l / (n - (K + 1)))</code></pre>
 </div>
 <div id="box-15" class="section level3">
 <h3>Box 15</h3>
+<p>Textbook context: Section: <span class="math inline">\(F\)</span>-test.</p>
+<pre class="r"><code> p &lt;- 1 - pf(F_obs, df1=K-G, df2=n-(K+1))</code></pre>
+</div>
+<div id="box-16" class="section level3">
+<h3>Box 16</h3>
+<p>Textbook context: Section: <span class="math inline">\(F\)</span>-test.</p>
+<pre class="r"><code>    anova(ols_model_s, ols_model_l)</code></pre>
+</div>
+<div id="box-17" class="section level3">
+<h3>Box 17</h3>
 <p>Textbook context: Section: <span class="math inline">\(F\)</span>-test.</p>
 <pre class="r"><code> summary(ols_model_l)</code></pre>
 </div>
 </div>
 <div id="robust-f-test-in-r" class="section level2">
 <h2>Robust <span class="math inline">\(F\)</span>-test in R</h2>
-<div id="box-16" class="section level3">
-<h3>Box 16</h3>
+<div id="box-18" class="section level3">
+<h3>Box 18</h3>
 <p>Textbook context: Section: <span class="math inline">\(F\)</span>-test | Subsection: Robust <span class="math inline">\(F\)</span>-test.</p>
 <pre class="r"><code>    library(&quot;lmtest&quot;)
     library(&quot;sandwich&quot;)</code></pre>
 </div>
-<div id="box-17" class="section level3">
-<h3>Box 17</h3>
+<div id="box-19" class="section level3">
+<h3>Box 19</h3>
 <p>Textbook context: Section: <span class="math inline">\(F\)</span>-test | Subsection: Robust <span class="math inline">\(F\)</span>-test.</p>
 <pre class="r"><code>    waldtest(ols_model_s, ols_model_l,
              vcov = vcovHC(ols_model_l, type = &quot;HC0&quot;))</code></pre>
@@ -506,8 +532,8 @@ model.</p>
 <div id="confidence-intervals-for-expected-value-and-prediction-intervals-in-r" class="section level2">
 <h2>Confidence intervals for expected value and prediction intervals in
 R</h2>
-<div id="box-18" class="section level3">
-<h3>Box 18</h3>
+<div id="box-20" class="section level3">
+<h3>Box 20</h3>
 <p>Textbook context: Section: Uncertainty of the conditional expectation
 | Subsection: Prediction interval.</p>
 <pre class="r"><code> ols_model &lt;- lm(price ~ living_area, data=df)
@@ -515,8 +541,8 @@ R</h2>
  yhat_x80 &lt;- predict(ols_model,
  newdata=data.frame(living_area=x0))</code></pre>
 </div>
-<div id="box-19" class="section level3">
-<h3>Box 19</h3>
+<div id="box-21" class="section level3">
+<h3>Box 21</h3>
 <p>Textbook context: Section: Uncertainty of the conditional expectation
 | Subsection: Prediction interval.</p>
 <pre class="r"><code>  n &lt;- nobs(ols_model)
@@ -526,8 +552,8 @@ R</h2>
   SSX &lt;- sum((df$living_area - xbar)^2)
   var_eY_x0 &lt;- s2_epsilon * (1 / n + (x0 - xbar)^2 / SSX)</code></pre>
 </div>
-<div id="box-20" class="section level3">
-<h3>Box 20</h3>
+<div id="box-22" class="section level3">
+<h3>Box 22</h3>
 <p>Textbook context: Section: Uncertainty of the conditional expectation
 | Subsection: Prediction interval.</p>
 <pre class="r"><code> alpha &lt;- 0.05
@@ -535,23 +561,23 @@ R</h2>
  lb_ci_eY_x0 &lt;- yhat_x80 - t_crit * sqrt(var_eY_x0)
  ub_ci_eY_x0 &lt;- yhat_x80 + t_crit * sqrt(var_eY_x0)</code></pre>
 </div>
-<div id="box-21" class="section level3">
-<h3>Box 21</h3>
+<div id="box-23" class="section level3">
+<h3>Box 23</h3>
 <p>Textbook context: Section: Uncertainty of the conditional expectation
 | Subsection: Prediction interval.</p>
 <pre class="r"><code> var_tildeepsilon_x0 &lt;- var_eY_x0 + s2_epsilon
  lb_pi_x0 &lt;- yhat_x80 - t_crit * sqrt(var_tildeepsilon_x0)
  ub_pi_x0 &lt;- yhat_x80 + t_crit * sqrt(var_tildeepsilon_x0)</code></pre>
 </div>
-<div id="box-22" class="section level3">
-<h3>Box 22</h3>
+<div id="box-24" class="section level3">
+<h3>Box 24</h3>
 <p>Textbook context: Section: Uncertainty of the conditional expectation
 | Subsection: Prediction interval.</p>
 <pre class="r"><code> ols_model2 &lt;- lm(price ~ living_area + monthly_fee +
  new_production, data=df)</code></pre>
 </div>
-<div id="box-23" class="section level3">
-<h3>Box 23</h3>
+<div id="box-25" class="section level3">
+<h3>Box 25</h3>
 <p>Textbook context: Section: Uncertainty of the conditional expectation
 | Subsection: Prediction interval.</p>
 <pre class="r"><code> eval_df &lt;- data.frame(living_area=80,

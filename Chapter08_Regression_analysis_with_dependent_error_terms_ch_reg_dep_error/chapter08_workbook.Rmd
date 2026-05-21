@@ -1,6 +1,6 @@
 ---
 title: "Chapter 08: Regression analysis with dependent error terms"
-subtitle: "Regression with R and Python: Description, Prediction, and Causal Analysis for Applied Social Science and Econometrics"
+subtitle: "Regression with R and Python: Description, Prediction, and Causal Inference for Applied Social Science and Econometrics"
 output:
   html_document:
     toc: true
@@ -36,7 +36,7 @@ Textbook context: Section: Clustered data | Subsection: OLS with clustered data.
 
 ```{r project-star-and-clustering-in-r-01}
 # Load data
-df <- read.csv(file.path("data", "star.csv"))
+df <- read.csv("star.csv")
 
 # NOTE (updated data schema):
 # class_type  : class assignment (e.g. "SMALL", "REGULAR", "AIDE")
@@ -89,7 +89,7 @@ coeftest(ols_model3, vcov = V_cl3)
 Textbook context: Section: Clustered data | Subsection: Multilevel-models.
 
 ```{r project-star-and-multilevel-models-in-r-02}
-    install.packages(c("lme4"))
+    # install.packages(c("lme4"))
 ```
 
 ### Box 03
@@ -97,7 +97,7 @@ Textbook context: Section: Clustered data | Subsection: Multilevel-models.
 Textbook context: Section: Clustered data | Subsection: Multilevel-models.
 
 ```{r project-star-and-multilevel-models-in-r-03}
-df <- read.csv(file.path("data", "star.csv"))
+df <- read.csv("star.csv")
 
 # Create treatment indicator
 df$small_class <- ifelse(df$class_type == "SMALL", 1, NA)
@@ -126,7 +126,7 @@ summary(multi_model2)
 Textbook context: Section: Panel data | Subsection: Regression with individual fixed effects.
 
 ```{r the-within-estimator-with-municipal-data-in-r-04}
-df <- read.csv(file.path("data", "municip_data.csv"))
+df <- read.csv("municip_data.csv")
 df <- df[df$municip_name != "Gotland", ]
 
 library(plm)

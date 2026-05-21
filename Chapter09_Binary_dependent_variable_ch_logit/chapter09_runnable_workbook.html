@@ -378,7 +378,7 @@ automatically during rendering.</li>
 <h3>Box 01</h3>
 <p>Textbook context: Section: Estimation and inference under logistic
 regression model | Subsection: Assumptions about the error term.</p>
-<pre class="r"><code> df &lt;- read.csv(file.path(&quot;data&quot;, &quot;municip_data.csv&quot;))
+<pre class="r"><code> df &lt;- read.csv(&quot;municip_data.csv&quot;)
  df &lt;- df[df$year == 2022, ]</code></pre>
 </div>
 <div id="box-02" class="section level3">
@@ -407,24 +407,24 @@ regression model | Subsection: Assumptions about the error term.</p>
 <p>Textbook context: Section: Estimation and inference under logistic
 regression model | Subsection: Assumptions about the error term.</p>
 <pre class="r"><code> summary(logit_model)
-#&gt; 
+#&gt;
 #&gt; Call:
-#&gt; glm(formula = df$high_income ~ share_tertiary_school, family = binomial(link = &quot;logit&quot;), 
+#&gt; glm(formula = df$high_income ~ share_tertiary_school, family = binomial(link = &quot;logit&quot;),
 #&gt;     data = df)
-#&gt; 
+#&gt;
 #&gt; Coefficients:
-#&gt;                       Estimate Std. Error z value Pr(&gt;|z|)    
+#&gt;                       Estimate Std. Error z value Pr(&gt;|z|)
 #&gt; (Intercept)            -11.084      1.294  -8.566  &lt; 2e-16 ***
 #&gt; share_tertiary_school   30.246      3.780   8.002 1.22e-15 ***
 #&gt; ---
 #&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-#&gt; 
+#&gt;
 #&gt; (Dispersion parameter for binomial family taken to be 1)
-#&gt; 
+#&gt;
 #&gt;     Null deviance: 327.25  on 289  degrees of freedom
 #&gt; Residual deviance: 161.85  on 288  degrees of freedom
 #&gt; AIC: 165.85
-#&gt; 
+#&gt;
 #&gt; Number of Fisher Scoring iterations: 6</code></pre>
 </div>
 <div id="box-06" class="section level3">
@@ -432,7 +432,7 @@ regression model | Subsection: Assumptions about the error term.</p>
 <p>Textbook context: Section: Estimation and inference under logistic
 regression model | Subsection: Assumptions about the error term.</p>
 <pre class="r"><code>    df$lnpop &lt;- log(df$pop)
-    logit_model2 &lt;- glm(df$high_income ~ 
+    logit_model2 &lt;- glm(df$high_income ~
       share_tertiary_school + lnpop,
       family = binomial(link = &quot;logit&quot;), data=df)</code></pre>
 </div>
@@ -448,7 +448,7 @@ regression model | Subsection: Assumptions about the error term.</p>
 <p>Textbook context: Section: Estimation and inference under logistic
 regression model | Subsection: Assumptions about the error term.</p>
 <pre class="r"><code> exp(beta1hat * .01)
-#&gt; share_tertiary_school 
+#&gt; share_tertiary_school
 #&gt;              1.372602</code></pre>
 </div>
 </div>
@@ -458,29 +458,29 @@ regression model | Subsection: Assumptions about the error term.</p>
 <h3>Box 09</h3>
 <p>Textbook context: Section: Example: the risk of having a heart
 disease.</p>
-<pre class="r"><code>    df &lt;- read.csv(file.path(&quot;data&quot;, &quot;heart_disease.csv&quot;))
+<pre class="r"><code>    df &lt;- read.csv(&quot;heart_disease.csv&quot;)
     logit_model &lt;- glm(df$heart_disease ~ blood_pressure,
                        family = binomial(link = &quot;logit&quot;),
                        data=df)
     summary(logit_model)
-#&gt; 
+#&gt;
 #&gt; Call:
-#&gt; glm(formula = df$heart_disease ~ blood_pressure, family = binomial(link = &quot;logit&quot;), 
+#&gt; glm(formula = df$heart_disease ~ blood_pressure, family = binomial(link = &quot;logit&quot;),
 #&gt;     data = df)
-#&gt; 
+#&gt;
 #&gt; Coefficients:
-#&gt;                 Estimate Std. Error z value Pr(&gt;|z|)   
+#&gt;                 Estimate Std. Error z value Pr(&gt;|z|)
 #&gt; (Intercept)    -2.483687   0.903634  -2.749  0.00599 **
 #&gt; blood_pressure  0.017587   0.006796   2.588  0.00966 **
 #&gt; ---
 #&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-#&gt; 
+#&gt;
 #&gt; (Dispersion parameter for binomial family taken to be 1)
-#&gt; 
+#&gt;
 #&gt;     Null deviance: 417.98  on 302  degrees of freedom
 #&gt; Residual deviance: 411.03  on 301  degrees of freedom
 #&gt; AIC: 415.03
-#&gt; 
+#&gt;
 #&gt; Number of Fisher Scoring iterations: 4</code></pre>
 </div>
 <div id="box-10" class="section level3">
@@ -508,26 +508,26 @@ disease.</p>
 <pre class="r"><code>    logit_model2 &lt;- glm(df$heart_disease ~ blood_pressure +
       male + age, family = binomial(link = &quot;logit&quot;), data=df)
     summary(logit_model2)
-#&gt; 
+#&gt;
 #&gt; Call:
-#&gt; glm(formula = df$heart_disease ~ blood_pressure + male + age, 
+#&gt; glm(formula = df$heart_disease ~ blood_pressure + male + age,
 #&gt;     family = binomial(link = &quot;logit&quot;), data = df)
-#&gt; 
+#&gt;
 #&gt; Coefficients:
-#&gt;                 Estimate Std. Error z value Pr(&gt;|z|)    
+#&gt;                 Estimate Std. Error z value Pr(&gt;|z|)
 #&gt; (Intercept)    -6.412779   1.239581  -5.173 2.30e-07 ***
-#&gt; blood_pressure  0.014728   0.007504   1.963 0.049674 *  
+#&gt; blood_pressure  0.014728   0.007504   1.963 0.049674 *
 #&gt; male            1.551801   0.294660   5.266 1.39e-07 ***
 #&gt; age             0.058835   0.015269   3.853 0.000117 ***
 #&gt; ---
 #&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-#&gt; 
+#&gt;
 #&gt; (Dispersion parameter for binomial family taken to be 1)
-#&gt; 
+#&gt;
 #&gt;     Null deviance: 417.98  on 302  degrees of freedom
 #&gt; Residual deviance: 368.38  on 299  degrees of freedom
 #&gt; AIC: 376.38
-#&gt; 
+#&gt;
 #&gt; Number of Fisher Scoring iterations: 3</code></pre>
 </div>
 <div id="box-12" class="section level3">
@@ -581,8 +581,8 @@ disease.</p>
 <p>Textbook context: Section: Example: the risk of having a heart
 disease.</p>
 <pre class="r"><code>    df_incr_blood_pressure &lt;- df
-    df_incr_blood_pressure$blood_pressure &lt;- 
-      df_incr_blood_pressure$blood_pressure + 
+    df_incr_blood_pressure$blood_pressure &lt;-
+      df_incr_blood_pressure$blood_pressure +
       std_dev_blood_pressure
     df_incr_blood_pressure$pred &lt;- predict(logit_model2,
       newdata=df_incr_blood_pressure, type=&quot;response&quot;)</code></pre>

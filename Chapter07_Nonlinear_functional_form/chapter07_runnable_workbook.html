@@ -377,7 +377,7 @@ automatically during rendering.</li>
 <h3>Box 01</h3>
 <p>Textbook context: Section: Example: Relationship between weather and
 air pollution.</p>
-<pre class="r"><code>    df &lt;- read.csv(file.path(&quot;data&quot;, &quot;pollution_sf.csv&quot;))</code></pre>
+<pre class="r"><code>    df &lt;- read.csv(&quot;pollution_sf.csv&quot;)</code></pre>
 </div>
 <div id="box-02" class="section level3">
 <h3>Box 02</h3>
@@ -445,7 +445,7 @@ air pollution.</p>
 <h3>Box 09</h3>
 <p>Textbook context: Section: Example: Relationship between weather and
 air pollution.</p>
-<pre class="r"><code>    ols_model_poly_alt &lt;- lm(pm25 ~ 
+<pre class="r"><code>    ols_model_poly_alt &lt;- lm(pm25 ~
       poly(wind_direction, 4), data=df)</code></pre>
 </div>
 <div id="box-10" class="section level3">
@@ -497,19 +497,19 @@ air pollution.</p>
     ols_model3 &lt;- lm(pm25 ~ land_wind + wind_speed +
                      land_wind_wind_speed, data=df)
     coeftest(ols_model1, vcov=vcovHC(ols_model1, type=&quot;HC0&quot;))
-#&gt; 
+#&gt;
 #&gt; t test of coefficients:
-#&gt; 
-#&gt;             Estimate Std. Error t value  Pr(&gt;|t|)    
+#&gt;
+#&gt;             Estimate Std. Error t value  Pr(&gt;|t|)
 #&gt; (Intercept)  7.91584    0.11406  69.402 &lt; 2.2e-16 ***
 #&gt; land_wind    5.62899    0.45002  12.508 &lt; 2.2e-16 ***
 #&gt; ---
 #&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
     coeftest(ols_model2, vcov=vcovHC(ols_model2, type=&quot;HC0&quot;))
-#&gt; 
+#&gt;
 #&gt; t test of coefficients:
-#&gt; 
-#&gt;                       Estimate Std. Error t value  Pr(&gt;|t|)    
+#&gt;
+#&gt;                       Estimate Std. Error t value  Pr(&gt;|t|)
 #&gt; (Intercept)            8.57574    0.17684 48.4938 &lt; 2.2e-16 ***
 #&gt; land_wind              6.53382    0.57155 11.4317 &lt; 2.2e-16 ***
 #&gt; strong_wind           -1.60644    0.20728 -7.7502 1.136e-14 ***
@@ -517,10 +517,10 @@ air pollution.</p>
 #&gt; ---
 #&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
     coeftest(ols_model3, vcov=vcovHC(ols_model3, type=&quot;HC0&quot;))
-#&gt; 
+#&gt;
 #&gt; t test of coefficients:
-#&gt; 
-#&gt;                       Estimate Std. Error t value  Pr(&gt;|t|)    
+#&gt;
+#&gt;                       Estimate Std. Error t value  Pr(&gt;|t|)
 #&gt; (Intercept)           9.947479   0.302000 32.9386 &lt; 2.2e-16 ***
 #&gt; land_wind            11.170586   1.140965  9.7905 &lt; 2.2e-16 ***
 #&gt; wind_speed           -0.658851   0.069218 -9.5185 &lt; 2.2e-16 ***

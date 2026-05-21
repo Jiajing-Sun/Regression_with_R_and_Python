@@ -3,6 +3,15 @@
 # Generated from the current textbook LaTeX source.
 # Code blocks are kept in textbook order; relative paths follow the book examples.
 
+# Run from the chapter data directory when data/ exists, so printed paths such as
+# "apartment_price_data.csv" work from the companion repository.
+from pathlib import Path
+import os as _os
+
+_data_dir = Path(__file__).resolve().parents[1] / "data"
+if _data_dir.exists():
+    _os.chdir(_data_dir)
+
 # ------------------------------------------------------------------------------
 # Box 01: Example with training and test data in Python
 # Textbook context: Section: Training data, test data and cross-validation

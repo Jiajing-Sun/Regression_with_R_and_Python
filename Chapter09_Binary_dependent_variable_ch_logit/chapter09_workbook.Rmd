@@ -1,6 +1,6 @@
 ---
 title: "Chapter 09: Binary dependent variable"
-subtitle: "Regression with R and Python: Description, Prediction, and Causal Analysis for Applied Social Science and Econometrics"
+subtitle: "Regression with R and Python: Description, Prediction, and Causal Inference for Applied Social Science and Econometrics"
 output:
   html_document:
     toc: true
@@ -80,7 +80,7 @@ Textbook context: Section: Estimation and inference under logistic regression mo
 
 ```{r logistic-regression-in-r-06}
     df$lnpop <- log(df$pop)
-    logit_model2 <- glm(df$high_income ~ 
+    logit_model2 <- glm(df$high_income ~
       share_tertiary_school + lnpop,
       family = binomial(link = "logit"), data=df)
 ```
@@ -207,8 +207,8 @@ Textbook context: Section: Example: the risk of having a heart disease.
 
 ```{r example-in-r-with-the-probability-of-heart-disease-17}
     df_incr_blood_pressure <- df
-    df_incr_blood_pressure$blood_pressure <- 
-      df_incr_blood_pressure$blood_pressure + 
+    df_incr_blood_pressure$blood_pressure <-
+      df_incr_blood_pressure$blood_pressure +
       std_dev_blood_pressure
     df_incr_blood_pressure$pred <- predict(logit_model2,
       newdata=df_incr_blood_pressure, type="response")

@@ -13,9 +13,9 @@ workbooks <- c(
   "Chapter08_Regression_analysis_with_dependent_error_terms_ch_reg_dep_error/chapter08_workbook.Rmd",
   "Chapter09_Binary_dependent_variable_ch_logit/chapter09_workbook.Rmd",
   "Chapter10_Prediction_ch_prediction/chapter10_workbook.Rmd",
-  "Chapter11_Time_series_analysis/chapter11_workbook.Rmd",
-  "Chapter12_Causal_analyses_ch_causality/chapter12_workbook.Rmd",
-  "Chapter13_Nonparametric_Regression_chapter_nonparametric/chapter13_workbook.Rmd"
+  "Chapter11_Nonparametric_Regression_chapter_nonparametric/chapter11_workbook.Rmd",
+  "Chapter12_Time_series_analysis/chapter12_workbook.Rmd",
+  "Chapter13_Causal_analyses_ch_causality/chapter13_workbook.Rmd"
 )
 
 for (workbook in workbooks) {

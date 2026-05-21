@@ -350,7 +350,7 @@ display: none;
 
 <h1 class="title toc-ignore">Chapter 09: Binary dependent variable</h1>
 <h3 class="subtitle">Regression with R and Python: Description,
-Prediction, and Causal Analysis for Applied Social Science and
+Prediction, and Causal Inference for Applied Social Science and
 Econometrics</h3>
 
 </div>
@@ -422,7 +422,7 @@ regression model | Subsection: Assumptions about the error term.</p>
 <p>Textbook context: Section: Estimation and inference under logistic
 regression model | Subsection: Assumptions about the error term.</p>
 <pre class="r"><code>    df$lnpop &lt;- log(df$pop)
-    logit_model2 &lt;- glm(df$high_income ~ 
+    logit_model2 &lt;- glm(df$high_income ~
       share_tertiary_school + lnpop,
       family = binomial(link = &quot;logit&quot;), data=df)</code></pre>
 </div>
@@ -528,8 +528,8 @@ disease.</p>
 <p>Textbook context: Section: Example: the risk of having a heart
 disease.</p>
 <pre class="r"><code>    df_incr_blood_pressure &lt;- df
-    df_incr_blood_pressure$blood_pressure &lt;- 
-      df_incr_blood_pressure$blood_pressure + 
+    df_incr_blood_pressure$blood_pressure &lt;-
+      df_incr_blood_pressure$blood_pressure +
       std_dev_blood_pressure
     df_incr_blood_pressure$pred &lt;- predict(logit_model2,
       newdata=df_incr_blood_pressure, type=&quot;response&quot;)</code></pre>

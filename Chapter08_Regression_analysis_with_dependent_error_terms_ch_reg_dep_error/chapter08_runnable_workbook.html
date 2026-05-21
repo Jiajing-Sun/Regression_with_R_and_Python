@@ -384,7 +384,7 @@ automatically during rendering.</li>
 <p>Textbook context: Section: Clustered data | Subsection: OLS with
 clustered data.</p>
 <pre class="r"><code># Load data
-df &lt;- read.csv(file.path(&quot;data&quot;, &quot;star.csv&quot;))
+df &lt;- read.csv(&quot;star.csv&quot;)
 
 # NOTE (updated data schema):
 # class_type  : class assignment (e.g. &quot;SMALL&quot;, &quot;REGULAR&quot;, &quot;AIDE&quot;)
@@ -413,10 +413,10 @@ library(sandwich)
 
 # HC0 robust standard errors
 coeftest(ols_model, vcov = vcovHC(ols_model, type=&quot;HC0&quot;))
-#&gt; 
+#&gt;
 #&gt; t test of coefficients:
-#&gt; 
-#&gt;              Estimate Std. Error t value  Pr(&gt;|t|)    
+#&gt;
+#&gt;              Estimate Std. Error t value  Pr(&gt;|t|)
 #&gt; (Intercept) 623.25744    0.90963 685.174 &lt; 2.2e-16 ***
 #&gt; small_class   6.63589    1.51990   4.366 1.315e-05 ***
 #&gt; ---
@@ -425,35 +425,35 @@ coeftest(ols_model, vcov = vcovHC(ols_model, type=&quot;HC0&quot;))
 # Cluster-robust standard errors (clustered by class_id)
 V_cl &lt;- vcovCL(ols_model, cluster = df$class_id, type=&quot;HC0&quot;)
 coeftest(ols_model, vcov = V_cl)
-#&gt; 
+#&gt;
 #&gt; t test of coefficients:
-#&gt; 
-#&gt;             Estimate Std. Error  t value Pr(&gt;|t|)    
+#&gt;
+#&gt;             Estimate Std. Error  t value Pr(&gt;|t|)
 #&gt; (Intercept) 623.2574     1.2996 479.5876  &lt; 2e-16 ***
-#&gt; small_class   6.6359     2.1603   3.0718  0.00215 ** 
+#&gt; small_class   6.6359     2.1603   3.0718  0.00215 **
 #&gt; ---
 #&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
 # Birth month example
 ols_model2 &lt;- lm(read_score ~ birth_month, data=df)
 coeftest(ols_model2, vcov = vcovHC(ols_model2, type=&quot;HC0&quot;))
-#&gt; 
+#&gt;
 #&gt; t test of coefficients:
-#&gt; 
-#&gt;              Estimate Std. Error  t value Pr(&gt;|t|)    
+#&gt;
+#&gt;              Estimate Std. Error  t value Pr(&gt;|t|)
 #&gt; (Intercept) 623.16345    1.51772 410.5905  &lt; 2e-16 ***
-#&gt; birth_month   0.41177    0.21202   1.9422  0.05222 .  
+#&gt; birth_month   0.41177    0.21202   1.9422  0.05222 .
 #&gt; ---
 #&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
 V_cl2 &lt;- vcovCL(ols_model2, cluster = df$class_id, type=&quot;HC0&quot;)
 coeftest(ols_model2, vcov = V_cl2)
-#&gt; 
+#&gt;
 #&gt; t test of coefficients:
-#&gt; 
-#&gt;              Estimate Std. Error  t value Pr(&gt;|t|)    
+#&gt;
+#&gt;              Estimate Std. Error  t value Pr(&gt;|t|)
 #&gt; (Intercept) 623.16345    1.68159 370.5790  &lt; 2e-16 ***
-#&gt; birth_month   0.41177    0.20491   2.0096  0.04458 *  
+#&gt; birth_month   0.41177    0.20491   2.0096  0.04458 *
 #&gt; ---
 #&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
@@ -461,13 +461,13 @@ coeftest(ols_model2, vcov = V_cl2)
 ols_model3 &lt;- lm(read_score ~ small_class + birth_month, data=df)
 V_cl3 &lt;- vcovCL(ols_model3, cluster = df$class_id, type=&quot;HC0&quot;)
 coeftest(ols_model3, vcov = V_cl3)
-#&gt; 
+#&gt;
 #&gt; t test of coefficients:
-#&gt; 
-#&gt;              Estimate Std. Error  t value  Pr(&gt;|t|)    
+#&gt;
+#&gt;              Estimate Std. Error  t value  Pr(&gt;|t|)
 #&gt; (Intercept) 620.87718    1.82129 340.8995 &lt; 2.2e-16 ***
-#&gt; small_class   6.54786    2.15608   3.0369  0.002414 ** 
-#&gt; birth_month   0.38297    0.20386   1.8786  0.060416 .  
+#&gt; small_class   6.54786    2.15608   3.0369  0.002414 **
+#&gt; birth_month   0.38297    0.20386   1.8786  0.060416 .
 #&gt; ---
 #&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
@@ -484,7 +484,7 @@ Multilevel-models.</p>
 <h3>Box 03</h3>
 <p>Textbook context: Section: Clustered data | Subsection:
 Multilevel-models.</p>
-<pre class="r"><code>df &lt;- read.csv(file.path(&quot;data&quot;, &quot;star.csv&quot;))
+<pre class="r"><code>df &lt;- read.csv(&quot;star.csv&quot;)
 
 # Create treatment indicator
 df$small_class &lt;- ifelse(df$class_type == &quot;SMALL&quot;, 1, NA)
@@ -501,24 +501,24 @@ summary(multi_model1)
 #&gt; Linear mixed model fit by REML [&#39;lmerMod&#39;]
 #&gt; Formula: read_score ~ small_class + (1 | class_id)
 #&gt;    Data: df
-#&gt; 
+#&gt;
 #&gt; REML criterion at convergence: 25899.8
-#&gt; 
-#&gt; Scaled residuals: 
-#&gt;     Min      1Q  Median      3Q     Max 
-#&gt; -3.0171 -0.6787 -0.0425  0.6590  3.5156 
-#&gt; 
+#&gt;
+#&gt; Scaled residuals:
+#&gt;     Min      1Q  Median      3Q     Max
+#&gt; -3.0171 -0.6787 -0.0425  0.6590  3.5156
+#&gt;
 #&gt; Random effects:
 #&gt;  Groups   Name        Variance Std.Dev.
-#&gt;  class_id (Intercept)  227.2   15.07   
-#&gt;  Residual             1170.2   34.21   
+#&gt;  class_id (Intercept)  227.2   15.07
+#&gt;  Residual             1170.2   34.21
 #&gt; Number of obs: 2587, groups:  class_id, 322
-#&gt; 
+#&gt;
 #&gt; Fixed effects:
 #&gt;             Estimate Std. Error t value
 #&gt; (Intercept)  622.041      1.432 434.425
 #&gt; small_class    6.603      2.208   2.991
-#&gt; 
+#&gt;
 #&gt; Correlation of Fixed Effects:
 #&gt;             (Intr)
 #&gt; small_class -0.631
@@ -531,25 +531,25 @@ summary(multi_model2)
 #&gt; Linear mixed model fit by REML [&#39;lmerMod&#39;]
 #&gt; Formula: read_score ~ small_class + (1 | class_id) + (1 | school_id)
 #&gt;    Data: df2
-#&gt; 
+#&gt;
 #&gt; REML criterion at convergence: 25837.1
-#&gt; 
-#&gt; Scaled residuals: 
-#&gt;     Min      1Q  Median      3Q     Max 
-#&gt; -3.3650 -0.6718 -0.0496  0.6424  3.6560 
-#&gt; 
+#&gt;
+#&gt; Scaled residuals:
+#&gt;     Min      1Q  Median      3Q     Max
+#&gt; -3.3650 -0.6718 -0.0496  0.6424  3.6560
+#&gt;
 #&gt; Random effects:
 #&gt;  Groups    Name        Variance Std.Dev.
-#&gt;  class_id  (Intercept)   72.87   8.536  
-#&gt;  school_id (Intercept)  167.78  12.953  
-#&gt;  Residual              1168.94  34.190  
+#&gt;  class_id  (Intercept)   72.87   8.536
+#&gt;  school_id (Intercept)  167.78  12.953
+#&gt;  Residual              1168.94  34.190
 #&gt; Number of obs: 2587, groups:  class_id, 322; school_id, 74
-#&gt; 
+#&gt;
 #&gt; Fixed effects:
 #&gt;             Estimate Std. Error t value
 #&gt; (Intercept)  622.038      1.889 329.247
 #&gt; small_class    6.287      1.736   3.621
-#&gt; 
+#&gt;
 #&gt; Correlation of Fixed Effects:
 #&gt;             (Intr)
 #&gt; small_class -0.370</code></pre>
@@ -561,7 +561,7 @@ summary(multi_model2)
 <h3>Box 04</h3>
 <p>Textbook context: Section: Panel data | Subsection: Regression with
 individual fixed effects.</p>
-<pre class="r"><code>df &lt;- read.csv(file.path(&quot;data&quot;, &quot;municip_data.csv&quot;))
+<pre class="r"><code>df &lt;- read.csv(&quot;municip_data.csv&quot;)
 df &lt;- df[df$municip_name != &quot;Gotland&quot;, ]
 
 library(plm)
@@ -576,9 +576,9 @@ within_model &lt;- plm(
 )
 
 coeftest(within_model, vcov = vcovHC(within_model, type=&quot;HC0&quot;, cluster=&quot;group&quot;))
-#&gt; 
+#&gt;
 #&gt; t test of coefficients:
-#&gt; 
+#&gt;
 #&gt;                           Estimate Std. Error t value Pr(&gt;|t|)
 #&gt; left_coalition_last_term -0.012949   0.028932 -0.4476   0.6545
 
@@ -590,10 +590,10 @@ twoway_model &lt;- plm(
   data = df
 )
 coeftest(twoway_model, vcov = vcovHC(twoway_model, type=&quot;HC0&quot;, cluster=&quot;group&quot;))
-#&gt; 
+#&gt;
 #&gt; t test of coefficients:
-#&gt; 
-#&gt;                          Estimate Std. Error t value  Pr(&gt;|t|)    
+#&gt;
+#&gt;                          Estimate Std. Error t value  Pr(&gt;|t|)
 #&gt; left_coalition_last_term 0.096424   0.027912  3.4546 0.0005671 ***
 #&gt; ---
 #&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>

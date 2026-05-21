@@ -1,6 +1,6 @@
 ---
 title: "Chapter 03: Basic probability theory and statistical inference"
-subtitle: "Regression with R and Python: Description, Prediction, and Causal Analysis for Applied Social Science and Econometrics"
+subtitle: "Regression with R and Python: Description, Prediction, and Causal Inference for Applied Social Science and Econometrics"
 output:
   html_document:
     toc: true
@@ -81,7 +81,7 @@ Textbook context: Section: Hypothesis testing and confidence intervals | Subsect
 ```{r hypothesis-tests-and-confidence-intervals-with-r-05}
     n <- length(dice_throws)
     mean_dice_throws <- mean(dice_throws)
-    var_dice_throws <- 
+    var_dice_throws <-
       sum((dice_throws - mean_dice_throws)^2) / (n - 1)
 ```
 

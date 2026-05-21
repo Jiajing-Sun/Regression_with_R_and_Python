@@ -530,7 +530,7 @@ str(df_base)
 library(readr)
 
 # returns a tibble (a modern data frame)
-df <- read_csv("data/macro_panel.csv")  
+df <- read_csv("data/macro_panel.csv")
 # compact overview (from dplyr)
 glimpse(df)
 
@@ -558,7 +558,7 @@ df2 <- read.csv("data/macro_panel.csv", na.strings = c("", "NA", ".",
 library(readxl)
 
 survey <- read_excel("data/household_survey.xlsx")
-survey_wave1 <- read_excel("data/household_survey.xlsx", 
+survey_wave1 <- read_excel("data/household_survey.xlsx",
                 sheet = "Wave1")
 
 head(survey_wave1)
@@ -660,7 +660,7 @@ temp <- airquality$Temp
 hot_days <- airquality[airquality$Temp >= 90, ]
 
 # Days with high ozone (and not missing)
-high_ozone <- airquality[!is.na(airquality$Ozone) 
+high_ozone <- airquality[!is.na(airquality$Ozone)
               & airquality$Ozone > 80, ]
 
 nrow(high_ozone)
@@ -692,13 +692,13 @@ head(aq)
 # ------------------------------------------------------------------------------
 
 # Average temperature by month (base R)
-avg_temp_by_month <- aggregate(Temp ~ Month, data = airquality, 
+avg_temp_by_month <- aggregate(Temp ~ Month, data = airquality,
                     FUN = mean)
 avg_temp_by_month
 
 # Average ozone by month (remove missing values)
 avg_ozone_by_month <- aggregate(Ozone ~ Month, data = airquality,
-                               FUN = function(x) 
+                               FUN = function(x)
                                mean(x, na.rm = TRUE))
 avg_ozone_by_month
 
@@ -711,7 +711,7 @@ avg_ozone_by_month
 # ------------------------------------------------------------------------------
 
 avg_by_month <- aggregate(cbind(Temp, Wind) ~ Month,
-                          data = airquality, FUN = mean, 
+                          data = airquality, FUN = mean,
                           na.rm = TRUE)
 avg_by_month
 
@@ -844,7 +844,7 @@ boxplot(Temp ~ factor(Month), data = airquality,
 
 dir.create("output/figures", recursive = TRUE, showWarnings = FALSE)
 
-png("output/figures/R/ozone_vs_temp.png", width = 900, height = 650, 
+png("output/figures/R/ozone_vs_temp.png", width = 900, height = 650,
      res = 120)
 plot(airquality$Temp, airquality$Ozone,
      xlab = "Temperature (F)", ylab = "Ozone",

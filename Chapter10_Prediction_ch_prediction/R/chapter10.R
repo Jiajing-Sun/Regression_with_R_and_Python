@@ -3,6 +3,22 @@
 # Generated from the current textbook LaTeX source.
 # Code blocks are kept in textbook order; relative paths follow the book examples.
 
+# Run from the chapter data directory when data/ exists, so printed paths such as
+# "apartment_price_data.csv" work from the companion repository.
+args <- commandArgs(trailingOnly = FALSE)
+file_arg <- grep("^--file=", args, value = TRUE)
+if (length(file_arg) > 0) {
+  script_dir <- dirname(normalizePath(sub("^--file=", "", file_arg[1])))
+  data_dir <- file.path(dirname(script_dir), "data")
+  if (dir.exists(data_dir)) {
+    setwd(data_dir)
+  }
+}
+
+# Runnable setup for standalone execution of the first prediction example.
+df <- read.csv("apartment_price_data.csv")
+df <- df[complete.cases(df), ]
+
 # ------------------------------------------------------------------------------
 # Box 01: Example with training and test data
 # Textbook context: Section: Training data, test data and cross-validation
@@ -21,7 +37,7 @@
 # Textbook context: Section: Predictions with many independent variables | Subsection: Scale dependence with ridge and lasso regression
 # ------------------------------------------------------------------------------
 
- install.packages("glmnet")
+ # install.packages("glmnet")
  library(glmnet)
 
 # ------------------------------------------------------------------------------
@@ -45,6 +61,9 @@
 # ------------------------------------------------------------------------------
 
  X <- makeX(dfX)
+ Y <- df$price
+ ridge_model <- glmnet(X, Y, alpha = 0, lambda = 0.1)
+ ridge_model_cv <- cv.glmnet(X, Y, alpha = 0)
 
 # ------------------------------------------------------------------------------
 # Box 06: Ridge and lasso in R
@@ -65,8 +84,8 @@
 # Textbook context: Section: Tree-based regression models
 # ------------------------------------------------------------------------------
 
-  install.packages("rpart")
-  install.packages("rpart.plot")
+  # install.packages("rpart")
+  # install.packages("rpart.plot")
   library(rpart)
   library(rpart.plot)
 
@@ -84,7 +103,7 @@
 
  tree_model <- rpart(price ~ living_area + monthly_fee,
  data=df, control=rpart.control(
- minsplit = 20, minsbucket = 5, cp=0))
+ minsplit = 20, minbucket = 5, cp=0))
 
 # ------------------------------------------------------------------------------
 # Box 11: Regression tree in R
@@ -111,6 +130,32 @@
 # Box 14: Comparison of the different prediction models
 # Textbook context: Section: Example: housing prices
 # ------------------------------------------------------------------------------
+
+ df <- read.csv("apartment_price_data.csv")
+ df$elevator_missing <- as.integer(is.na(df$elevator))
+ df$elevator[is.na(df$elevator)] <- 0
+ df$living_area2 <- df$living_area^2
+ df$monthly_fee2 <- df$monthly_fee^2
+ df <- df[complete.cases(df), ]
+ for (room_size in 2:6) {
+   room_var <- paste0("room_size_", room_size)
+   df[[room_var]] <- as.integer(df$number_of_rooms == room_size)
+   df[[paste0("city_area_", room_var)]] <- df$city_area * df[[room_var]]
+ }
+ year_list10 <- seq(from=1900, to=2010, by=10)
+ for (year in year_list10) {
+   decade_var <- paste0("build_decade_", year)
+   df[[decade_var]] <- as.integer(df$build_year >= year & df$build_year <= year + 9)
+   df[[paste0("city_area_", decade_var)]] <- df$city_area * df[[decade_var]]
+ }
+ year_list1 <- sort(unique(df$build_year))
+ ref_year <- year_list1[1]
+ for (year in year_list1) {
+   if (year == ref_year) next
+   year_var <- paste0("build_year_", year)
+   df[[year_var]] <- as.integer(df$build_year == year)
+   df[[paste0("city_area_", year_var)]] <- df$city_area * df[[year_var]]
+ }
 
  year_list10 <- seq(from=1900, to=2010, by=10)
 
@@ -151,6 +196,9 @@
 
  varlist_model1 <- c(room_vars, build_year_vars, rest_vars)
  varlist_model10 <- c(room_vars, build_decade_vars, rest_vars)
+ X1 <- makeX(df[, varlist_model1])
+ X10 <- makeX(df[, varlist_model10])
+ Y <- df$price
 
 # ------------------------------------------------------------------------------
 # Box 19: Comparison of the different prediction models
@@ -197,7 +245,7 @@
   lasso_model10 <- cv.glmnet(
     X10[ind_train, ], Y[ind_train], alpha=1)
 
-    CART_model = rpart(formCART, data=df[ind_train, ], 
+    CART_model = rpart(formCART, data=df[ind_train, ],
                      control=rpart.control(
                       minsplit = 20, minbucket = 5, cp=0))
   c <- printcp(CART_model)

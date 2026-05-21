@@ -1,6 +1,6 @@
 ---
 title: "Chapter 10: Prediction"
-subtitle: "Regression with R and Python: Description, Prediction, and Causal Analysis for Applied Social Science and Econometrics"
+subtitle: "Regression with R and Python: Description, Prediction, and Causal Inference for Applied Social Science and Econometrics"
 output:
   html_document:
     toc: true
@@ -51,7 +51,7 @@ Textbook context: Section: Training data, test data and cross-validation.
 Textbook context: Section: Predictions with many independent variables | Subsection: Scale dependence with ridge and lasso regression.
 
 ```{r ridge-and-lasso-in-r-02}
- install.packages("glmnet")
+ # install.packages("glmnet")
  library(glmnet)
 ```
 
@@ -103,8 +103,8 @@ Textbook context: Section: Predictions with many independent variables | Subsect
 Textbook context: Section: Tree-based regression models.
 
 ```{r regression-tree-in-r-08}
-  install.packages("rpart")
-  install.packages("rpart.plot")
+  # install.packages("rpart")
+  # install.packages("rpart.plot")
   library(rpart)
   library(rpart.plot)
 ```
@@ -124,7 +124,7 @@ Textbook context: Section: Tree-based regression models.
 ```{r regression-tree-in-r-10}
  tree_model <- rpart(price ~ living_area + monthly_fee,
  data=df, control=rpart.control(
- minsplit = 20, minsbucket = 5, cp=0))
+ minsplit = 20, minbucket = 5, cp=0))
 ```
 
 ### Box 11
@@ -251,7 +251,7 @@ Textbook context: Section: Example: housing prices.
   lasso_model10 <- cv.glmnet(
     X10[ind_train, ], Y[ind_train], alpha=1)
 
-    CART_model = rpart(formCART, data=df[ind_train, ], 
+    CART_model = rpart(formCART, data=df[ind_train, ],
                      control=rpart.control(
                       minsplit = 20, minbucket = 5, cp=0))
   c <- printcp(CART_model)

@@ -17,7 +17,17 @@ This runnable workbook supplements the reference workbook. It adds setup code an
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>", message = FALSE, warning = FALSE)
 chapter_dir <- dirname(normalizePath(knitr::current_input()))
-knitr::opts_knit$set(root.dir = chapter_dir)
+data_dir <- file.path(chapter_dir, "data")
+if (dir.exists(data_dir)) {
+  knitr::opts_knit$set(root.dir = data_dir)
+} else {
+  knitr::opts_knit$set(root.dir = chapter_dir)
+}
+```
+
+```{r prerequisites, include=FALSE}
+df <- read.csv("apartment_price_data.csv")
+df <- df[complete.cases(df), ]
 ```
 
 ## Example with training and test data
@@ -70,6 +80,9 @@ Textbook context: Section: Predictions with many independent variables | Subsect
 
 ```{r runnable-ridge-and-lasso-in-r-05}
  X <- makeX(dfX)
+ Y <- df$price
+ ridge_model <- glmnet(X, Y, alpha = 0, lambda = 0.1)
+ ridge_model_cv <- cv.glmnet(X, Y, alpha = 0)
 ```
 
 ### Box 06
@@ -116,7 +129,7 @@ Textbook context: Section: Tree-based regression models.
 ```{r runnable-regression-tree-in-r-10}
  tree_model <- rpart(price ~ living_area + monthly_fee,
  data=df, control=rpart.control(
- minsplit = 20, minsbucket = 5, cp=0))
+ minsplit = 20, minbucket = 5, cp=0))
 ```
 
 ### Box 11
@@ -150,6 +163,31 @@ Textbook context: Section: Tree-based regression models.
 Textbook context: Section: Example: housing prices.
 
 ```{r runnable-comparison-of-the-different-prediction-models-14}
+ df <- read.csv("apartment_price_data.csv")
+ df$elevator_missing <- as.integer(is.na(df$elevator))
+ df$elevator[is.na(df$elevator)] <- 0
+ df$living_area2 <- df$living_area^2
+ df$monthly_fee2 <- df$monthly_fee^2
+ df <- df[complete.cases(df), ]
+ for (room_size in 2:6) {
+   room_var <- paste0("room_size_", room_size)
+   df[[room_var]] <- as.integer(df$number_of_rooms == room_size)
+   df[[paste0("city_area_", room_var)]] <- df$city_area * df[[room_var]]
+ }
+ year_list10 <- seq(from=1900, to=2010, by=10)
+ for (year in year_list10) {
+   decade_var <- paste0("build_decade_", year)
+   df[[decade_var]] <- as.integer(df$build_year >= year & df$build_year <= year + 9)
+   df[[paste0("city_area_", decade_var)]] <- df$city_area * df[[decade_var]]
+ }
+ year_list1 <- sort(unique(df$build_year))
+ ref_year <- year_list1[1]
+ for (year in year_list1) {
+   if (year == ref_year) next
+   year_var <- paste0("build_year_", year)
+   df[[year_var]] <- as.integer(df$build_year == year)
+   df[[paste0("city_area_", year_var)]] <- df$city_area * df[[year_var]]
+ }
  year_list10 <- seq(from=1900, to=2010, by=10)
 ```
 
@@ -193,6 +231,9 @@ Textbook context: Section: Example: housing prices.
 ```{r runnable-comparison-of-the-different-prediction-models-18}
  varlist_model1 <- c(room_vars, build_year_vars, rest_vars)
  varlist_model10 <- c(room_vars, build_decade_vars, rest_vars)
+ X1 <- makeX(df[, varlist_model1])
+ X10 <- makeX(df[, varlist_model10])
+ Y <- df$price
 ```
 
 ### Box 19
@@ -243,7 +284,7 @@ Textbook context: Section: Example: housing prices.
   lasso_model10 <- cv.glmnet(
     X10[ind_train, ], Y[ind_train], alpha=1)
 
-    CART_model = rpart(formCART, data=df[ind_train, ], 
+    CART_model = rpart(formCART, data=df[ind_train, ],
                      control=rpart.control(
                       minsplit = 20, minbucket = 5, cp=0))
   c <- printcp(CART_model)

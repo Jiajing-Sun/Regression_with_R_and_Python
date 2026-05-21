@@ -351,7 +351,7 @@ display: none;
 <h1 class="title toc-ignore">Chapter 08: Regression analysis with
 dependent error terms</h1>
 <h3 class="subtitle">Regression with R and Python: Description,
-Prediction, and Causal Analysis for Applied Social Science and
+Prediction, and Causal Inference for Applied Social Science and
 Econometrics</h3>
 
 </div>
@@ -393,7 +393,7 @@ working through the notebook.</p>
 <p>Textbook context: Section: Clustered data | Subsection: OLS with
 clustered data.</p>
 <pre class="r"><code># Load data
-df &lt;- read.csv(file.path(&quot;data&quot;, &quot;star.csv&quot;))
+df &lt;- read.csv(&quot;star.csv&quot;)
 
 # NOTE (updated data schema):
 # class_type  : class assignment (e.g. &quot;SMALL&quot;, &quot;REGULAR&quot;, &quot;AIDE&quot;)
@@ -445,13 +445,13 @@ coeftest(ols_model3, vcov = V_cl3)</code></pre>
 <h3>Box 02</h3>
 <p>Textbook context: Section: Clustered data | Subsection:
 Multilevel-models.</p>
-<pre class="r"><code>    install.packages(c(&quot;lme4&quot;))</code></pre>
+<pre class="r"><code>    # install.packages(c(&quot;lme4&quot;))</code></pre>
 </div>
 <div id="box-03" class="section level3">
 <h3>Box 03</h3>
 <p>Textbook context: Section: Clustered data | Subsection:
 Multilevel-models.</p>
-<pre class="r"><code>df &lt;- read.csv(file.path(&quot;data&quot;, &quot;star.csv&quot;))
+<pre class="r"><code>df &lt;- read.csv(&quot;star.csv&quot;)
 
 # Create treatment indicator
 df$small_class &lt;- ifelse(df$class_type == &quot;SMALL&quot;, 1, NA)
@@ -479,7 +479,7 @@ summary(multi_model2)</code></pre>
 <h3>Box 04</h3>
 <p>Textbook context: Section: Panel data | Subsection: Regression with
 individual fixed effects.</p>
-<pre class="r"><code>df &lt;- read.csv(file.path(&quot;data&quot;, &quot;municip_data.csv&quot;))
+<pre class="r"><code>df &lt;- read.csv(&quot;municip_data.csv&quot;)
 df &lt;- df[df$municip_name != &quot;Gotland&quot;, ]
 
 library(plm)

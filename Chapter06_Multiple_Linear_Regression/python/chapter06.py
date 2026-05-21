@@ -3,6 +3,15 @@
 # Generated from the current textbook LaTeX source.
 # Code blocks are kept in textbook order; relative paths follow the book examples.
 
+# Run from the chapter data directory when data/ exists, so printed paths such as
+# "apartment_price_data.csv" work from the companion repository.
+from pathlib import Path
+import os as _os
+
+_data_dir = Path(__file__).resolve().parents[1] / "data"
+if _data_dir.exists():
+    _os.chdir(_data_dir)
+
 # ------------------------------------------------------------------------------
 # Box 01: Multiple regression in Python
 # Textbook context: Section: The general multiple linear regression model
@@ -82,7 +91,43 @@ p_value = 2 * stats.t.sf(np.abs(t_stat), df=df_resid)
 ols_model_hc0.t_test("living_area = 0.04")
 
 # ------------------------------------------------------------------------------
-# Box 07: $F$-test in Python
+# Box 07: Added-variable plot in Python
+# Textbook context: Section: Regression anatomy and partial regression plots | Subsection: Added-variable plots
+# ------------------------------------------------------------------------------
+
+import pandas as pd
+import statsmodels.formula.api as smf
+import matplotlib.pyplot as plt
+
+df = pd.read_csv("apartment_price_data.csv")
+
+res_y = smf.ols("price ~ monthly_fee", data=df).fit().resid
+res_x = smf.ols("living_area ~ monthly_fee", data=df).fit().resid
+
+av_df = pd.DataFrame({"res_y": res_y, "res_x": res_x})
+av_model = smf.ols("res_y ~ res_x", data=av_df).fit()
+
+multi_model = smf.ols(
+    "price ~ living_area + monthly_fee", data=df
+).fit()
+
+print(av_model.params["res_x"])
+print(multi_model.params["living_area"])
+
+# ------------------------------------------------------------------------------
+# Box 08: Added-variable plot in Python
+# Textbook context: Section: Regression anatomy and partial regression plots | Subsection: Added-variable plots
+# ------------------------------------------------------------------------------
+
+plt.scatter(res_x, res_y, alpha=0.5)
+plt.axline((0, av_model.params["Intercept"]),
+           slope=av_model.params["res_x"])
+plt.xlabel("Living area residuals")
+plt.ylabel("Price residuals")
+plt.show()
+
+# ------------------------------------------------------------------------------
+# Box 09: $F$-test in Python
 # Textbook context: Section: $F$-test
 # ------------------------------------------------------------------------------
 
@@ -100,7 +145,7 @@ df_cc = df[cols].dropna()
 n = len(df_cc)
 
 # ------------------------------------------------------------------------------
-# Box 08: $F$-test in Python
+# Box 10: $F$-test in Python
 # Textbook context: Section: $F$-test
 # ------------------------------------------------------------------------------
 
@@ -115,7 +160,7 @@ ols_model_s = smf.ols(
 ).fit()
 
 # ------------------------------------------------------------------------------
-# Box 09: $F$-test in Python
+# Box 11: $F$-test in Python
 # Textbook context: Section: $F$-test
 # ------------------------------------------------------------------------------
 
@@ -129,14 +174,14 @@ F_obs = ((RSS_s - RSS_l) / (K - G)) / (RSS_l / (n - (K + 1)))
 p_value = stats.f.sf(F_obs, dfn=K - G, dfd=n - (K + 1))
 
 # ------------------------------------------------------------------------------
-# Box 10: $F$-test in Python
+# Box 12: $F$-test in Python
 # Textbook context: Section: $F$-test
 # ------------------------------------------------------------------------------
 
 F_sm, p_sm, df_diff = ols_model_l.compare_f_test(ols_model_s)
 
 # ------------------------------------------------------------------------------
-# Box 11: $F$-test in Python
+# Box 13: $F$-test in Python
 # Textbook context: Section: $F$-test
 # ------------------------------------------------------------------------------
 
@@ -146,14 +191,14 @@ df1 = int(ols_model_l.df_model)
 df2 = int(ols_model_l.df_resid)
 
 # ------------------------------------------------------------------------------
-# Box 12: Robust $F$-test in Python
+# Box 14: Robust $F$-test in Python
 # Textbook context: Section: $F$-test | Subsection: Robust $F$-test
 # ------------------------------------------------------------------------------
 
 ols_model_l_hc0 = ols_model_l.get_robustcov_results(cov_type="HC0", use_t=True)
 
 # ------------------------------------------------------------------------------
-# Box 13: Robust $F$-test in Python
+# Box 15: Robust $F$-test in Python
 # Textbook context: Section: $F$-test | Subsection: Robust $F$-test
 # ------------------------------------------------------------------------------
 
@@ -163,7 +208,7 @@ F_rob = float(ftest_rob.fvalue)
 p_rob = float(ftest_rob.pvalue)
 
 # ------------------------------------------------------------------------------
-# Box 14: Confidence intervals for expected value and prediction intervals in Python
+# Box 16: Confidence intervals for expected value and prediction intervals in Python
 # Textbook context: Section: Uncertainty of the conditional expectation | Subsection: Prediction interval
 # ------------------------------------------------------------------------------
 
@@ -205,7 +250,7 @@ lb_pi = yhat_x80 - t_crit * np.sqrt(var_pred_x0)
 ub_pi = yhat_x80 + t_crit * np.sqrt(var_pred_x0)
 
 # ------------------------------------------------------------------------------
-# Box 15: Confidence intervals for expected value and prediction intervals in Python
+# Box 17: Confidence intervals for expected value and prediction intervals in Python
 # Textbook context: Section: Uncertainty of the conditional expectation | Subsection: Prediction interval
 # ------------------------------------------------------------------------------
 
@@ -213,7 +258,7 @@ pred1 = ols_model.get_prediction(pd.DataFrame({"living_area": [x0]}))
 pred1.summary_frame(alpha=0.05)
 
 # ------------------------------------------------------------------------------
-# Box 16: Confidence intervals for expected value and prediction intervals in Python
+# Box 18: Confidence intervals for expected value and prediction intervals in Python
 # Textbook context: Section: Uncertainty of the conditional expectation | Subsection: Prediction interval
 # ------------------------------------------------------------------------------
 
