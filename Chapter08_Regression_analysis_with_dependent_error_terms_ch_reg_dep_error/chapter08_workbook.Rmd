@@ -1,6 +1,6 @@
 ---
 title: "Chapter 08: Regression analysis with dependent error terms"
-subtitle: "Regression with R and Python: Description, Prediction, and Causal Inference for Applied Social Science and Econometrics"
+subtitle: "Regression with R and Python: Description, Prediction, and Causal Inference"
 output:
   html_document:
     toc: true

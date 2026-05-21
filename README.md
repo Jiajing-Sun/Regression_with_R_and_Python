@@ -1,6 +1,6 @@
 # Regression with R and Python
 
-*Description, Prediction, and Causal Inference for Applied Social Science and Econometrics*
+*Description, Prediction, and Causal Inference*
 
 This repository is the GitHub-ready computational companion to the textbook. It is designed for advanced undergraduate and beginning master's students in applied social sciences and econometrics who want a hands-on bridge between the printed text and runnable code.
 

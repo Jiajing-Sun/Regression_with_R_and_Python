@@ -1,6 +1,6 @@
 # Chapter 07: Nonlinear functional form
 
-Companion materials for *Regression with R and Python: Description, Prediction, and Causal Inference for Applied Social Science and Econometrics*.
+Companion materials for *Regression with R and Python: Description, Prediction, and Causal Inference*.
 
 ## R Markdown workbooks
 

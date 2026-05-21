@@ -1,6 +1,6 @@
 ---
 title: "Chapter 07: Nonlinear functional form"
-subtitle: "Regression with R and Python: Description, Prediction, and Causal Inference for Applied Social Science and Econometrics"
+subtitle: "Regression with R and Python: Description, Prediction, and Causal Inference"
 output:
   html_document:
     toc: true

@@ -1,6 +1,6 @@
 # Chapter 05: The simple linear regression model
 
-Companion materials for *Regression with R and Python: Description, Prediction, and Causal Inference for Applied Social Science and Econometrics*.
+Companion materials for *Regression with R and Python: Description, Prediction, and Causal Inference*.
 
 ## R Markdown workbooks
 
