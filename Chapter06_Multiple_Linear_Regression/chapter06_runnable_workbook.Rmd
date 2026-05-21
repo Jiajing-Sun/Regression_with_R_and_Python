@@ -27,7 +27,7 @@ knitr::opts_knit$set(root.dir = chapter_dir)
 Textbook context: Section: The general multiple linear regression model.
 
 ```{r runnable-multiple-regression-in-r-01}
- df <- read.csv(file.path("data", "apartment_price_data.csv"))
+ df <- read.csv("apartment_price_data.csv")
 ```
 
 ### Box 02

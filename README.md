@@ -1,8 +1,6 @@
 # Regression with R and Python
 
-## Subtitle
-
-Description, Prediction, and Causal Analysis for Applied Social Science and Econometrics
+*Description, Prediction, and Causal Analysis for Applied Social Science and Econometrics*
 
 This repository is the GitHub-ready computational companion to the textbook. It is designed for advanced undergraduate and beginning master's students in applied social sciences and econometrics who want a hands-on bridge between the printed text and runnable code.
 
@@ -18,6 +16,7 @@ The emphasis is on how regression supports descriptive, predictive, and causal q
 ## Layout
 
 - Each chapter folder contains a `README.md`, an `R/` script, a `python/` script, a reference `.Rmd` workbook, and a runnable `.Rmd` workbook when R examples are available.
+- Chapter `data/` folders contain the CSV files used by the examples.
 - `Appendix_R_program_R_code/` contains one aggregate file plus section-level R appendix files.
 - `Appendix_Python_code/` contains one aggregate file plus subsection-level Python appendix files.
 - `render_rmarkdown_workbooks.R` renders all chapter `.Rmd` workbooks in one pass.

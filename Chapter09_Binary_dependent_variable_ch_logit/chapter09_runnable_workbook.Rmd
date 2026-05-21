@@ -27,7 +27,7 @@ knitr::opts_knit$set(root.dir = chapter_dir)
 Textbook context: Section: Estimation and inference under logistic regression model | Subsection: Assumptions about the error term.
 
 ```{r runnable-logistic-regression-in-r-01}
- df <- read.csv(file.path("data", "municip_data.csv"))
+ df <- read.csv("municip_data.csv")
  df <- df[df$year == 2022, ]
 ```
 
@@ -101,7 +101,7 @@ Textbook context: Section: Estimation and inference under logistic regression mo
 Textbook context: Section: Example: the risk of having a heart disease.
 
 ```{r runnable-example-in-r-with-the-probability-of-heart-disease-09}
-    df <- read.csv(file.path("data", "heart_disease.csv"))
+    df <- read.csv("heart_disease.csv")
     logit_model <- glm(df$heart_disease ~ blood_pressure,
                        family = binomial(link = "logit"),
                        data=df)

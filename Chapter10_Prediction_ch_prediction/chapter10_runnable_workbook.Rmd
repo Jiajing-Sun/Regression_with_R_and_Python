@@ -1,5 +1,5 @@
 ---
-title: "Chapter 10: Prediction and Nonparametric regression"
+title: "Chapter 10: Prediction"
 subtitle: "Runnable workbook for Regression with R and Python"
 output:
   html_document:
@@ -11,7 +11,7 @@ This runnable workbook supplements the reference workbook. It adds setup code an
 
 - Runnable companion script: [R/chapter10.R](R/chapter10.R)
 - Reference workbook: [chapter10_workbook.Rmd](chapter10_workbook.Rmd)
-- Textbook chapter: `Prediction and Nonparametric regression`
+- Textbook chapter: `Prediction`
 - Package installation lines are shown as comments and are not run automatically during rendering.
 
 ```{r setup, include=FALSE}
@@ -27,33 +27,6 @@ knitr::opts_knit$set(root.dir = chapter_dir)
 Textbook context: Section: Training data, test data and cross-validation.
 
 ```{r runnable-example-with-training-and-test-data-01}
- df <- read.csv(file.path("data", "apartment_price_data.csv"))
- df$living_area2 <- df$living_area^2
- df$living_area3 <- df$living_area^3
- df$living_area4 <- df$living_area^4
- df$living_area5 <- df$living_area^5
- df$living_area6 <- df$living_area^6
- df$living_area7 <- df$living_area^7
- df$living_area8 <- df$living_area^2
- df$living_area9 <- df$living_area^9
- df$living_area10 <- df$living_area^10
-```
-
-### Box 02
-
-Textbook context: Section: Training data, test data and cross-validation.
-
-```{r runnable-example-with-training-and-test-data-02}
-    for (i in 2:10) {
-      df[, paste0("living_area", i)] <- df$living_area^i
-    }
-```
-
-### Box 03
-
-Textbook context: Section: Training data, test data and cross-validation.
-
-```{r runnable-example-with-training-and-test-data-03}
     set.seed(12)
     n <- nrow(df)
     train_share <- .8
@@ -63,301 +36,147 @@ Textbook context: Section: Training data, test data and cross-validation.
     df_test <- df[test_ind, ]
 ```
 
+## Ridge and lasso in R
+
+### Box 02
+
+Textbook context: Section: Predictions with many independent variables | Subsection: Scale dependence with ridge and lasso regression.
+
+```{r runnable-ridge-and-lasso-in-r-02}
+# install.packages("glmnet")  # install manually if needed
+ library(glmnet)
+```
+
+### Box 03
+
+Textbook context: Section: Predictions with many independent variables | Subsection: Scale dependence with ridge and lasso regression.
+
+```{r runnable-ridge-and-lasso-in-r-03}
+  df <- read.csv("apartment_price_data.csv")
+  df <- df[complete.cases(df), ]
+```
+
 ### Box 04
 
-Textbook context: Section: Training data, test data and cross-validation.
+Textbook context: Section: Predictions with many independent variables | Subsection: Scale dependence with ridge and lasso regression.
 
-```{r runnable-example-with-training-and-test-data-04}
-    ols_model <- lm(price ~ living_area, data=df_train)
-    yhat_train <- predict(ols_model)
-    yhat_test <- predict(ols_model, newdata=df_test)
-    mse_train <- mean((df_train$price - yhat_train)^2)
-    mse_test <- mean((df_test$price - yhat_test)^2)
+```{r runnable-ridge-and-lasso-in-r-04}
+ dfX <- df[, names(df) != "price"]
 ```
 
 ### Box 05
 
-Textbook context: Section: Training data, test data and cross-validation.
+Textbook context: Section: Predictions with many independent variables | Subsection: Scale dependence with ridge and lasso regression.
 
-```{r runnable-example-with-training-and-test-data-05}
-    f <- "price ~ living_area"
-    mse_train_list <- c(mse_train)
-    mse_test_list <- c(mse_test)
-    for (i in 2:10) {
-      f <- paste0(f, " + living_area", i)
-      ols_model <- lm(as.formula(f), data=df_train)
-      yhat_train <- predict(ols_model)
-      yhat_test <- predict(ols_model, newdata=df_test)
-      mse_train_list <- append(mse_train_list, 
-        mean((df_train$price - yhat_train)^2))
-      mse_test_list <- append(mse_test_list,
-        mean((df_test$price - yhat_test)^2))
-    }
+```{r runnable-ridge-and-lasso-in-r-05}
+ X <- makeX(dfX)
 ```
-
-## Cross-validation in R
 
 ### Box 06
 
-Textbook context: Section: Training data, test data and cross-validation | Subsection: Cross-validation.
+Textbook context: Section: Predictions with many independent variables | Subsection: Scale dependence with ridge and lasso regression.
 
-```{r runnable-cross-validation-in-r-06}
-    df <- read.csv(file.path("data", "apartment_price_data.csv"))
-    n <- nrow(df)
-    m <- 5
-    shuffle_ind <- sample(1:n, n, replace=FALSE)
-    fold_indexes <- cut(shuffle_ind, breaks=m, labels=FALSE)
-    MSE_hat <- rep(NA, m)
-    for (i in 1:m){
-      leave_out_ind <- (1:n)[fold_indexes == i]
-      leave_in_ind <- setdiff(1:n, leave_out_ind)
-      train_df <- df[leave_in_ind, ]
-      test_df <- df[leave_out_ind, ]
-      ols_train <- lm(price ~ living_area, data=train_df)
-      pred <- predict(ols_train, test_df)
-      MSE_hat[i] <- mean((test_df$price - pred)^2)
-    }
-    mean(MSE_hat)
+```{r runnable-ridge-and-lasso-in-r-06}
+ yhat <- predict(ridge_model, newx = X)
 ```
-
-## Ridge and lasso in R
 
 ### Box 07
 
 Textbook context: Section: Predictions with many independent variables | Subsection: Scale dependence with ridge and lasso regression.
 
 ```{r runnable-ridge-and-lasso-in-r-07}
-# install.packages("glmnet")  # install manually if needed
- library(glmnet)
-```
-
-### Box 08
-
-Textbook context: Section: Predictions with many independent variables | Subsection: Scale dependence with ridge and lasso regression.
-
-```{r runnable-ridge-and-lasso-in-r-08}
-  df <- read.csv(file.path("data", "apartment_price_data.csv"))
-  df <- df[complete.cases(df), ]
-```
-
-### Box 09
-
-Textbook context: Section: Predictions with many independent variables | Subsection: Scale dependence with ridge and lasso regression.
-
-```{r runnable-ridge-and-lasso-in-r-09}
- dfX <- df[, names(df) != "price"]
-```
-
-### Box 10
-
-Textbook context: Section: Predictions with many independent variables | Subsection: Scale dependence with ridge and lasso regression.
-
-```{r runnable-ridge-and-lasso-in-r-10}
- dfX$build_year <- as.factor(dfX$build_year)
- dfX$number_of_rooms <- as.factor(dfX$number_of_rooms)
-```
-
-### Box 11
-
-Textbook context: Section: Predictions with many independent variables | Subsection: Scale dependence with ridge and lasso regression.
-
-```{r runnable-ridge-and-lasso-in-r-11}
- X <- makeX(dfX)
-```
-
-### Box 12
-
-Textbook context: Section: Predictions with many independent variables | Subsection: Scale dependence with ridge and lasso regression.
-
-```{r runnable-ridge-and-lasso-in-r-12}
-  ridge_model <- glmnet(X, df$price, alpha=0)
-```
-
-### Box 13
-
-Textbook context: Section: Predictions with many independent variables | Subsection: Scale dependence with ridge and lasso regression.
-
-```{r runnable-ridge-and-lasso-in-r-13}
- ridge_model <- glmnet(X, df$price, alpha=0, lambda=.1)
-```
-
-### Box 14
-
-Textbook context: Section: Predictions with many independent variables | Subsection: Scale dependence with ridge and lasso regression.
-
-```{r runnable-ridge-and-lasso-in-r-14}
- yhat <- predict(ridge_model, newx = X)
-```
-
-### Box 15
-
-Textbook context: Section: Predictions with many independent variables | Subsection: Scale dependence with ridge and lasso regression.
-
-```{r runnable-ridge-and-lasso-in-r-15}
-  ridge_model_cv <- cv.glmnet(X, df$price, alpha=0)
-```
-
-### Box 16
-
-Textbook context: Section: Predictions with many independent variables | Subsection: Scale dependence with ridge and lasso regression.
-
-```{r runnable-ridge-and-lasso-in-r-16}
  plot(ridge_model_cv)
-```
-
-### Box 17
-
-Textbook context: Section: Predictions with many independent variables | Subsection: Scale dependence with ridge and lasso regression.
-
-```{r runnable-ridge-and-lasso-in-r-17}
- lasso_model_cv <- cv.glmnet(X, df$price, alpha=1)
 ```
 
 ## Regression tree in R
 
-### Box 18
+### Box 08
 
 Textbook context: Section: Tree-based regression models.
 
-```{r runnable-regression-tree-in-r-18}
+```{r runnable-regression-tree-in-r-08}
 # install.packages("rpart")  # install manually if needed
 # install.packages("rpart.plot")  # install manually if needed
   library(rpart)
   library(rpart.plot)
 ```
 
-### Box 19
+### Box 09
 
 Textbook context: Section: Tree-based regression models.
 
-```{r runnable-regression-tree-in-r-19}
- df <- read.csv(file.path("data", "apartment_price_data.csv"))
+```{r runnable-regression-tree-in-r-09}
+ df <- read.csv("apartment_price_data.csv")
 ```
 
-### Box 20
+### Box 10
 
 Textbook context: Section: Tree-based regression models.
 
-```{r runnable-regression-tree-in-r-20}
+```{r runnable-regression-tree-in-r-10}
  tree_model <- rpart(price ~ living_area + monthly_fee,
  data=df, control=rpart.control(
- minsplit = 20, minbucket = 5, cp=0))
+ minsplit = 20, minsbucket = 5, cp=0))
 ```
 
-### Box 21
+### Box 11
 
 Textbook context: Section: Tree-based regression models.
 
-```{r runnable-regression-tree-in-r-21}
+```{r runnable-regression-tree-in-r-11}
   rpart.plot(tree_model)
 ```
 
-### Box 22
+### Box 12
 
 Textbook context: Section: Tree-based regression models.
 
-```{r runnable-regression-tree-in-r-22}
+```{r runnable-regression-tree-in-r-12}
  pruned_tree <- prune(tree_model, cp=.03)
 ```
 
-### Box 23
+### Box 13
 
 Textbook context: Section: Tree-based regression models.
 
-```{r runnable-regression-tree-in-r-23}
+```{r runnable-regression-tree-in-r-13}
  printcp(tree_model)
 ```
 
 ## Comparison of the different prediction models
 
-### Box 24
+### Box 14
 
 Textbook context: Section: Example: housing prices.
 
-```{r runnable-comparison-of-the-different-prediction-models-24}
- library(glmnet)
- library(rpart)
- df <- read.csv(file.path("data", "apartment_price_data.csv"))
- df$elevator_missing <- ifelse(is.na(df$elevator), 1, 0)
- df$elevator[is.na(df$elevator)] <- 0
- df$living_area2 <- df$living_area^2
- df$monthly_fee2 <- df$monthly_fee^2
- df <- df[complete.cases(df), ]
-```
-
-### Box 25
-
-Textbook context: Section: Example: housing prices.
-
-```{r runnable-comparison-of-the-different-prediction-models-25}
-  for (room_size in 2:6){
-    df[, paste0("room_size_", room_size)] <- ifelse(
-      df$number_of_rooms == room_size, 1, 0)
-    df[, paste0("city_area_room_size_", room_size)] <- (
-      df$city_area * 
-      df[, paste0("room_size_", room_size)]) 
-  }
-```
-
-### Box 26
-
-Textbook context: Section: Example: housing prices.
-
-```{r runnable-comparison-of-the-different-prediction-models-26}
+```{r runnable-comparison-of-the-different-prediction-models-14}
  year_list10 <- seq(from=1900, to=2010, by=10)
 ```
 
-### Box 27
+### Box 15
 
 Textbook context: Section: Example: housing prices.
 
-```{r runnable-comparison-of-the-different-prediction-models-27}
-  for (year in year_list10){
-    df[, paste0("build_decade_", year)] <- ifelse(
-      df$build_year >= year & df$build_year <= year + 9, 1, 0)
-    df[, paste0("city_area_build_decade_", year)] <- (
-      df$city_area * 
-        df[, paste0("build_decade_", year)]) 
-  }
+```{r runnable-comparison-of-the-different-prediction-models-15}
+  room_vars <- ls(df, pat="^room_size_|^city_area_room_size_")
 ```
 
-### Box 28
+### Box 16
 
 Textbook context: Section: Example: housing prices.
 
-```{r runnable-comparison-of-the-different-prediction-models-28}
- year_list1 <- unique(df$build_year)
- for (year in year_list1){
- df[, paste0("build_year_", year)] <- ifelse(
- df$build_year == year, 1, 0)
- df[, paste0("city_area_build_year_", year)] <- (
- df$city_area *
- df[, paste0("build_year_", year)])
- }
+```{r runnable-comparison-of-the-different-prediction-models-16}
+ build_decade_vars <- ls(df,
+ pat="^build_decade_|^city_area_build_decade_")
+ build_year_vars <- ls(df,
+ pat="^build_year_|^city_area_build_year_")
 ```
 
-### Box 29
+### Box 17
 
 Textbook context: Section: Example: housing prices.
 
-```{r runnable-comparison-of-the-different-prediction-models-29}
-  room_vars <- grep("^room_size_|^city_area_room_size_", names(df), value=TRUE)
-```
-
-### Box 30
-
-Textbook context: Section: Example: housing prices.
-
-```{r runnable-comparison-of-the-different-prediction-models-30}
-build_decade_vars <- grep("^build_decade_|^city_area_build_decade_", names(df), value=TRUE)
-build_year_vars <- grep("^build_year_|^city_area_build_year_", names(df), value=TRUE)
-```
-
-### Box 31
-
-Textbook context: Section: Example: housing prices.
-
-```{r runnable-comparison-of-the-different-prediction-models-31}
+```{r runnable-comparison-of-the-different-prediction-models-17}
   rest_vars <- c("living_area", "new_production",
                  "monthly_fee", "city_area", "elevator",
                  "elevator_missing", "living_area2",
@@ -367,68 +186,58 @@ Textbook context: Section: Example: housing prices.
                  "number_of_rooms", "build_year")
 ```
 
-### Box 32
+### Box 18
 
 Textbook context: Section: Example: housing prices.
 
-```{r runnable-comparison-of-the-different-prediction-models-32}
+```{r runnable-comparison-of-the-different-prediction-models-18}
  varlist_model1 <- c(room_vars, build_year_vars, rest_vars)
  varlist_model10 <- c(room_vars, build_decade_vars, rest_vars)
 ```
 
-### Box 33
+### Box 19
 
 Textbook context: Section: Example: housing prices.
 
-```{r runnable-comparison-of-the-different-prediction-models-33}
- X1 <- as.matrix(df[, varlist_model1])
- X10 <- as.matrix(df[, varlist_model10])
- Y <- df$price
-```
-
-### Box 34
-
-Textbook context: Section: Example: housing prices.
-
-```{r runnable-comparison-of-the-different-prediction-models-34}
+```{r runnable-comparison-of-the-different-prediction-models-19}
  formOLS1 <- paste(varlist_model1, collapse="+")
  formOLS1 <- paste("price ~ ", formOLS1)
 ```
 
-### Box 35
+### Box 20
 
 Textbook context: Section: Example: housing prices.
 
-```{r runnable-comparison-of-the-different-prediction-models-35}
+```{r runnable-comparison-of-the-different-prediction-models-20}
   formOLS10 <- paste("price ~ ",
     paste(varlist_model10, collapse="+"))
   formCART <- paste("price ~ ",
     paste(tree_vars, collapse="+"))
 ```
 
-### Box 36
+### Box 21
 
 Textbook context: Section: Example: housing prices.
 
-```{r runnable-comparison-of-the-different-prediction-models-36}
+```{r runnable-comparison-of-the-different-prediction-models-21}
  set.seed(12)
  n <- nrow(df)
  ind_train <- sample(1:n, 4/5 * n, replace=FALSE)
  ind_test <- setdiff(1:n, ind_train)
 ```
 
-### Box 37
+### Box 22
 
 Textbook context: Section: Example: housing prices.
 
-```{r runnable-comparison-of-the-different-prediction-models-37}
-  ols_model1 <- lm(as.formula(formOLS1), data=df[ind_train, ])
+```{r runnable-comparison-of-the-different-prediction-models-22}
+  ols_model1 <- lm(formOLS1, data=df[ind_train, ])
   ridge_model1 <- cv.glmnet(
     X1[ind_train, ], Y[ind_train], alpha=0)
   lasso_model1 <- cv.glmnet(
     X1[ind_train, ], Y[ind_train], alpha=1)
 
-  ols_model10 <- lm(as.formula(formOLS10), data=df[ind_train, ])
+  ols_model10 <- lm(formOLS10, data=df[ind_train, ])
   ridge_model10 <- cv.glmnet(
     X10[ind_train, ], Y[ind_train], alpha=0)
   lasso_model10 <- cv.glmnet(
@@ -439,15 +248,15 @@ Textbook context: Section: Example: housing prices.
                       minsplit = 20, minbucket = 5, cp=0))
   c <- printcp(CART_model)
   s <- c[, "xerror"]
-  alpha <- c[which.min(s), "CP"]
+  alpha <- c[, "CP"][s == min(s)]
   pruned_tree <- prune(CART_model, cp=alpha)
 ```
 
-### Box 38
+### Box 23
 
 Textbook context: Section: Example: housing prices.
 
-```{r runnable-comparison-of-the-different-prediction-models-38}
+```{r runnable-comparison-of-the-different-prediction-models-23}
   yhat_ols1 <- predict(ols_model1, newdata=df)
   yhat_ols10 <- predict(ols_model10, newdata=df)
   yhat_ridge1 <- predict(ridge_model1, newx=X1,
@@ -461,11 +270,11 @@ Textbook context: Section: Example: housing prices.
   yhat_tree <- predict(pruned_tree, newdata = df)
 ```
 
-### Box 39
+### Box 24
 
 Textbook context: Section: Example: housing prices.
 
-```{r runnable-comparison-of-the-different-prediction-models-39}
+```{r runnable-comparison-of-the-different-prediction-models-24}
  YHAT_models <- list(yhat_ols1, yhat_ridge1, yhat_lasso1,
  yhat_ols10, yhat_ridge10, yhat_lasso10,
  yhat_tree)

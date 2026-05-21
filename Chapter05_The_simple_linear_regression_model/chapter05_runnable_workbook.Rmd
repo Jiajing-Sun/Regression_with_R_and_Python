@@ -24,7 +24,7 @@ knitr::opts_knit$set(root.dir = chapter_dir)
 
 ```{r prerequisites, include=FALSE}
 # Prerequisite code adapted from Chapter 02.
-    df <- read.csv(file.path("data", "apartment_price_data.csv"))
+    df <- read.csv("apartment_price_data.csv")
 
     xbar <- mean(df$living_area)
     ybar <- mean(df$price)

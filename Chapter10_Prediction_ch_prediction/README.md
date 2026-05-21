@@ -1,4 +1,4 @@
-# Chapter 10: Prediction and Nonparametric regression
+# Chapter 10: Prediction
 
 Companion materials for *Regression with R and Python: Description, Prediction, and Causal Analysis for Applied Social Science and Econometrics*.
 
@@ -10,18 +10,9 @@ Companion materials for *Regression with R and Python: Description, Prediction, 
 ## R code boxes
 
 - Example with training and test data
-- Cross-validation in R
 - Ridge and lasso in R
 - Regression tree in R
 - Comparison of the different prediction models
-
-## Python code boxes
-
-- Example with training and test data in Python
-- Cross-validation in Python
-- Ridge and lasso in Python
-- Regression tree in Python
-- Comparison of the different prediction models in Python
 
 ## Notes
 

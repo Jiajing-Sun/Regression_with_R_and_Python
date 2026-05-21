@@ -27,7 +27,7 @@ knitr::opts_knit$set(root.dir = chapter_dir)
 Textbook context: Section: Autoregressive regression | Subsection: Deterministic or stochastic trend? | Subsubsection: Stochastic Trend.
 
 ```{r runnable-time-series-analysis-with-r-01}
-    df <- read.csv(file.path("data", "time_series_sweden.csv"))
+    df <- read.csv("time_series_sweden.csv")
 ```
 
 ### Box 02

@@ -27,7 +27,7 @@ knitr::opts_knit$set(root.dir = chapter_dir)
 Textbook context: Chapter context unavailable.
 
 ```{r runnable-calculating-confidence-intervals-for-correlation-in-r-01}
-  df <- read.csv(file.path("data", "apartment_price_data.csv"))
+  df <- read.csv("apartment_price_data.csv")
   corrXY <- cor(df$living_area, df$price)
   Z <- 1/2 * log((1+corrXY)/(1-corrXY))
   alpha <- 0.05

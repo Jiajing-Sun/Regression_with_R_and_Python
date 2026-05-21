@@ -27,7 +27,7 @@ knitr::opts_knit$set(root.dir = chapter_dir)
 Textbook context: Section: Example: Relationship between weather and air pollution.
 
 ```{r runnable-air-pollution-and-weather-in-r-01}
-    df <- read.csv(file.path("data", "pollution_sf.csv"))
+    df <- read.csv("pollution_sf.csv")
 ```
 
 ### Box 02

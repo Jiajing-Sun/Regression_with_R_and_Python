@@ -35,7 +35,7 @@ Textbook context: Section: The regression discontinuity approach | Subsection: E
 Textbook context: Section: The regression discontinuity approach | Subsection: Example in R with municipal data.
 
 ```{r runnable-rd-approach-in-r-02}
- df <- read.csv(file.path("data", "municip_data.csv"))
+ df <- read.csv("municip_data.csv")
  df <- df[df$municip_name != "Gotland", ]
  df$rv <- df$share_seats_left_last_election - .5
  df$change_tax_rate <- df$tax_rate - df$tax_rate_4_years_back
