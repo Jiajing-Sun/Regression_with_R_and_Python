@@ -1,4 +1,4 @@
-# Chapter 11, R box 01: Nonparametric RD in R
+# Chapter 11, R box 02: Nonparametric RD in R
 # Source label: box:r_nonparametric_rd
 # Full runnable chapter script: ../chapter11.R
 # This file mirrors the printed code box; use the full chapter script for end-to-end execution.

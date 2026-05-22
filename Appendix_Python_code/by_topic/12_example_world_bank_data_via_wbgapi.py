@@ -15,6 +15,7 @@
 import wbgapi as wb
 import pandas as pd
 import matplotlib.pyplot as plt
+from itertools import cycle
 
 # Search for indicators (interactive listing)
 wb.series.info(q="gdp per capita")
@@ -33,8 +34,10 @@ gdppc = gdppc.rename(columns={"NY.GDP.PCAP.KD": "gdppc"})
 
 # Plot GDP per capita over time
 plt.figure(figsize=(8, 4))
+line_styles = cycle(["-", "--", "-."])
 for name, g in gdppc.groupby("Country"):
-    plt.plot(g["year"], g["gdppc"], label=name)
+    plt.plot(g["year"], g["gdppc"], label=name,
+             linestyle=next(line_styles))
 
 plt.title("GDP per Capita (constant 2015 USD)")
 plt.xlabel("Year")

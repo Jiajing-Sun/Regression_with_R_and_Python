@@ -17,7 +17,11 @@ Companion materials for *Regression with R and Python: Description, Prediction, 
 
 ## Python code boxes
 
-- No printed code boxes in this language for the current chapter draft.
+- Example with training and test data in Python
+- Cross-validation in Python
+- Ridge and lasso in Python
+- Regression tree in Python
+- Comparison of the different prediction models in Python
 
 ## Box-level snippets
 
@@ -30,6 +34,14 @@ These files are the QR-code targets for the printed code boxes. The full chapter
 - [`R/boxes/box03_ridge_and_lasso_in_r.R`](R/boxes/box03_ridge_and_lasso_in_r.R) - Ridge and lasso in R
 - [`R/boxes/box04_regression_tree_in_r.R`](R/boxes/box04_regression_tree_in_r.R) - Regression tree in R
 - [`R/boxes/box05_comparison_of_the_different_prediction_models.R`](R/boxes/box05_comparison_of_the_different_prediction_models.R) - Comparison of the different prediction models
+
+### Python box files
+
+- [`python/boxes/box01_example_with_training_and_test_data_in_python.py`](python/boxes/box01_example_with_training_and_test_data_in_python.py) - Example with training and test data in Python
+- [`python/boxes/box02_cross_validation_in_python.py`](python/boxes/box02_cross_validation_in_python.py) - Cross-validation in Python
+- [`python/boxes/box03_ridge_and_lasso_in_python.py`](python/boxes/box03_ridge_and_lasso_in_python.py) - Ridge and lasso in Python
+- [`python/boxes/box04_regression_tree_in_python.py`](python/boxes/box04_regression_tree_in_python.py) - Regression tree in Python
+- [`python/boxes/box05_comparison_of_the_different_prediction_models_in_python.py`](python/boxes/box05_comparison_of_the_different_prediction_models_in_python.py) - Comparison of the different prediction models in Python
 
 ## Notes
 

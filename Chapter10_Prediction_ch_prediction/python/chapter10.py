@@ -324,9 +324,12 @@ df = df.dropna().copy()
 # Textbook context: Section: Example: housing prices
 # ------------------------------------------------------------------------------
 
+room_data = {}
 for room_size in range(2, 7):
-    df[f"room_size_{room_size}"] = (df["number_of_rooms"] == room_size).astype(int)
-    df[f"city_area_room_size_{room_size}"] = df["city_area"] * df[f"room_size_{room_size}"]
+    room = (df["number_of_rooms"] == room_size).astype(int)
+    room_data[f"room_size_{room_size}"] = room
+    room_data[f"city_area_room_size_{room_size}"] = df["city_area"] * room
+room_df = pd.DataFrame(room_data, index=df.index)
 
 # ------------------------------------------------------------------------------
 # Box 20: Comparison of the different prediction models in Python
@@ -334,13 +337,17 @@ for room_size in range(2, 7):
 # ------------------------------------------------------------------------------
 
 # --- decade dummies (reference: < 1900) ---
+decade_data = {}
 year_list10 = list(range(1900, 2011, 10))
 for year in year_list10:
     name = f"build_decade_{year}"
-    df[name] = ((df["build_year"] >= year) & (df["build_year"] <= year + 9)).astype(int)
-    df[f"city_area_build_decade_{year}"] = df["city_area"] * df[name]
+    decade = ((df["build_year"] >= year) & (df["build_year"] <= year + 9)).astype(int)
+    decade_data[name] = decade
+    decade_data[f"city_area_build_decade_{year}"] = df["city_area"] * decade
+decade_df = pd.DataFrame(decade_data, index=df.index)
 
 # --- year dummies (omit one year as reference to avoid perfect collinearity) ---
+year_data = {}
 year_list1 = sorted(df["build_year"].unique())
 ref_year = year_list1[0]
 
@@ -348,18 +355,21 @@ for year in year_list1:
     if year == ref_year:
         continue
     name = f"build_year_{year}"
-    df[name] = (df["build_year"] == year).astype(int)
-    df[f"city_area_build_year_{year}"] = df["city_area"] * df[name]
+    year_dummy = (df["build_year"] == year).astype(int)
+    year_data[name] = year_dummy
+    year_data[f"city_area_build_year_{year}"] = df["city_area"] * year_dummy
+year_df = pd.DataFrame(year_data, index=df.index)
+
+df = pd.concat([df, room_df, decade_df, year_df], axis=1)
 
 # ------------------------------------------------------------------------------
 # Box 21: Comparison of the different prediction models in Python
 # Textbook context: Section: Example: housing prices
 # ------------------------------------------------------------------------------
 
-room_vars = [c for c in df.columns if c.startswith("room_size_") or c.startswith("city_area_room_size_")]
-
-build_decade_vars = [c for c in df.columns if c.startswith("build_decade_") or c.startswith("city_area_build_decade_")]
-build_year_vars = [c for c in df.columns if c.startswith("build_year_") or c.startswith("city_area_build_year_")]
+room_vars = list(room_df.columns)
+build_decade_vars = list(decade_df.columns)
+build_year_vars = list(year_df.columns)
 
 rest_vars = [
     "living_area", "new_production", "monthly_fee", "city_area", "elevator",

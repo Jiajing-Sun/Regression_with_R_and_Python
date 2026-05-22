@@ -195,14 +195,19 @@ df2 = int(ols_model_l.df_resid)
 # Textbook context: Section: $F$-test | Subsection: Robust $F$-test
 # ------------------------------------------------------------------------------
 
-ols_model_l_hc0 = ols_model_l.get_robustcov_results(cov_type="HC0", use_t=True)
+ols_model_l_hc0 = ols_model_l.get_robustcov_results(
+    cov_type="HC0",
+    use_t=True,
+)
 
 # ------------------------------------------------------------------------------
 # Box 15: Robust $F$-test in Python
 # Textbook context: Section: $F$-test | Subsection: Robust $F$-test
 # ------------------------------------------------------------------------------
 
-ftest_rob = ols_model_l_hc0.f_test("new_production = 0, build_year = 0")
+ftest_rob = ols_model_l_hc0.f_test(
+    "new_production = 0, build_year = 0"
+)
 
 F_rob = float(ftest_rob.fvalue)
 p_rob = float(ftest_rob.pvalue)

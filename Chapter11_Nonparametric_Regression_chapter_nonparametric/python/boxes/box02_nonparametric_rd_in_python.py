@@ -1,4 +1,4 @@
-# Chapter 11, Python box 01: Nonparametric RD in Python
+# Chapter 11, Python box 02: Nonparametric RD in Python
 # Source label: box:p_nonparametric_rd
 # Full runnable chapter script: ../chapter11.py
 # This file mirrors the printed code box; use the full chapter script for end-to-end execution.

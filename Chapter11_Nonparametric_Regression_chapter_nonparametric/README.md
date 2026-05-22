@@ -9,11 +9,18 @@ Companion materials for *Regression with R and Python: Description, Prediction, 
 
 ## R code boxes
 
+- Regressogram and kernel regression in R
 - Nonparametric RD in R
 
 ## Python code boxes
 
+- Regressogram and kernel regression in Python
 - Nonparametric RD in Python
+
+## Data files
+
+- `data/apartment_price_data.csv` supports the housing example for the regressogram and kernel-regression comparison.
+- `data/municip_data.csv` supports the nonparametric regression-discontinuity example.
 
 ## Box-level snippets
 
@@ -21,11 +28,13 @@ These files are the QR-code targets for the printed code boxes. The full chapter
 
 ### R box files
 
-- [`R/boxes/box01_nonparametric_rd_in_r.R`](R/boxes/box01_nonparametric_rd_in_r.R) - Nonparametric RD in R
+- [`R/boxes/box01_regressogram_and_kernel_regression_in_r.R`](R/boxes/box01_regressogram_and_kernel_regression_in_r.R) - Regressogram and kernel regression in R
+- [`R/boxes/box02_nonparametric_rd_in_r.R`](R/boxes/box02_nonparametric_rd_in_r.R) - Nonparametric RD in R
 
 ### Python box files
 
-- [`python/boxes/box01_nonparametric_rd_in_python.py`](python/boxes/box01_nonparametric_rd_in_python.py) - Nonparametric RD in Python
+- [`python/boxes/box01_regressogram_and_kernel_regression_in_python.py`](python/boxes/box01_regressogram_and_kernel_regression_in_python.py) - Regressogram and kernel regression in Python
+- [`python/boxes/box02_nonparametric_rd_in_python.py`](python/boxes/box02_nonparametric_rd_in_python.py) - Nonparametric RD in Python
 
 ## Notes
 
